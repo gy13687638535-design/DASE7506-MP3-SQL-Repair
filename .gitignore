@@ -1,0 +1,7 @@
+.deps/
+__pycache__/
+*.pyc
+.venv/
+tmp/
+*.zip
+submission-receipt.json
