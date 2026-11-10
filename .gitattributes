@@ -1,0 +1,3 @@
+* text=auto eol=lf
+outputs/*.json -text
+outputs/linux/* -text

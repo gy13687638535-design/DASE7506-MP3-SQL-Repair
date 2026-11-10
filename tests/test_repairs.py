@@ -5,6 +5,16 @@ from repairs import candidates
 
 
 class RepairTests(unittest.TestCase):
+    def test_ambiguous_column_repair_preserves_qualified_join(self):
+        schema = [{"name": name, "columns": [{"name": "name"}], "foreign_keys": []}
+                  for name in ("performer", "track")]
+        result = candidates(
+            "SELECT name FROM performer JOIN track ON performer.name = track.name",
+            "List names", {"error": {"message": "ambiguous column name: name"}}, {}, schema)
+        bindings = [sql for sql, reason, _ in result if reason == "schema_column_binding"]
+        self.assertTrue(bindings)
+        self.assertTrue(all("performer.name = track.name" in sql for sql in bindings))
+
     def test_duplicate_feedback_proposes_distinct(self):
         result = candidates("SELECT name FROM person", "List people names",
                             {"ok": True, "row_count": 5},

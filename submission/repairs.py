@@ -159,7 +159,7 @@ def _schema_repairs(tree, feedback, schema):
         missing_name = token
     wrong_nodes = [x for x in _root_columns(tree)
                    if x.name.lower() == missing_name.lower()
-                   and (not qualifier or x.table.lower() == qualifier.lower())]
+                   and x.table.lower() == qualifier.lower()]
     if not wrong_nodes:
         return output
     known = [(t, name) for t in present for name in columns.get(t.name.lower(), {})]
@@ -175,8 +175,8 @@ def _schema_repairs(tree, feedback, schema):
             continue
         changed = tree.copy()
         for node in _root_columns(changed):
-            if node.name.lower() == missing_name.lower() and (
-                    not qualifier or node.table.lower() == qualifier.lower()):
+            if (node.name.lower() == missing_name.lower()
+                    and node.table.lower() == qualifier.lower()):
                 node.set("this", exp.to_identifier(columns[source.name.lower()][name]))
                 node.set("table", exp.to_identifier(source.alias_or_name))
         output.append((changed, "schema_column_binding", 100.0 + similarity))
@@ -207,8 +207,8 @@ def _schema_repairs(tree, feedback, schema):
             target_name = tables[target]["name"]
             # Qualify fields before introducing a potentially ambiguous join.
             for column in _root_columns(changed):
-                if column.name.lower() == missing_name.lower() and (
-                        not qualifier or column.table.lower() == qualifier.lower()):
+                if (column.name.lower() == missing_name.lower()
+                        and column.table.lower() == qualifier.lower()):
                     column.set("table", exp.to_identifier(target_name))
                     column.set("this", exp.to_identifier(columns[target][missing_name.lower()]))
                 elif not column.table:
