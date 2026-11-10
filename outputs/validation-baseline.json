@@ -1,0 +1,1330 @@
+{
+  "protocol": "dase7506-sql-repair-v1",
+  "split": "validation",
+  "budget": 8,
+  "bank_sha256": "ccb66ffc9214bb9484b278718acf7eae55afac7c4d4afa25ee03f74ad3fea6eb",
+  "manifest_sha256": "bf7a517249ebe31b9cad8cbf5d6598fde98316d89f9aa1172cae3ad83289a6bc",
+  "predictions": [
+    {
+      "id": "validation-3c4d5ecbd3a4ffc8",
+      "sql": "SELECT company.Headquarters\nFROM company\nWHERE company.Company_ID IN (\n    SELECT Company_ID\n    FROM employment\n    GROUP BY Company_ID\n    HAVING COUNT(employment.Company_ID) >= 2\n);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT company.Headquarters\nFROM company\nWHERE company.Company_ID IN (\n    SELECT Company_ID\n    FROM employment\n    GROUP BY Company_ID\n    HAVING COUNT(employment.Company_ID) >= 2\n);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-a402046f584d4813",
+      "sql": "SELECT Student.Age FROM Student WHERE LName = 'Linda Smith';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Student.Age FROM Student WHERE LName = 'Linda Smith';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-8be8e9f30c5ed3cc",
+      "sql": "SELECT MIN(Silver) AS min_silver, MAX(Silver) AS max_silver\nFROM club_rank;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT MIN(Silver) AS min_silver, MAX(Silver) AS max_silver\nFROM club_rank;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-bb46eb4c224f4193",
+      "sql": "SELECT Organizations.organization_name\nFROM Organizations\nORDER BY date_formed ASC;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Organizations.organization_name\nFROM Organizations\nORDER BY date_formed ASC;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-fff3bd324494b9bb",
+      "sql": "SELECT AVG(Roller_Coaster.Speed) AS Average_Speed\nFROM roller_coaster;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT AVG(Roller_Coaster.Speed) AS Average_Speed\nFROM roller_coaster;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-cf4f7eb157c5f56f",
+      "sql": "SELECT Name FROM artwork ORDER BY Name ASC;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Name FROM artwork ORDER BY Name ASC;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-6d8add77db18ef60",
+      "sql": "SELECT program.Name\nFROM program\nWHERE program.Program_ID IN (\n    SELECT broadcast.Program_ID\n    FROM broadcast\n    JOIN broadcast_share ON broadcast.Program_ID = broadcast_share.Program_ID\n    ORDER BY broadcast.Time_of_day DESC\n    LIMIT 1\n);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT program.Name\nFROM program\nWHERE program.Program_ID IN (\n    SELECT broadcast.Program_ID\n    FROM broadcast\n    JOIN broadcast_share ON broadcast.Program_ID = broadcast_share.Program_ID\n    ORDER BY broadcast.Time_of_day DESC\n    LIMIT 1\n);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-83b76ccf03ae3d7a",
+      "sql": "SELECT COUNT(*) AS total_customers\nFROM Customers;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(*) AS total_customers\nFROM Customers;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-1e5f20eb954308a2",
+      "sql": "SELECT church.Name, church.Open_Date, church.Organized_by\nFROM church;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT church.Name, church.Open_Date, church.Organized_by\nFROM church;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-60551b2217de7d97",
+      "sql": "SELECT Category, COUNT(*) AS Count\nFROM book_club\nGROUP BY Category;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Category, COUNT(*) AS Count\nFROM book_club\nGROUP BY Category;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-52bfe326b751abaf",
+      "sql": "SELECT transaction_type, SUM(transaction_amount) AS total_amount\nFROM Financial_Transactions\nGROUP BY transaction_type;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT transaction_type, SUM(transaction_amount) AS total_amount\nFROM Financial_Transactions\nGROUP BY transaction_type;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-9a3d5d1c1dfe328b",
+      "sql": "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id\nFROM Benefits_Overpayments\nJOIN Business_Rates ON Benefits_Overpayments.cmi_cross_ref_id = Business_Rates.cmi_cross_ref_id\nJOIN CMI_Cross_References ON Business_Rates.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\nJOIN Parking_Fines ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\nJOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id\nWHERE Parking_Fines.council_tax_id = 1;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id\nFROM Benefits_Overpayments\nJOIN Business_Rates ON Benefits_Overpayments.cmi_cross_ref_id = Business_Rates.cmi_cross_ref_id\nJOIN CMI_Cross_References ON Business_Rates.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\nJOIN Parking_Fines ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\nJOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id\nWHERE Parking_Fines.council_tax_id = 1;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-fa96b1ccd568803a",
+      "sql": "SELECT COUNT(*) FROM Customers\nWHERE good_or_bad_customer = 'bad';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(*) FROM Customers\nWHERE good_or_bad_customer = 'bad';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-536cac19f45fc4fc",
+      "sql": "SELECT mill.type\nFROM mill\nJOIN architect ON mill.architect_id = architect.id\nWHERE architect.nationality IN ('American', 'Canadian');",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT mill.type\nFROM mill\nJOIN architect ON mill.architect_id = architect.id\nWHERE architect.nationality IN ('American', 'Canadian');"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-6ff42b00b3afd128",
+      "sql": "SELECT Suppliers.supplier_id\nFROM Suppliers\nWHERE (SELECT AVG(total_value_purchased) OVER (PARTITION BY Products.product_id) > 50000 OR AVG(total_value_purchased) OVER (PARTITION BY Products.product_id) < 30000)",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Suppliers.supplier_id\nFROM Suppliers\nWHERE (SELECT AVG(total_value_purchased) OVER (PARTITION BY Products.product_id) > 50000 OR AVG(total_value_purchased) OVER (PARTITION BY Products.product_id) < 30000)"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-1b6e5a6dd2d6aa32",
+      "sql": "SELECT AVG(song.duration) AS average_song_duration\nFROM song\nWHERE song.file_formats LIKE '%mp3%' AND song.resolution < 800;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT AVG(song.duration) AS average_song_duration\nFROM song\nWHERE song.file_formats LIKE '%mp3%' AND song.resolution < 800;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-b21ef0b87ce0afd3",
+      "sql": "SELECT wrestler.Name, elimination.Elimination_Move\nFROM wrestler\nJOIN elimination ON wrestler.Wrestler_ID = elimination.Wrestler_ID;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT wrestler.Name, elimination.Elimination_Move\nFROM wrestler\nJOIN elimination ON wrestler.Wrestler_ID = elimination.Wrestler_ID;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-ab68d815813fb4b7",
+      "sql": "SELECT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE journal.Sales > 3000;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE journal.Sales > 3000;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-2feff7a83ef167ff",
+      "sql": "SELECT COUNT(DISTINCT student_id) AS distinct_students\nFROM Student_Course_Enrolment",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(DISTINCT student_id) AS distinct_students\nFROM Student_Course_Enrolment"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-a75b7764fcacce68",
+      "sql": "SELECT \n    gender, \n    AVG(Age) AS average_age,\n    COUNT(*) AS number_of_students\nFROM \n    Student\nGROUP BY \n    gender;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT \n    gender, \n    AVG(Age) AS average_age,\n    COUNT(*) AS number_of_students\nFROM \n    Student\nGROUP BY \n    gender;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-0e21eef6ed8ada4e",
+      "sql": "SELECT company.Name, employment.People_ID\nFROM company\nJOIN employment ON company.Company_ID = employment.Company_ID\nJOIN people ON employment.People_ID = people.People_ID",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT company.Name, employment.People_ID\nFROM company\nJOIN employment ON company.Company_ID = employment.Company_ID\nJOIN people ON employment.People_ID = people.People_ID"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-de306200a6efff23",
+      "sql": "SELECT Restaurant.Rating\nFROM Restaurant\nWHERE ResID = (SELECT ResID FROM Restaurant_Type WHERE ResTypeDescription = 'Subway');",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Restaurant.Rating\nFROM Restaurant\nWHERE ResID = (SELECT ResID FROM Restaurant_Type WHERE ResTypeDescription = 'Subway');"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-ca9775c857b7431d",
+      "sql": "SELECT name\nFROM club\nORDER BY name DESC;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT name\nFROM club\nORDER BY name DESC;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-f76a31ffe49ff88d",
+      "sql": "SELECT individual_last_name\nFROM Individuals\nJOIN Organization_Contact_Individuals ON Individuals.individual_id = Organization_Contact_Individuals.individual_id\nJOIN Organizations ON Organization_Contact_Individuals.organization_id = Organizations.organization_id\nWHERE Organizations.uk_vat_number = (SELECT MAX(uk_vat_number) FROM Organizations);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT individual_last_name\nFROM Individuals\nJOIN Organization_Contact_Individuals ON Individuals.individual_id = Organization_Contact_Individuals.individual_id\nJOIN Organizations ON Organization_Contact_Individuals.organization_id = Organizations.organization_id\nWHERE Organizations.uk_vat_number = (SELECT MAX(uk_vat_number) FROM Organizations);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-61511bf35997c117",
+      "sql": "SELECT Name\nFROM roller_coaster\nWHERE Country_ID = (\n    SELECT Country_ID\n    FROM country\n    WHERE Name NOT IN ('German')\n);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Name\nFROM roller_coaster\nWHERE Country_ID = (\n    SELECT Country_ID\n    FROM country\n    WHERE Name NOT IN ('German')\n);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-c1adc4cfbb04e562",
+      "sql": "SELECT Type, COUNT(*) AS Number_of_Artworks\nFROM artwork\nGROUP BY Type;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Type, COUNT(*) AS Number_of_Artworks\nFROM artwork\nGROUP BY Type;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-f1a67e3024ea10f2",
+      "sql": "SELECT COUNT(DISTINCT program.Program_ID) AS distinct_programs\nFROM program\nWHERE Time_of_day = 'Night';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(DISTINCT program.Program_ID) AS distinct_programs\nFROM program\nWHERE Time_of_day = 'Night';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-ed6f64d1f362df5a",
+      "sql": "SELECT COUNT(DISTINCT Customers.payment_method)\nFROM Customers;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(DISTINCT Customers.payment_method)\nFROM Customers;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-fad437395e6b6486",
+      "sql": "SELECT church.Name\nFROM church\nORDER BY church.Open_Date DESC;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT church.Name\nFROM church\nORDER BY church.Open_Date DESC;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-30b61a74da23f747",
+      "sql": "SELECT movie.Title, book.Club_Title\nFROM movie\nJOIN book_club ON movie.book_club_id = book_club.book_club_id\nJOIN culture_company ON movie.book_club_id = book_club.book_club_id\nWHERE culture_company.Company_name = 'China';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT movie.Title, book.Club_Title\nFROM movie\nJOIN book_club ON movie.book_club_id = book_club.book_club_id\nJOIN culture_company ON movie.book_club_id = book_club.book_club_id\nWHERE culture_company.Company_name = 'China';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-889009eee36761d6",
+      "sql": "SELECT transaction_id\nFROM Financial_Transactions\nWHERE transaction_amount > (SELECT AVG(transaction_amount) FROM Financial_Transactions);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT transaction_id\nFROM Financial_Transactions\nWHERE transaction_amount > (SELECT AVG(transaction_amount) FROM Financial_Transactions);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-3625496ea0b7be64",
+      "sql": "SELECT CMI_Cross_References.source_system_code\nFROM CMI_Cross_References\nJOIN Business_Rates ON CMI_Cross_References.cmi_cross_ref_id = Business_Rates.cmi_cross_ref_id\nJOIN Council_Tax ON CMI_Cross_References.cmi_cross_ref_id = Council_Tax.cmi_cross_ref_id\nJOIN Customer_Master_Index ON CMI_Cross_References.cmi_cross_ref_id = Customer_Master_Index.cmi_cross_ref_id\nWHERE Customer_Master_Index.master_customer_id = 'Gottlieb, Becker and Wyman';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT CMI_Cross_References.source_system_code\nFROM CMI_Cross_References\nJOIN Business_Rates ON CMI_Cross_References.cmi_cross_ref_id = Business_Rates.cmi_cross_ref_id\nJOIN Council_Tax ON CMI_Cross_References.cmi_cross_ref_id = Council_Tax.cmi_cross_ref_id\nJOIN Customer_Master_Index ON CMI_Cross_References.cmi_cross_ref_id = Customer_Master_Index.cmi_cross_ref_id\nWHERE Customer_Master_Index.master_customer_id = 'Gottlieb, Becker and Wyman';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-15c0ae475aa5b12c",
+      "sql": "SELECT Customers.customer_id, Payments.amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nORDER BY Payments.amount_paid DESC\nLIMIT 1;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Customers.customer_id, Payments.amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nORDER BY Payments.amount_paid DESC\nLIMIT 1;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-085ce3159bf51a4d",
+      "sql": "SELECT architect.name, architect.id\nFROM architect\nJOIN bridge ON architect.id = bridge.architect_id\nWHERE bridge.length_meters IS MAX(length_meters);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT architect.name, architect.id\nFROM architect\nJOIN bridge ON architect.id = bridge.architect_id\nWHERE bridge.length_meters IS MAX(length_meters);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-5cca36d225fdead7",
+      "sql": "SELECT DISTINCT customer_id\nFROM Customer_Orders\nWHERE order_date > (SELECT MAX(order_date) FROM Customer_Orders WHERE order_status_code = 'Cancelled')",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT DISTINCT customer_id\nFROM Customer_Orders\nWHERE order_date > (SELECT MAX(order_date) FROM Customer_Orders WHERE order_status_code = 'Cancelled')"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-2c892f2ef042cedd",
+      "sql": "SELECT COUNT(*) AS song_count\nFROM song\nWHERE duration = '4';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(*) AS song_count\nFROM song\nWHERE duration = '4';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-de485b76b4616b8e",
+      "sql": "SELECT Name\nFROM wrestler\nORDER BY Days_held DESC;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Name\nFROM wrestler\nORDER BY Days_held DESC;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-4b4f8024a5980978",
+      "sql": "SELECT editor.Name\nFROM editor\nWHERE editor.Age > 25;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT editor.Name\nFROM editor\nWHERE editor.Age > 25;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-f1ea6b8f0e7f285d",
+      "sql": "SELECT s.student_id, s.middle_name\nFROM Students s\nJOIN Student_Course_Enrolment c ON s.student_id = c.student_id\nJOIN Courses course ON c.course_id = course.course_id\nGROUP BY s.student_id, s.middle_name\nHAVING COUNT(c.course_id) > 2;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT s.student_id, s.middle_name\nFROM Students s\nJOIN Student_Course_Enrolment c ON s.student_id = c.student_id\nJOIN Courses course ON c.course_id = course.course_id\nGROUP BY s.student_id, s.middle_name\nHAVING COUNT(c.course_id) > 2;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-e3956a7be9311093",
+      "sql": "SELECT AVG(S.Age), MAX(S.Age) AS MaxAge\nFROM Student S\nWHERE S.Sex IN ('M', 'F');",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT AVG(S.Age), MAX(S.Age) AS MaxAge\nFROM Student S\nWHERE S.Sex IN ('M', 'F');"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-e1927c97d2899fdd",
+      "sql": "SELECT Headquarters, COUNT(Company_ID) AS Number_of_Companies\nFROM company\nGROUP BY Headquarters;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Headquarters, COUNT(Company_ID) AS Number_of_Companies\nFROM company\nGROUP BY Headquarters;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-5dad6a54f441726e",
+      "sql": "SELECT Time FROM Visits_Restaurant WHERE StuID = (SELECT StuID FROM Student WHERE LName = 'Linda Smith' AND Sex = 'F') AND ResID = (SELECT ResID FROM Restaurant WHERE ResName = 'Subway' AND ResTypeID = (SELECT ResTypeID FROM Restaurant_Type WHERE ResTypeName = 'Type of Restaurant' AND ResTypeDescription = 'Subway')) AND Spent = (SELECT MAX(Spent) FROM Visits_Restaurant WHERE StuID = (SELECT StuID FROM Student WHERE LName = 'Linda Smith' AND Sex = 'F') AND ResID = (SELECT ResID FROM Restaurant WHERE ResName = 'Subway' AND ResTypeID = (SELECT ResTypeID FROM Restaurant_Type WHERE ResTypeName = 'Type of Restaurant' AND ResTypeDescription = 'Subway'));",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Time FROM Visits_Restaurant WHERE StuID = (SELECT StuID FROM Student WHERE LName = 'Linda Smith' AND Sex = 'F') AND ResID = (SELECT ResID FROM Restaurant WHERE ResName = 'Subway' AND ResTypeID = (SELECT ResTypeID FROM Restaurant_Type WHERE ResTypeName = 'Type of Restaurant' AND ResTypeDescription = 'Subway')) AND Spent = (SELECT MAX(Spent) FROM Visits_Restaurant WHERE StuID = (SELECT StuID FROM Student WHERE LName = 'Linda Smith' AND Sex = 'F') AND ResID = (SELECT ResID FROM Restaurant WHERE ResName = 'Subway' AND ResTypeID = (SELECT ResTypeID FROM Restaurant_Type WHERE ResTypeName = 'Type of Restaurant' AND ResTypeDescription = 'Subway'));"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-5cf3b447b4af02c2",
+      "sql": "SELECT c.Country\nFROM competition c\nWHERE c.Competition_type = 'friendly'",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT c.Country\nFROM competition c\nWHERE c.Competition_type = 'friendly'"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-f763b72754a444d8",
+      "sql": "SELECT form_name, COUNT(*) as form_count\nFROM Party_Forms\nGROUP BY form_name\nORDER BY form_count DESC\nLIMIT 1;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT form_name, COUNT(*) as form_count\nFROM Party_Forms\nGROUP BY form_name\nORDER BY form_count DESC\nLIMIT 1;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-ef4c177afd66ae16",
+      "sql": "SELECT COUNT(*) \nFROM roller_coaster\nWHERE Length < 3000",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(*) \nFROM roller_coaster\nWHERE Length < 3000"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-2643a95fe295b32a",
+      "sql": "SELECT SUM(nomination.Num_of_Audience) AS Total_Audience\nFROM artwork\nJOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID\nJOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID\nGROUP BY festival_detail.Festival_ID;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT SUM(nomination.Num_of_Audience) AS Total_Audience\nFROM artwork\nJOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID\nJOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID\nGROUP BY festival_detail.Festival_ID;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-0a26d7c1c332029e",
+      "sql": "SELECT program.Name\nFROM program\nWHERE program.Origin != 'Beijing';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT program.Name\nFROM program\nWHERE program.Origin != 'Beijing';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-e313605ab240e9e5",
+      "sql": "SELECT Customers.customer_name\nFROM Customers\nWHERE state_province_county != 'California';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Customers.customer_name\nFROM Customers\nWHERE state_province_county != 'California';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-80d75a584db5c4e7",
+      "sql": "SELECT Year, COUNT(Church_ID) AS Number_of_Churches\nFROM wedding\nGROUP BY Year;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Year, COUNT(Church_ID) AS Number_of_Churches\nFROM wedding\nGROUP BY Year;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-cf65a76c2ca339d6",
+      "sql": "SELECT Publisher\nFROM book_club",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Publisher\nFROM book_club"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-d70a542e503e4a1e",
+      "sql": "SELECT Invoices.invoice_date, Orders.order_id, Orders.order_details\nFROM Invoices\nJOIN Orders ON Invoices.invoice_number = Orders.invoice_number;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Invoices.invoice_date, Orders.order_id, Orders.order_details\nFROM Invoices\nJOIN Orders ON Invoices.invoice_number = Orders.invoice_number;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-e53b4e10a90eb2c7",
+      "sql": "SELECT COUNT(DISTINCT council_tax_id) FROM Rent_Arrears;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(DISTINCT council_tax_id) FROM Rent_Arrears;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-3288dc4cebb243fe",
+      "sql": "SELECT Products_for_Hire.daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Products_for_Hire.daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-c22e5499b1593f40",
+      "sql": "SELECT bridge.id, bridge.name, bridge.gender\nFROM bridge\nJOIN architect ON bridge.architect_id = architect.id\nWHERE architect.gender IS NOT NULL\n  AND (bridge.length_meters + bridge.length_feet) > 10000;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT bridge.id, bridge.name, bridge.gender\nFROM bridge\nJOIN architect ON bridge.architect_id = architect.id\nWHERE architect.gender IS NOT NULL\n  AND (bridge.length_meters + bridge.length_feet) > 10000;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-3d91e3eb70e7a1ee",
+      "sql": "SELECT Suppliers.supplier_name, Suppliers.supplier_phone\nFROM Suppliers\nORDER BY Addresses.address_id ASC;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Suppliers.supplier_name, Suppliers.supplier_phone\nFROM Suppliers\nORDER BY Addresses.address_id ASC;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-69f87ab68f157c15",
+      "sql": "SELECT format, COUNT(song.song_name) AS count\nFROM files\nJOIN song ON files.f_id = song.f_id\nJOIN genre ON song.genre_is = genre.g_name\nGROUP BY format;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT format, COUNT(song.song_name) AS count\nFROM files\nJOIN song ON files.f_id = song.f_id\nJOIN genre ON song.genre_is = genre.g_name\nGROUP BY format;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-0eb1fb5e47ed829f",
+      "sql": "SELECT wrestler.Name, wrestler.Location\nFROM wrestler;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT wrestler.Name, wrestler.Location\nFROM wrestler;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-7896499011c15fde",
+      "sql": "SELECT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nWHERE journal_committee.Work_Type = 'none';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nWHERE journal_committee.Work_Type = 'none';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-88f375ef94d12f68",
+      "sql": "SELECT s.date_of_latest_logon\nFROM Students s\nWHERE s.family_name IN ('Jaskolski', 'Langosh');",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT s.date_of_latest_logon\nFROM Students s\nWHERE s.family_name IN ('Jaskolski', 'Langosh');"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-0407f698a3a86c0a",
+      "sql": "SELECT LName, Fname\nFROM Student\nWHERE Major != (SELECT MAX(Major) FROM Student)",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT LName, Fname\nFROM Student\nWHERE Major != (SELECT MAX(Major) FROM Student)"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-137394c19b2b5678",
+      "sql": "SELECT Headquarters\nFROM company\nWHERE Sales_in_Billion = (\n    SELECT MAX(Sales_in_Billion)\n    FROM company\n);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Headquarters\nFROM company\nWHERE Sales_in_Billion = (\n    SELECT MAX(Sales_in_Billion)\n    FROM company\n);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-5d1ecaadd27fb6a2",
+      "sql": "SELECT Restaurant.ResName, Restaurant.Rating\nFROM Restaurant\nWHERE Restaurant.Rating = (SELECT MAX(Rating) FROM Restaurant);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Restaurant.ResName, Restaurant.Rating\nFROM Restaurant\nWHERE Restaurant.Rating = (SELECT MAX(Rating) FROM Restaurant);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-89448784d1f33b1c",
+      "sql": "SELECT competition.Competition_type, competition.Country\nFROM competition;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT competition.Competition_type, competition.Country\nFROM competition;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-fac51d810a95c200",
+      "sql": "SELECT individual_first_name, individual_middle_name, individual_last_name\nFROM Individuals\nORDER BY individual_last_name ASC;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT individual_first_name, individual_middle_name, individual_last_name\nFROM Individuals\nORDER BY individual_last_name ASC;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-6f87c063a9e335f0",
+      "sql": "SELECT Roller_Coaster_ID, Speed\nFROM roller_coaster\nWHERE Length > (SELECT MAX(Length) FROM roller_coaster)\nORDER BY Speed DESC;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Roller_Coaster_ID, Speed\nFROM roller_coaster\nWHERE Length > (SELECT MAX(Length) FROM roller_coaster)\nORDER BY Speed DESC;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-b0b931cefe38be42",
+      "sql": "SELECT DISTINCT artwork.Type\nFROM artwork\nJOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID\nJOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID\nWHERE festival_detail.Year = 2007;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT DISTINCT artwork.Type\nFROM artwork\nJOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID\nJOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID\nWHERE festival_detail.Year = 2007;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-0edb7ecbb4dd054b",
+      "sql": "SELECT program.Name\nFROM program\nWHERE program.Time_of_day NOT IN ('Morning');",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT program.Name\nFROM program\nWHERE program.Time_of_day NOT IN ('Morning');"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-7df47fb7fd5104dc",
+      "sql": "SELECT Delivery_Routes.route_name\nFROM Delivery_Routes\nORDER BY route_name;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Delivery_Routes.route_name\nFROM Delivery_Routes\nORDER BY route_name;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-e030d845801dc09b",
+      "sql": "SELECT church.Open_Date\nFROM church\nWHERE church.Open_Date IS NOT NULL\n  AND church.Church_ID IN (\n    SELECT church.Church_ID\n    FROM church\n    GROUP BY church.Church_ID\n    HAVING COUNT(*) >= 2\n  );",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT church.Open_Date\nFROM church\nWHERE church.Open_Date IS NOT NULL\n  AND church.Church_ID IN (\n    SELECT church.Church_ID\n    FROM church\n    GROUP BY church.Church_ID\n    HAVING COUNT(*) >= 2\n  );"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-e968a702198d6058",
+      "sql": "SELECT Year, Book_Title, Publisher\nFROM book_club\nORDER BY Year DESC;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Year, Book_Title, Publisher\nFROM book_club\nORDER BY Year DESC;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-d44f9c5697538a6a",
+      "sql": "SELECT transaction_type, SUM(transaction_amount) AS total_transaction_amount\nFROM Financial_Transactions\nGROUP BY transaction_type;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT transaction_type, SUM(transaction_amount) AS total_transaction_amount\nFROM Financial_Transactions\nGROUP BY transaction_type;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-d5436c6173d57687",
+      "sql": "SELECT CMI_Cross_References.cmi_cross_ref_id\nFROM CMI_Cross_References\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM Parking_Fines\n    WHERE Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\n);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT CMI_Cross_References.cmi_cross_ref_id\nFROM CMI_Cross_References\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM Parking_Fines\n    WHERE Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\n);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-34c0d80638e5872e",
+      "sql": "SELECT Products_for_Hire.product_id\nFROM Products_for_Hire\nWHERE booked_count = 3;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Products_for_Hire.product_id\nFROM Products_for_Hire\nWHERE booked_count = 3;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-76a4149a244deca0",
+      "sql": "SELECT name, nationality\nFROM architect\nJOIN mill ON architect.id = mill.architect_id\nWHERE mill.architect_id IS NOT NULL\nGROUP BY name, nationality\nORDER BY name, nationality;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT name, nationality\nFROM architect\nJOIN mill ON architect.id = mill.architect_id\nWHERE mill.architect_id IS NOT NULL\nGROUP BY name, nationality\nORDER BY name, nationality;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-0f3276a7323abe16",
+      "sql": "SELECT product_type_code\nFROM Products\nWHERE product_price > (\n    SELECT AVG(product_price)\n    FROM Products\n);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT product_type_code\nFROM Products\nWHERE product_price > (\n    SELECT AVG(product_price)\n    FROM Products\n);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-20a72a6329ea98f5",
+      "sql": "SELECT AVG(song.rating) AS average_rating, AVG(song.resolution) AS average_resolution\nFROM song\nWHERE song.country = 'Bangla';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT AVG(song.rating) AS average_rating, AVG(song.resolution) AS average_resolution\nFROM song\nWHERE song.country = 'Bangla';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-34aaf5028e00a1e4",
+      "sql": "SELECT wrestler.Reign\nFROM wrestler\nWHERE wrestler.Reign IS NOT NULL\nORDER BY Reign DESC\nLIMIT 1;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT wrestler.Reign\nFROM wrestler\nWHERE wrestler.Reign IS NOT NULL\nORDER BY Reign DESC\nLIMIT 1;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-e978a5f0f55e548c",
+      "sql": "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE editor.Editor_ID IN (SELECT Editor_ID FROM editor WHERE editor.Editor_ID IN (SELECT Editor_ID FROM editor));",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE editor.Editor_ID IN (SELECT Editor_ID FROM editor WHERE editor.Editor_ID IN (SELECT Editor_ID FROM editor));"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-cdd57474e4812622",
+      "sql": "SELECT address_line_1\nFROM Course_Authors_and_Tutors\nWHERE author_tutor_ATB = 'course';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT address_line_1\nFROM Course_Authors_and_Tutors\nWHERE author_tutor_ATB = 'course';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-56804612f43fa49b",
+      "sql": "SELECT COUNT(DISTINCT amenity_name) FROM Dorm_amenity;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(DISTINCT amenity_name) FROM Dorm_amenity;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-34dc16c5398be753",
+      "sql": "SELECT company.Name, employment.People_ID\nFROM company\nJOIN employment ON company.Company_ID = employment.Company_ID\nJOIN people ON employment.People_ID = people.People_ID\nGROUP BY company.Company_ID, company.Name;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT company.Name, employment.People_ID\nFROM company\nJOIN employment ON company.Company_ID = employment.Company_ID\nJOIN people ON employment.People_ID = people.People_ID\nGROUP BY company.Company_ID, company.Name;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-c9d671c14d02f55b",
+      "sql": "SELECT Restaurant.ResID, Restaurant.ResName, Restaurant.Address, Restaurant.Rating\nFROM Restaurant;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Restaurant.ResID, Restaurant.ResName, Restaurant.Address, Restaurant.Rating\nFROM Restaurant;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-aae2724405be5c02",
+      "sql": "SELECT COUNT(DISTINCT club.Club_ID) AS total_clubs\nFROM club\nWHERE club.Region = 'Region' AND club.Rank = 0 AND club.Rank = 0;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(DISTINCT club.Club_ID) AS total_clubs\nFROM club\nWHERE club.Region = 'Region' AND club.Rank = 0 AND club.Rank = 0;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-741ca93b599363fd",
+      "sql": "SELECT Organizations.organization_name\nFROM Organizations\nWHERE organization_name LIKE '%Party%';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Organizations.organization_name\nFROM Organizations\nWHERE organization_name LIKE '%Party%';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-02f77affeeb4f92d",
+      "sql": "SELECT Status\nFROM roller_coaster\nWHERE Status != 'Closed' AND Status != 'Open';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Status\nFROM roller_coaster\nWHERE Status != 'Closed' AND Status != 'Open';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-a2dca3d2d035fa59",
+      "sql": "SELECT AVG(nomination.Num_of_Audience) AS Avg_Audience\nFROM festival_detail\nJOIN nomination ON festival_detail.Festival_ID = nomination.Festival_ID\nWHERE Nomination.Year IN (2008, 2010);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT AVG(nomination.Num_of_Audience) AS Avg_Audience\nFROM festival_detail\nJOIN nomination ON festival_detail.Festival_ID = nomination.Festival_ID\nWHERE Nomination.Year IN (2008, 2010);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-4a37f9727ac82a31",
+      "sql": "SELECT channel.Name\nFROM channel\nWHERE channel.Channel_ID IN (\n    SELECT broadcast.Channel_ID\n    FROM broadcast\n    JOIN broadcast_share ON broadcast.Channel_ID = broadcast_share.Channel_ID\n    WHERE broadcast.Time_of_day IN ('07:00', '19:00')\n) AND channel.Channel_ID IN (\n    SELECT broadcast.Channel_ID\n    FROM broadcast\n    JOIN broadcast_share ON broadcast.Channel_ID = broadcast_share.Channel_ID\n    WHERE broadcast.Time_of_day IN ('07:00', '19:00')\n);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT channel.Name\nFROM channel\nWHERE channel.Channel_ID IN (\n    SELECT broadcast.Channel_ID\n    FROM broadcast\n    JOIN broadcast_share ON broadcast.Channel_ID = broadcast_share.Channel_ID\n    WHERE broadcast.Time_of_day IN ('07:00', '19:00')\n) AND channel.Channel_ID IN (\n    SELECT broadcast.Channel_ID\n    FROM broadcast\n    JOIN broadcast_share ON broadcast.Channel_ID = broadcast_share.Channel_ID\n    WHERE broadcast.Time_of_day IN ('07:00', '19:00')\n);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-531aa9ff080445d6",
+      "sql": "SELECT Addresses.state_province_county, COUNT(*) AS customer_count\nFROM Addresses\nJOIN Customer_Addresses ON Addresses.address_id = Customer_Addresses.address_id\nGROUP BY Addresses.state_province_county;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Addresses.state_province_county, COUNT(*) AS customer_count\nFROM Addresses\nJOIN Customer_Addresses ON Addresses.address_id = Customer_Addresses.address_id\nGROUP BY Addresses.state_province_county;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-f839d77d08df4dfa",
+      "sql": "SELECT church.Name, church.Open_Date\nFROM church\nJOIN wedding ON church.Church_ID = wedding.Church_ID\nWHERE COUNT(wedding.Female_ID) = 3\nORDER BY church.Open_Date DESC\nLIMIT 3;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT church.Name, church.Open_Date\nFROM church\nJOIN wedding ON church.Church_ID = wedding.Church_ID\nWHERE COUNT(wedding.Female_ID) = 3\nORDER BY church.Open_Date DESC\nLIMIT 3;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-aee6e8c41e83cad0",
+      "sql": "SELECT culture_company.Company_name\nFROM culture_company\nJOIN movie ON culture_company.book_club_id = movie.book_club_id\nWHERE movie.Year = 1999;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT culture_company.Company_name\nFROM culture_company\nJOIN movie ON culture_company.book_club_id = movie.book_club_id\nWHERE movie.Year = 1999;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-1d4d4619bfd66581",
+      "sql": "SELECT Products.product_id, COUNT(DISTINCT Orders.order_id) AS unique_orders\nFROM Products\nJOIN Orders ON Products.parent_product_id = Orders.customer_id\nGROUP BY Products.product_id;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Products.product_id, COUNT(DISTINCT Orders.order_id) AS unique_orders\nFROM Products\nJOIN Orders ON Products.parent_product_id = Orders.customer_id\nGROUP BY Products.product_id;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-36ce398902e7135d",
+      "sql": "SELECT e.electoral_register_id\nFROM Electoral_Register e\nWHERE e.cmi_cross_ref_id IN (\n    SELECT cmi_cross_ref_id\n    FROM CMI_Cross_References\n    WHERE cmi_details NOT LIKE '%Schmidt, Kertzmann and Lubowitz%'\n) AND e.council_tax_id IN (\n    SELECT council_tax_id\n    FROM Council_Tax\n    JOIN CMI_Cross_References ON Council_Tax.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\n    WHERE CMI_Cross_References.master_customer_id IN (\n        SELECT master_customer_id\n        FROM Customer_Master_Index\n        WHERE cmi_details NOT LIKE '%Schmidt, Kertzmann and Lubowitz%'\n    )\n);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT e.electoral_register_id\nFROM Electoral_Register e\nWHERE e.cmi_cross_ref_id IN (\n    SELECT cmi_cross_ref_id\n    FROM CMI_Cross_References\n    WHERE cmi_details NOT LIKE '%Schmidt, Kertzmann and Lubowitz%'\n) AND e.council_tax_id IN (\n    SELECT council_tax_id\n    FROM Council_Tax\n    JOIN CMI_Cross_References ON Council_Tax.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\n    WHERE CMI_Cross_References.master_customer_id IN (\n        SELECT master_customer_id\n        FROM Customer_Master_Index\n        WHERE cmi_details NOT LIKE '%Schmidt, Kertzmann and Lubowitz%'\n    )\n);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-3938199b48c562f6",
+      "sql": "SELECT Customers.customer_id, Customers.first_name, Bookings.count_hired\nFROM Customers\nJOIN Bookings ON Customers.customer_id = Bookings.customer_id\nGROUP BY Customers.customer_id, Customers.first_name;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Customers.customer_id, Customers.first_name, Bookings.count_hired\nFROM Customers\nJOIN Bookings ON Customers.customer_id = Bookings.customer_id\nGROUP BY Customers.customer_id, Customers.first_name;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-14253c0fc3a4dc0d",
+      "sql": "SELECT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80\nGROUP BY mill.name;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80\nGROUP BY mill.name;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-c59e9d51a3799267",
+      "sql": "SELECT Staff.staff_name\nFROM Staff\nJOIN Staff_Department_Assignments ON Staff.staff_id = Staff_Department_Assignments.staff_id\nGROUP BY Staff.staff_id\nHAVING COUNT(DISTINCT Staff_Department_Assignments.department_id) > 1;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Staff.staff_name\nFROM Staff\nJOIN Staff_Department_Assignments ON Staff.staff_id = Staff_Department_Assignments.staff_id\nGROUP BY Staff.staff_id\nHAVING COUNT(DISTINCT Staff_Department_Assignments.department_id) > 1;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-520d75479d567121",
+      "sql": "SELECT artist_name\nFROM artist\nJOIN song ON artist.artist_name = song.artist_name\nWHERE country = 'English'\n  AND rating <= 8\n  AND genre_is = (SELECT g_name FROM genre WHERE rating = '8');",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT artist_name\nFROM artist\nJOIN song ON artist.artist_name = song.artist_name\nWHERE country = 'English'\n  AND rating <= 8\n  AND genre_is = (SELECT g_name FROM genre WHERE rating = '8');"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-d112266c1828a7ca",
+      "sql": "SELECT Wrestler.Name, Team\nFROM Elimination\nJOIN Wrestler ON Elimination.Wrestler_ID = Wrestler.Wrestler_ID\nORDER BY Wrestler.Days_held DESC;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Wrestler.Name, Team\nFROM Elimination\nJOIN Wrestler ON Elimination.Wrestler_ID = Wrestler.Wrestler_ID\nORDER BY Wrestler.Days_held DESC;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-82b67fd858c9d8d4",
+      "sql": "SELECT editor.Name\nFROM editor\nWHERE editor.Age BETWEEN 24 AND 25;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT editor.Name\nFROM editor\nWHERE editor.Age BETWEEN 24 AND 25;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-fc40627f0b0bab17",
+      "sql": "SELECT course_name\nFROM Courses\nORDER BY course_id ASC\nLIMIT 1;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT course_name\nFROM Courses\nORDER BY course_id ASC\nLIMIT 1;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-d6427352ac250d9e",
+      "sql": "SELECT LName, Fname\nFROM Student\nWHERE Student.StuID IN (\n    SELECT Stuid\n    FROM Lives_in\n    JOIN Has_amenity ON Lives_in.dormid = Has_amenity.dormid\n    JOIN Dorm_amenity ON Has_amenity.amenid = Dorm_amenity.amenid\n    WHERE Has_amenity.amenid = 100\n);",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT LName, Fname\nFROM Student\nWHERE Student.StuID IN (\n    SELECT Stuid\n    FROM Lives_in\n    JOIN Has_amenity ON Lives_in.dormid = Has_amenity.dormid\n    JOIN Dorm_amenity ON Has_amenity.amenid = Dorm_amenity.amenid\n    WHERE Has_amenity.amenid = 100\n);"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-c8ff43a0c0154538",
+      "sql": "SELECT p.Name\nFROM employment e\nJOIN company c ON e.Company_ID = c.Company_ID\nWHERE c.Sales_in_Billion > 200;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT p.Name\nFROM employment e\nJOIN company c ON e.Company_ID = c.Company_ID\nWHERE c.Sales_in_Billion > 200;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-136348e30ccdd152",
+      "sql": "SELECT SUM(Visits_Restaurant.Spent) AS Total_Spent\nFROM Student\nJOIN Visits_Restaurant ON Student.StuID = Visits_Restaurant.StuID\nWHERE Student.LName = 'Linda' AND Student.Fname = 'Smith';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT SUM(Visits_Restaurant.Spent) AS Total_Spent\nFROM Student\nJOIN Visits_Restaurant ON Student.StuID = Visits_Restaurant.StuID\nWHERE Student.LName = 'Linda' AND Student.Fname = 'Smith';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-d22c3a920b525b66",
+      "sql": "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(p.Points) FROM player p)",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(p.Points) FROM player p)"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-329b35a3d5144055",
+      "sql": "SELECT service_type_code AS form_type\nFROM Services\nORDER BY service_type_code;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT service_type_code AS form_type\nFROM Services\nORDER BY service_type_code;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-e271aa282462bdf7",
+      "sql": "SELECT country.Name, country.Area, country.Population\nFROM country\nJOIN roller_coaster ON country.Country_ID = roller_coaster.Country_ID\nWHERE roller_coaster.Speed > '0' AND roller_coaster.Speed IS NOT NULL;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT country.Name, country.Area, country.Population\nFROM country\nJOIN roller_coaster ON country.Country_ID = roller_coaster.Country_ID\nWHERE roller_coaster.Speed > '0' AND roller_coaster.Speed IS NOT NULL;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-3b364d78c765531e",
+      "sql": "SELECT Type\nFROM artwork\nORDER BY Type ASC\nLIMIT 1;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Type\nFROM artwork\nORDER BY Type ASC\nLIMIT 1;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-af3b43994c850366",
+      "sql": "SELECT COUNT(*) FROM program;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT COUNT(*) FROM program;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-d379eea4a2b59524",
+      "sql": "SELECT Customers.customer_name, Customers.customer_email\nFROM Customers\nWHERE Customers.payment_method = 'Visa';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Customers.customer_name, Customers.customer_email\nFROM Customers\nWHERE Customers.payment_method = 'Visa';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-f279ebe82ac5bb54",
+      "sql": "SELECT MIN(Age), MAX(Age), AVG(Age) AS Average_Age\nFROM people;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT MIN(Age), MAX(Age), AVG(Age) AS Average_Age\nFROM people;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-1321fd5435f4cf5f",
+      "sql": "SELECT movie.Title, movie.Director\nFROM movie\nWHERE movie.Year = 2000 OR movie.Year < 2000\nAND movie.Gross_worldwide = (SELECT MAX(Gross_worldwide) FROM movie)",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT movie.Title, movie.Director\nFROM movie\nWHERE movie.Year = 2000 OR movie.Year < 2000\nAND movie.Gross_worldwide = (SELECT MAX(Gross_worldwide) FROM movie)"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-a0e12c20a24ba6f2",
+      "sql": "SELECT Customers.customer_first_name, Customers.customer_id\nFROM Customers\nJOIN Accounts ON Customers.customer_id = Accounts.customer_id\nWHERE Accounts.account_id IS NOT NULL\n  AND Accounts.account_name IS NOT NULL\n  AND Accounts.date_account_opened IS NOT NULL\n  AND Accounts.account_name = 'other_account_details' OR Accounts.account_name = 'other_account_details';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Customers.customer_first_name, Customers.customer_id\nFROM Customers\nJOIN Accounts ON Customers.customer_id = Accounts.customer_id\nWHERE Accounts.account_id IS NOT NULL\n  AND Accounts.account_name IS NOT NULL\n  AND Accounts.date_account_opened IS NOT NULL\n  AND Accounts.account_name = 'other_account_details' OR Accounts.account_name = 'other_account_details';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-afa9c2ecf222f328",
+      "sql": "SELECT CMI_Cross_References.cmi_cross_ref_id, Customer_Master_Index.master_customer_id, COUNT(CMI_Cross_References.cmi_cross_ref_id) AS count\nFROM CMI_Cross_References\nJOIN Customer_Master_Index ON CMI_Cross_References.cmi_cross_ref_id = Customer_Master_Index.cmi_details\nGROUP BY CMI_Cross_References.cmi_cross_ref_id, Customer_Master_Index.master_customer_id;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT CMI_Cross_References.cmi_cross_ref_id, Customer_Master_Index.master_customer_id, COUNT(CMI_Cross_References.cmi_cross_ref_id) AS count\nFROM CMI_Cross_References\nJOIN Customer_Master_Index ON CMI_Cross_References.cmi_cross_ref_id = Customer_Master_Index.cmi_details\nGROUP BY CMI_Cross_References.cmi_cross_ref_id, Customer_Master_Index.master_customer_id;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-c9574968cd2efd5c",
+      "sql": "SELECT Products_for_Hire.product_name, Products_for_Hire.product_description\nFROM Products_for_Hire\nWHERE product_type_code = 'Cutlery' AND daily_hire_cost < 20;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Products_for_Hire.product_name, Products_for_Hire.product_description\nFROM Products_for_Hire\nWHERE product_type_code = 'Cutlery' AND daily_hire_cost < 20;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-024d54bb9d654160",
+      "sql": "SELECT mill.name\nFROM mill\nWHERE mill.name LIKE '%Moulin%';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT mill.name\nFROM mill\nWHERE mill.name LIKE '%Moulin%';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-8f54c3bff6ab1797",
+      "sql": "SELECT Products.product_name\nFROM Products\nJOIN Customer_Orders ON Products.product_id = Customer_Orders.customer_id\nJOIN Customer_Addresses ON Customer_Orders.customer_id = Customer_Addresses.address_id\nGROUP BY Products.product_id\nHAVING COUNT(Customer_Addresses.address_id) > 1;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Products.product_name\nFROM Products\nJOIN Customer_Orders ON Products.product_id = Customer_Orders.customer_id\nJOIN Customer_Addresses ON Customer_Orders.customer_id = Customer_Addresses.address_id\nGROUP BY Products.product_id\nHAVING COUNT(Customer_Addresses.address_id) > 1;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-162091e91ee345b7",
+      "sql": "SELECT artist_name, COUNT(song.song_name) AS num_songs\nFROM song\nJOIN artist ON song.artist_name = artist.artist_name\nJOIN genre ON song.genre_is = genre.g_name\nJOIN files ON song.f_id = files.f_id\nJOIN languages ON files.format = languages.format\nWHERE languages.language = 'Bangla'\nGROUP BY artist_name\nORDER BY COUNT(song.song_name) DESC\nLIMIT 3;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT artist_name, COUNT(song.song_name) AS num_songs\nFROM song\nJOIN artist ON song.artist_name = artist.artist_name\nJOIN genre ON song.genre_is = genre.g_name\nJOIN files ON song.f_id = files.f_id\nJOIN languages ON files.format = languages.format\nWHERE languages.language = 'Bangla'\nGROUP BY artist_name\nORDER BY COUNT(song.song_name) DESC\nLIMIT 3;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-cb8c55ba2b7f46b9",
+      "sql": "SELECT Elimination.Move AS Elimination_Movie\nFROM Elimination\nJOIN wrestler ON Elimination.Wrestler_ID = wrestler.Wrestler_ID\nWHERE Team = 'Orton';",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Elimination.Move AS Elimination_Movie\nFROM Elimination\nJOIN wrestler ON Elimination.Wrestler_ID = wrestler.Wrestler_ID\nWHERE Team = 'Orton';"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-70b637ea23cc769c",
+      "sql": "SELECT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE COUNT(journal_committee.Editor_ID) > 1;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE COUNT(journal_committee.Editor_ID) > 1;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-c519bc86fc0f6a9d",
+      "sql": "SELECT Subjects.subject_name\nFROM Subjects;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT Subjects.subject_name\nFROM Subjects;"
+        }
+      ],
+      "tool_calls": 0
+    },
+    {
+      "id": "validation-9eeaccd2f6fe2c6f",
+      "sql": "SELECT dorm_name, AVG(students.Age) AS average_age\nFROM Dorm\nJOIN Has_amenity ON Dorm.dormid = Has_amenity.dormid\nJOIN Student ON Has_amenity.amenid = Student.StuID\nGROUP BY dorm_name;",
+      "trace": [
+        {
+          "tool": "submit",
+          "sql": "SELECT dorm_name, AVG(students.Age) AS average_age\nFROM Dorm\nJOIN Has_amenity ON Dorm.dormid = Has_amenity.dormid\nJOIN Student ON Has_amenity.amenid = Student.StuID\nGROUP BY dorm_name;"
+        }
+      ],
+      "tool_calls": 0
+    }
+  ],
+  "prediction_seconds": 0.025383599997439887
+}

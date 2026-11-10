@@ -1,0 +1,67 @@
+{
+  "split": "validation",
+  "variant": "no-hints",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "workers": 4,
+  "combined_wall_limit_seconds": 180,
+  "official_package": "D:\\Download\\C\u76d8\u8fc1\u79fb\\2026-10-28\\\u684c\u9762\\7506\\MP3_SQL_student_package",
+  "config": "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\submission\\no_hints.json",
+  "measurements": [
+    {
+      "command": [
+        "C:\\Users\\gy136\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-m",
+        "mp3_sql.predict",
+        "--split",
+        "validation",
+        "--workers",
+        "4",
+        "--output",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\validation-no-hints.json",
+        "--method",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\submission\\submission.py",
+        "--checkpoint",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\submission\\no_hints.json"
+      ],
+      "stdout_log": "validation-no-hints-predict.log",
+      "scope": "controller_process_only",
+      "sample_interval_seconds": 0.02,
+      "wall_seconds": 12.034100500000932,
+      "exit_code": 0,
+      "cpu_seconds": 6.265625,
+      "root_peak_rss_bytes": 44883968,
+      "root_peak_private_bytes": 35958784,
+      "limitation": "Windows measurements exclude SQL worker CPU/memory; Linux limits are not enforced on Windows.",
+      "phase": "predict"
+    },
+    {
+      "command": [
+        "C:\\Users\\gy136\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-m",
+        "mp3_sql.score",
+        "--split",
+        "validation",
+        "--workers",
+        "4",
+        "--predictions",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\validation-no-hints.json",
+        "--output",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\validation-no-hints-score.json"
+      ],
+      "stdout_log": "validation-no-hints-score.log",
+      "scope": "controller_process_only",
+      "sample_interval_seconds": 0.02,
+      "wall_seconds": 25.70259619999706,
+      "exit_code": 0,
+      "cpu_seconds": 10.640625,
+      "root_peak_rss_bytes": 43053056,
+      "root_peak_private_bytes": 35205120,
+      "limitation": "Windows measurements exclude SQL worker CPU/memory; Linux limits are not enforced on Windows.",
+      "phase": "score"
+    }
+  ],
+  "combined_wall_seconds": 37.73869509999349,
+  "combined_cpu_seconds": 16.90625,
+  "completed": true
+}

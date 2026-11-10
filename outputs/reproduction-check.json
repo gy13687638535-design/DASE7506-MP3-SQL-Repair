@@ -1,0 +1,18 @@
+{
+  "implementation_commit": "32a7addf948ae132369c4b7a91549bccbc363f37",
+  "linux_run": "https://github.com/gy13687638535-design/DASE7506-MP3-SQL-Repair/actions/runs/42872209555",
+  "linux_artifact_sha256": "d703911b6a078c1669da918b48fb058d242dd79637d8fa84edebf0848e35cbbf",
+  "canonical_platform": "Linux",
+  "n": 240,
+  "correct": 175,
+  "same_final_sql": true,
+  "same_tool_calls": true,
+  "same_task_pass_flags": true,
+  "same_case_pass_flags": true,
+  "tasks_with_different_trace_feedback": 2,
+  "canonical_files_equal_downloaded_linux_artifact": true,
+  "official_package_integrity": "497 manifest-listed files verified unchanged",
+  "synthetic_regression_tests_passed": 23,
+  "score_sha256": "1f06603944c931fdf4731f38ff23096771ebd761b5265e6885d978ef01d72be8",
+  "predictions_sha256": "4a72393678da88a7543c4c3743c01e6c776cc691ede7cf3bb67651f2b5d67b1e"
+}

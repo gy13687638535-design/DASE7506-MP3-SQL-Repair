@@ -9,6 +9,15 @@ the official eight-call budget. Empty/all-NULL example matches receive an extra
 hint-based check before selection. It runs offline using Python 3.11 or 3.12 and
 SQLGlot 27.29.0.
 
+| Evaluation | Correct | Official accuracy |
+|---|---:|---:|
+| Validation | 91 / 120 | 75.83% |
+| Test (all three instances) | 175 / 240 | 72.92% |
+
+The [Linux reproduction](https://github.com/gy13687638535-design/DASE7506-MP3-SQL-Repair/actions/runs/42872209555)
+completed prediction and scoring in 28.53 seconds. These are self-reported,
+reproducible benchmark results; instructor verification is separate.
+
 ## Reproduce
 
 Download the unchanged official [student package](https://xudongwu-0.github.io/courses/dase7506/mp3/downloads/MP3_SQL_student_package.zip?v=406d69507ccf).
@@ -21,7 +30,7 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 PACKAGE=/absolute/path/to/MP3_SQL_student_package
 (cd "$PACKAGE" && python -m mp3_sql.check_data)
-python -m unittest discover -s tests -v
+PYTHONPATH="$PWD/submission" python -m unittest discover -s tests -v
 python scripts/reproduce.py --package "$PACKAGE" --split test --output-dir outputs/reproduced
 ```
 

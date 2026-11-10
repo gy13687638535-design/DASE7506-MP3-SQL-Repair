@@ -1,0 +1,63 @@
+{
+  "split": "validation",
+  "variant": "baseline",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "workers": 4,
+  "combined_wall_limit_seconds": 180,
+  "official_package": "D:\\Download\\C\u76d8\u8fc1\u79fb\\2026-10-28\\\u684c\u9762\\7506\\MP3_SQL_student_package",
+  "config": null,
+  "measurements": [
+    {
+      "command": [
+        "C:\\Users\\gy136\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-m",
+        "mp3_sql.predict",
+        "--split",
+        "validation",
+        "--workers",
+        "4",
+        "--output",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\validation-baseline.json"
+      ],
+      "stdout_log": "validation-baseline-predict.log",
+      "scope": "controller_process_only",
+      "sample_interval_seconds": 0.02,
+      "wall_seconds": 0.40390109999862034,
+      "exit_code": 0,
+      "cpu_seconds": 0.375,
+      "root_peak_rss_bytes": 36323328,
+      "root_peak_private_bytes": 28274688,
+      "limitation": "Windows measurements exclude SQL worker CPU/memory; Linux limits are not enforced on Windows.",
+      "phase": "predict"
+    },
+    {
+      "command": [
+        "C:\\Users\\gy136\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-m",
+        "mp3_sql.score",
+        "--split",
+        "validation",
+        "--workers",
+        "4",
+        "--predictions",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\validation-baseline.json",
+        "--output",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\validation-baseline-score.json"
+      ],
+      "stdout_log": "validation-baseline-score.log",
+      "scope": "controller_process_only",
+      "sample_interval_seconds": 0.02,
+      "wall_seconds": 15.557021400003578,
+      "exit_code": 0,
+      "cpu_seconds": 6.4375,
+      "root_peak_rss_bytes": 41791488,
+      "root_peak_private_bytes": 33816576,
+      "limitation": "Windows measurements exclude SQL worker CPU/memory; Linux limits are not enforced on Windows.",
+      "phase": "score"
+    }
+  ],
+  "combined_wall_seconds": 15.96291769999516,
+  "combined_cpu_seconds": 6.8125,
+  "completed": true
+}

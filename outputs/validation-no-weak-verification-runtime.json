@@ -1,0 +1,67 @@
+{
+  "split": "validation",
+  "variant": "no-weak-verification",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "workers": 4,
+  "combined_wall_limit_seconds": 180,
+  "official_package": "D:\\Download\\C\u76d8\u8fc1\u79fb\\2026-10-28\\\u684c\u9762\\7506\\MP3_SQL_student_package",
+  "config": "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\submission\\no_weak_verification.json",
+  "measurements": [
+    {
+      "command": [
+        "C:\\Users\\gy136\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-m",
+        "mp3_sql.predict",
+        "--split",
+        "validation",
+        "--workers",
+        "4",
+        "--output",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\validation-no-weak-verification.json",
+        "--method",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\submission\\submission.py",
+        "--checkpoint",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\submission\\no_weak_verification.json"
+      ],
+      "stdout_log": "validation-no-weak-verification-predict.log",
+      "scope": "controller_process_only",
+      "sample_interval_seconds": 0.02,
+      "wall_seconds": 12.427455099998042,
+      "exit_code": 0,
+      "cpu_seconds": 6.15625,
+      "root_peak_rss_bytes": 43585536,
+      "root_peak_private_bytes": 35184640,
+      "limitation": "Windows measurements exclude SQL worker CPU/memory; Linux limits are not enforced on Windows.",
+      "phase": "predict"
+    },
+    {
+      "command": [
+        "C:\\Users\\gy136\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-m",
+        "mp3_sql.score",
+        "--split",
+        "validation",
+        "--workers",
+        "4",
+        "--predictions",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\validation-no-weak-verification.json",
+        "--output",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\validation-no-weak-verification-score.json"
+      ],
+      "stdout_log": "validation-no-weak-verification-score.log",
+      "scope": "controller_process_only",
+      "sample_interval_seconds": 0.02,
+      "wall_seconds": 27.210480999994616,
+      "exit_code": 0,
+      "cpu_seconds": 11.0625,
+      "root_peak_rss_bytes": 42201088,
+      "root_peak_private_bytes": 33226752,
+      "limitation": "Windows measurements exclude SQL worker CPU/memory; Linux limits are not enforced on Windows.",
+      "phase": "score"
+    }
+  ],
+  "combined_wall_seconds": 39.64008040000044,
+  "combined_cpu_seconds": 17.21875,
+  "completed": true
+}

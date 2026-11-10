@@ -1,0 +1,67 @@
+{
+  "split": "test",
+  "variant": "full",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "workers": 4,
+  "combined_wall_limit_seconds": 180,
+  "official_package": "D:\\Download\\C\u76d8\u8fc1\u79fb\\2026-10-28\\\u684c\u9762\\7506\\MP3_SQL_student_package",
+  "config": "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\submission\\config.json",
+  "measurements": [
+    {
+      "command": [
+        "C:\\Users\\gy136\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-m",
+        "mp3_sql.predict",
+        "--split",
+        "test",
+        "--workers",
+        "4",
+        "--output",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\test.json",
+        "--method",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\submission\\submission.py",
+        "--checkpoint",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\submission\\config.json"
+      ],
+      "stdout_log": "test-predict.log",
+      "scope": "controller_process_only",
+      "sample_interval_seconds": 0.02,
+      "wall_seconds": 25.996017199999187,
+      "exit_code": 0,
+      "cpu_seconds": 14.625,
+      "root_peak_rss_bytes": 44711936,
+      "root_peak_private_bytes": 36487168,
+      "limitation": "Windows measurements exclude SQL worker CPU/memory; Linux limits are not enforced on Windows.",
+      "phase": "predict"
+    },
+    {
+      "command": [
+        "C:\\Users\\gy136\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-m",
+        "mp3_sql.score",
+        "--split",
+        "test",
+        "--workers",
+        "4",
+        "--predictions",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\test.json",
+        "--output",
+        "C:\\Users\\gy136\\Documents\\ChatGPT\\7506\\mp3-sql-repair\\outputs\\test-score.json"
+      ],
+      "stdout_log": "test-score.log",
+      "scope": "controller_process_only",
+      "sample_interval_seconds": 0.02,
+      "wall_seconds": 54.816568199996254,
+      "exit_code": 0,
+      "cpu_seconds": 22.578125,
+      "root_peak_rss_bytes": 45383680,
+      "root_peak_private_bytes": 36552704,
+      "limitation": "Windows measurements exclude SQL worker CPU/memory; Linux limits are not enforced on Windows.",
+      "phase": "score"
+    }
+  ],
+  "combined_wall_seconds": 81.49476449999929,
+  "combined_cpu_seconds": 37.203125,
+  "completed": true
+}
