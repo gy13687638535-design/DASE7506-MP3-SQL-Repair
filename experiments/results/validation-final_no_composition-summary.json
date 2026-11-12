@@ -1,0 +1,9 @@
+{
+  "variant": "final_no_composition",
+  "split": "validation",
+  "correct": 98,
+  "n": 120,
+  "accuracy": 81.66666666666667,
+  "calls": 3.425,
+  "wall_seconds": 30.671477299999992
+}

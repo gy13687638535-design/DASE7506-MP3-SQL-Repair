@@ -1,0 +1,70 @@
+name: Evaluate experimental SQL agent
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'experiments/v2/**'
+      - 'experiments/measure.py'
+      - '.github/workflows/explore.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      OMP_NUM_THREADS: '4'
+      OPENBLAS_NUM_THREADS: '4'
+      MKL_NUM_THREADS: '4'
+      NUMEXPR_NUM_THREADS: '4'
+      MP3_ARCHIVE_SHA256: 406d69507ccf955a53b35db1c1368bd7452565ebd928b47d0f6161fe35b99a61
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download and verify exact official benchmark
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 \
+            'https://xudongwu-0.github.io/courses/dase7506/mp3/downloads/MP3_SQL_student_package.zip?v=406d69507ccf' \
+            --output "$RUNNER_TEMP/MP3_SQL_student_package.zip"
+          printf '%s  %s\n' "$MP3_ARCHIVE_SHA256" "$RUNNER_TEMP/MP3_SQL_student_package.zip" | sha256sum --check -
+          mkdir -p "$RUNNER_TEMP/mp3-official"
+          unzip -q "$RUNNER_TEMP/MP3_SQL_student_package.zip" -d "$RUNNER_TEMP/mp3-official"
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          packages = list((Path(os.environ['RUNNER_TEMP']) / 'mp3-official').rglob('mp3_sql/predict.py'))
+          if len(packages) != 1:
+              raise SystemExit('Expected exactly one official package')
+          with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as stream:
+              stream.write(f'PACKAGE_ROOT={packages[0].parent.parent}\n')
+          PY
+      - name: Install declared dependencies and verify official data
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install -r "$PACKAGE_ROOT/requirements.txt" -r requirements.txt
+          cd "$PACKAGE_ROOT"
+          python -m mp3_sql.check_data
+      - name: Run CPU reproduction within the 180-second route budget
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONHASHSEED=0
+          CPU_SET="$(python -c 'import os; print(",".join(map(str, sorted(os.sched_getaffinity(0))[:4])))')"
+          timeout --signal=TERM 180s taskset -c "$CPU_SET" \
+            python experiments/measure.py --package "$PACKAGE_ROOT" --split test --output-dir experiments/results/linux
+      - name: Preserve reproduced score, predictions and measurements
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mp3-exploration-${{ github.sha }}
+          path: experiments/results/linux/
+          if-no-files-found: warn
+          retention-days: 90

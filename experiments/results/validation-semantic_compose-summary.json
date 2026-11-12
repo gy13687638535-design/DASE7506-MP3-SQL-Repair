@@ -1,0 +1,9 @@
+{
+  "variant": "semantic_compose",
+  "split": "validation",
+  "correct": 94,
+  "n": 120,
+  "accuracy": 78.33333333333333,
+  "calls": 2.675,
+  "wall_seconds": 27.880956699999956
+}

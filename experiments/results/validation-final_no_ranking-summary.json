@@ -1,0 +1,9 @@
+{
+  "variant": "final_no_ranking",
+  "split": "validation",
+  "correct": 97,
+  "n": 120,
+  "accuracy": 80.83333333333333,
+  "calls": 3.308333333333333,
+  "wall_seconds": 31.03837349999992
+}

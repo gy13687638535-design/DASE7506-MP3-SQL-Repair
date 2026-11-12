@@ -1,0 +1,8 @@
+{
+  "semantic": false,
+  "compose_projection": true,
+  "safe_projection": false,
+  "verify_all_matches": true,
+  "hint_only_pass": true,
+  "rank_matches": true
+}

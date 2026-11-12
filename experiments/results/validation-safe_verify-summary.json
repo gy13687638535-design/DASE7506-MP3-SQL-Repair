@@ -1,0 +1,9 @@
+{
+  "variant": "safe_verify",
+  "split": "validation",
+  "correct": 94,
+  "n": 120,
+  "accuracy": 78.33333333333333,
+  "calls": 3.433333333333333,
+  "wall_seconds": 30.617980499999987
+}

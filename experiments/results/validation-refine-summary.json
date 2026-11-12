@@ -1,0 +1,9 @@
+{
+  "variant": "refine",
+  "split": "validation",
+  "correct": 91,
+  "n": 120,
+  "accuracy": 75.83333333333333,
+  "calls": 2.9,
+  "wall_seconds": 29.438174500000002
+}

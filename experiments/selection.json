@@ -1,0 +1,25 @@
+{
+  "selection_time_utc": "2026-11-12T04:50:22.809695+00:00",
+  "selected_variant": "final_no_composition",
+  "criterion": "Highest validation all-instance correct count among the five final-code configurations; no new-agent test evaluation used for selection.",
+  "validation": {
+    "variant": "final_no_composition",
+    "split": "validation",
+    "correct": 98,
+    "n": 120,
+    "accuracy": 81.66666666666667,
+    "calls": 3.425,
+    "wall_seconds": 30.671477299999992
+  },
+  "scope": "CPU-only harness optimization; no trained parameters or model weights",
+  "source_sha256": {
+    "experiments/v2/ranking.py": "cc62a3c78c43009de80d9f97b6b047a3f45f46d2d3f786f81a475249a4ada852",
+    "experiments/v2/repairs.py": "48033ce6c03b1734412efa937a1605eb2ce0830d1ce90c1b9eb8c25f81327190",
+    "experiments/v2/semantic_repairs.py": "6929a99a382479d0fc848dcb7a03b869553391bd5dba8ea09b000f6478c0043b",
+    "experiments/v2/submission.py": "2e0ef7cb5441c47e8be56815c06f9133d244753e608ea678878e8d123568e1e6",
+    "experiments/v2/config.json": "cbba88eb299704595db3de59f7c349ab45f30cfdf8abaa153d276ecd139c6c2d"
+  },
+  "test_evaluation_at_selection": "not yet run",
+  "original_submission_commit": "7b6ba20f79a2731fc5b1db24888cfb8205c70476",
+  "official_archive_sha256": "406d69507ccf955a53b35db1c1368bd7452565ebd928b47d0f6161fe35b99a61"
+}

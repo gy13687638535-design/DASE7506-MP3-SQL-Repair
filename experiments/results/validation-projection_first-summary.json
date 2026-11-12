@@ -1,0 +1,9 @@
+{
+  "variant": "projection_first",
+  "split": "validation",
+  "correct": 91,
+  "n": 120,
+  "accuracy": 75.83333333333333,
+  "calls": 2.8583333333333334,
+  "wall_seconds": 30.306181199999628
+}

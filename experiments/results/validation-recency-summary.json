@@ -1,0 +1,9 @@
+{
+  "variant": "recency",
+  "split": "validation",
+  "correct": 91,
+  "n": 120,
+  "accuracy": 75.83333333333333,
+  "calls": 2.7583333333333333,
+  "wall_seconds": 29.88961989999916
+}

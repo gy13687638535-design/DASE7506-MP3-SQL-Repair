@@ -1,0 +1,2298 @@
+{
+  "protocol": "dase7506-sql-repair-v1",
+  "n": 120,
+  "correct": 91,
+  "accuracy": 75.83333333333333,
+  "mean_tool_calls": 3.5166666666666666,
+  "per_question": [
+    {
+      "id": "validation-3c4d5ecbd3a4ffc8",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "validation-a402046f584d4813",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-8be8e9f30c5ed3cc",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-bb46eb4c224f4193",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-fff3bd324494b9bb",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-cf4f7eb157c5f56f",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-6d8add77db18ef60",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-83b76ccf03ae3d7a",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-1e5f20eb954308a2",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-60551b2217de7d97",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-52bfe326b751abaf",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-9a3d5d1c1dfe328b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "validation-fa96b1ccd568803a",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-536cac19f45fc4fc",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-6ff42b00b3afd128",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "validation-1b6e5a6dd2d6aa32",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "validation-b21ef0b87ce0afd3",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-ab68d815813fb4b7",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-2feff7a83ef167ff",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-a75b7764fcacce68",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "validation-0e21eef6ed8ada4e",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-de306200a6efff23",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-ca9775c857b7431d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-f76a31ffe49ff88d",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-61511bf35997c117",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-c1adc4cfbb04e562",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-f1a67e3024ea10f2",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-ed6f64d1f362df5a",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-fad437395e6b6486",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-30b61a74da23f747",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-889009eee36761d6",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-3625496ea0b7be64",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-15c0ae475aa5b12c",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-085ce3159bf51a4d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-5cca36d225fdead7",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-2c892f2ef042cedd",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "validation-de485b76b4616b8e",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-4b4f8024a5980978",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-f1ea6b8f0e7f285d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-e3956a7be9311093",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "validation-e1927c97d2899fdd",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-5dad6a54f441726e",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "validation-5cf3b447b4af02c2",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "validation-f763b72754a444d8",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "validation-ef4c177afd66ae16",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-2643a95fe295b32a",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "validation-0a26d7c1c332029e",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-e313605ab240e9e5",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "validation-80d75a584db5c4e7",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-cf65a76c2ca339d6",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-d70a542e503e4a1e",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-e53b4e10a90eb2c7",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-3288dc4cebb243fe",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-c22e5499b1593f40",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-3d91e3eb70e7a1ee",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-69f87ab68f157c15",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-0eb1fb5e47ed829f",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-7896499011c15fde",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-88f375ef94d12f68",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-0407f698a3a86c0a",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-137394c19b2b5678",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-5d1ecaadd27fb6a2",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-89448784d1f33b1c",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-fac51d810a95c200",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-6f87c063a9e335f0",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "validation-b0b931cefe38be42",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-0edb7ecbb4dd054b",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "validation-7df47fb7fd5104dc",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-e030d845801dc09b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-e968a702198d6058",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-d44f9c5697538a6a",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-d5436c6173d57687",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-34c0d80638e5872e",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-76a4149a244deca0",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-0f3276a7323abe16",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-20a72a6329ea98f5",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "validation-34aaf5028e00a1e4",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "validation-e978a5f0f55e548c",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-cdd57474e4812622",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "validation-56804612f43fa49b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-34dc16c5398be753",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-c9d671c14d02f55b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-aae2724405be5c02",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 7
+    },
+    {
+      "id": "validation-741ca93b599363fd",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-02f77affeeb4f92d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-a2dca3d2d035fa59",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "validation-4a37f9727ac82a31",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-531aa9ff080445d6",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-f839d77d08df4dfa",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-aee6e8c41e83cad0",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-1d4d4619bfd66581",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-36ce398902e7135d",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "validation-3938199b48c562f6",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-14253c0fc3a4dc0d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-c59e9d51a3799267",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-520d75479d567121",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-d112266c1828a7ca",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-82b67fd858c9d8d4",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-fc40627f0b0bab17",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-d6427352ac250d9e",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-c8ff43a0c0154538",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-136348e30ccdd152",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-d22c3a920b525b66",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-329b35a3d5144055",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-e271aa282462bdf7",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-3b364d78c765531e",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-af3b43994c850366",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-d379eea4a2b59524",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-f279ebe82ac5bb54",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-1321fd5435f4cf5f",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-a0e12c20a24ba6f2",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-afa9c2ecf222f328",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-c9574968cd2efd5c",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-024d54bb9d654160",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-8f54c3bff6ab1797",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-162091e91ee345b7",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "validation-cb8c55ba2b7f46b9",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "validation-70b637ea23cc769c",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-c519bc86fc0f6a9d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-9eeaccd2f6fe2c6f",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    }
+  ],
+  "split": "validation",
+  "benchmark": "spider-sql-repair-public-evaluation-v3",
+  "manifest_sha256": "bf7a517249ebe31b9cad8cbf5d6598fde98316d89f9aa1172cae3ad83289a6bc",
+  "bank_sha256": "ccb66ffc9214bb9484b278718acf7eae55afac7c4d4afa25ee03f74ad3fea6eb",
+  "references_sha256": "5bfdd63ca75dd6b58c4ae3a7c72227ecfe0315655721ecaaef8e412ec3d6521d",
+  "scorer_sha256": "87870af26173fbe6d8994e4de179fb272ef1fadf7dcaafc2e7b4c814c61ec95b",
+  "executor_sha256": "4ecc3839728d68bd83f0d2a52cdd8392fd76dbaec3e54a19422118dee587b471",
+  "predictions_sha256": "8014a280c685b498c53b2619b9edaf130b4b4a4859499d4072b17c2cfe1d233c",
+  "scoring_seconds": 20.80853510000088
+}

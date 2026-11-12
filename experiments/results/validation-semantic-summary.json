@@ -1,0 +1,9 @@
+{
+  "variant": "semantic",
+  "split": "validation",
+  "correct": 94,
+  "n": 120,
+  "accuracy": 78.33333333333333,
+  "calls": 2.8,
+  "wall_seconds": 28.34910100000002
+}
