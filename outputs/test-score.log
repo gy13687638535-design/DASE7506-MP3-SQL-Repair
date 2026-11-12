@@ -11,6 +11,6 @@
   "references_sha256": "8be5f2746ee324d6b4b880dd84a2f8de56fa540af08e93842c0476adec581506",
   "scorer_sha256": "87870af26173fbe6d8994e4de179fb272ef1fadf7dcaafc2e7b4c814c61ec95b",
   "executor_sha256": "4ecc3839728d68bd83f0d2a52cdd8392fd76dbaec3e54a19422118dee587b471",
-  "predictions_sha256": "c812a584b679faa0a4968d706e76cbde1626e1eeb110c732472e7a3a17133909",
-  "scoring_seconds": 10.204077588999997
+  "predictions_sha256": "9f43529b67d0dd154f282b8c4ec638e3dd2ad258e71d465b898bc791bba4f210",
+  "scoring_seconds": 9.957413127000002
 }

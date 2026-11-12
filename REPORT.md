@@ -1,140 +1,153 @@
-# SQL Repair Agent for DASE7506 MP3
+# SQL Repair Agent for DASE7506 MP3 — Final v2
 
-Guo Yang · Student ID 3036797817 · 11 November 2026
+Guo Yang · Student ID 3036797817 · 12 November 2026
 
-This submission implements a deterministic CPU controller that repairs SQLite queries using the official tools. It combines execution feedback, the course's fixed repair suggestions, and bounded SQL syntax-tree edits. It does not train a model, load model weights, contact a model API, or use a GPU during prediction or scoring. The source entry point is `submission/submission.py:create_agent`; the submitted configuration is `submission/config.json`.
+This submission is a deterministic CPU controller that repairs SQLite queries through the official tools. It combines real execution feedback, the course's fixed repair suggestions, and bounded syntax-tree edits. It neither trains nor loads a model and makes no external API calls during evaluation. The canonical entry point is `submission/submission.py:create_agent`; `submission/config.json` is a policy configuration, not a trained checkpoint.
 
-The final official test score is **175/240 (72.91666666666667%)**, with all three grading instances required for each correct task. The measured Linux prediction-plus-scoring time is **28.531 seconds**. Validation accuracy is 91/120 (75.83%); three controlled ablations are reported below.
+The selected v2 configuration achieved **98/120 validation tasks (81.67%)** and **182/240 test tasks (75.83333333333333%)**. Every correct test task must pass all three grading database instances. The unchanged official score, predictions, and separate runtime measurements are retained under `outputs/`. Instructor verification is distinct from this student-side official-tool evaluation.
 
-The complete, unmodified official score files are the primary evidence for the reported results. Final implementation changes were selected or debugged using validation and synthetic tests, not test labels.
+## Agent loop and information flow
 
-## Agent loop and budget
+Each task supplies a question, exact imperfect draft, public example, ordered flag, remaining tool budget, and causal history. The controller derives all episode state from that history; it requests schema information explicitly when needed.
 
-The initial observation supplies the question, original draft, public example, ordering flag, remaining budget, and causal tool history. Schema information is requested explicitly when needed. The controller follows this procedure:
+1. `check` the exact original draft before requesting any hint. The initial draft is passed unchanged to the official executor, including when malformed or unsafe, so its real error is available.
+2. Obtain `repair_hint` at most once. Even an initial public-example match is verified through the fixed hint cache when a distinct eligible hint exists. Empty/all-NULL results are treated as weak evidence; numeric zero is not empty. Hints are fixed original-draft proposals, not adaptive model completions.
+3. Generate candidates from checked SQL, question text, public headings, real errors and schema. Request `schema` at most once: after two checks when the latest failed execution, or after the current pool is exhausted, provided at least two calls remain.
+4. Canonicalize SQL with SQLGlot, reject unsafe or oversized candidates and avoid rechecking canonical equivalents. Rank remaining proposals with fixed priorities, then spend one official `check` on the highest-priority candidate. Recompute after its feedback.
+5. Once a public match exists, restrict further attempts to eligible hint-origin candidates. Stop after the required initial verification, when useful candidates are exhausted, or when the eight-call budget is depleted. The selected configuration does not continue unrestricted refinement after a match.
+6. Among checked public matches with informative examples, use a fixed structural quality score to select the final SQL. For empty/all-NULL examples, keep the last matching query instead. If no query matched, return the last executable checked query; if all failed, return the original. Executability is a fallback, not proof of correctness.
 
-1. Call `check` on the exact original SQL. This obtains execution success or an error and a public-example match flag, and satisfies the prerequisite for requesting a repair hint.
-2. If a checked query matches an informative public example, submit it immediately. When the example contains no non-NULL cells, request the shared hints and attempt an additional candidate before accepting the first match. This rule covers empty results and all-NULL results; it does not treat a numeric zero as empty.
-3. Obtain `repair_hint` once, when enabled. Canonicalize the four suggestions with SQLGlot, count repeated forms, and avoid rechecking previously checked canonical SQL. Repetition is a priority signal, not proof of correctness. These are fixed suggestions for the original draft, not an adaptive model conversation.
-4. Generate local repair hypotheses from every checked query, its execution feedback, the question, and the public example. Request `schema` when at least two candidates have been checked and the latest check reports an execution error, or after the current candidate pool is exhausted. At least two calls must remain so the schema can support a subsequent check.
-5. Check the highest-priority unseen, syntactically permitted candidate. Recompute the candidate pool after receiving feedback. Stop on a public match under the stopping rule, on exhaustion of useful candidates, or when the eight-call budget is exhausted.
-6. Submit the most recent checked query that matched the example. If none matched, submit the most recent executable checked query; if every query failed, submit the original draft. This fallback is explicit uncertainty, not a claim that executability establishes correctness.
+`submit` is free. The agent returns official action dictionaries; it does not access databases, call the executor directly, alter observations, or fabricate traces. The official framework enforces the eight charged calls, and the scorer replays the actual tool history. Using `check` instead of `execute` supplies execution feedback and public-example comparison at the same charged cost.
 
-`submit` is free. The agent returns only official action dictionaries and never calls the database executor itself. It never edits observations or constructs tool traces. The official predictor records those traces, and the official scorer independently replays them before evaluating final SQL on all three database instances. The controller uses `check` instead of `execute` because a check provides both execution feedback and the full public-example equality result at the same one-call cost.
+The entire task history is episode memory. A fresh agent is constructed for each task. There is no persistent cross-task answer cache, task-ID map, embedding index or accumulated test memory. The only runtime file the agent itself reads is its explicit configuration.
 
-## SQL repair and context management
+Retrieval is not used. The provided retriever can return training examples, but this controller has no general mechanism to transfer arbitrary SQL across disjoint schemas. A retrieval call would also consume a candidate-check opportunity. This is a design rationale, not evidence that retrieval is ineffective; retrieval was not experimentally compared.
 
-`submission/repairs.py` creates SQLGlot abstract syntax tree hypotheses. Its repairs include close table/column spelling corrections; column qualification; missing joins suggested by declared foreign keys or distinctive shared column names; projection order/content alignment using public column headings; adding or removing `DISTINCT`; changing a column count to or from `COUNT(DISTINCT ...)`; grouping for aggregate ordering; count/sum ordering hypotheses; question-supported sort direction and limits; and moving outer aggregate filter conjuncts from `WHERE` to `HAVING` while preserving row-level predicates.
+## Repair rules and selection
 
-Edits are scope-aware where implemented. Nested scalar aggregates and window functions are not treated as outer aggregate filters. Schema repair deliberately skips queries containing multiple `SELECT` scopes. Moving an aggregate filter refuses predicates containing `OR`, where splitting the expression could change its logic. Generated candidates are hypotheses and must still pass through an official `check` call. The generator returns at most 24 candidates per checked SQL; the controller's actual execution budget remains eight tool calls.
+`repairs.py` proposes table/column spelling repairs, column qualification, plausible missing joins, projection alignment, duplicate handling, count-distinct variants, grouping, ordering, question-supported limits, and moving aggregate filters from `WHERE` to `HAVING`. Qualified join operands are preserved during ambiguity repair. An ambiguous-column error does not trigger adding an omitted table merely because another schema table shares its name.
 
-Priorities are fixed, transparent heuristics. For example, explicit foreign-key joins receive high priority, public projection repairs outrank generic duplicate-removal changes, and excess public row counts increase the priority of adding `DISTINCT`. The rules do not learn weights from examples. Canonicalization reduces repeated calls caused by formatting or identifier case; it is not a complete semantic-equivalence test.
+`semantic_repairs.py` adds several general hypotheses:
 
-The episode history is the controller's memory. Each invocation derives checked queries, matches, hints, schema, and used SQL from that history. A fresh controller is created for every task. There is no cross-task answer cache, embedding index, task-ID lookup, accumulated test memory, or persistent conversation. Only the small explicit configuration is read from a local file by the agent.
+- A row-level inequality for a question containing “never” may need a correlated `NOT EXISTS` condition.
+- Clear existential “greater than any” or “less than any” wording may require a `MIN` or `MAX` boundary different from the draft.
+- Projection repair preserves deleted alias references and expands positional `ORDER BY`/`GROUP BY` references against the original projection. It can also repair related aggregation and ordering together.
+- Numeric conditions explicitly present in the question can support numeric casts; selected join/group structures can suggest pruning a superfluous clause.
 
-The agent does not call `retrieve`. The built-in retriever supplies three training examples, but the database schemas are disjoint across splits and this controller has no general mechanism to transfer arbitrary retrieved SQL into a new schema. Spending one of eight calls on retrieval would reduce candidate-check opportunities. This is a design rationale, not an experimentally established claim that retrieval is unhelpful; retrieval was not a controlled experimental factor here.
+These are candidate hypotheses, not guaranteed equivalences. Removing an apparently unused join can change row multiplicities; “any” in natural language can be ambiguous. Generated SQL must still be checked. Scope restrictions deliberately leave many multi-scope and disjunctive cases unrepaired. Each repair generator bounds its proposals, and only the official eight-call allowance can execute candidates.
+
+`ranking.py` uses manually specified feature contributions for projection shape and alignment, aggregation, distinctness, frequency ordering, negation, quantifier boundaries, tautological joins and known schema bindings, plus a small complexity tie-breaker. Window aggregates are distinguished from ordinary aggregates when checking grouping. No ranker weights were fitted, and its values are not probabilities. In the selected policy it selects among already checked public matches; it does not replace execution feedback. Weak examples retain the last-match policy because a structural preference can choose a shorter but incorrect SQL.
+
+The selected configuration disables **whole-pool projection precomposition** (`compose_projection=false`). This does not disable all compositional repair: the semantic generator still maintains projection references and composes selected semantic edits. `safe_projection=true` remains in the frozen configuration but has no additional effect when that whole-pool step is disabled. More aggressive `refine_matches` and `quality_priority` modes are not enabled.
 
 ## Evaluation and controlled ablations
 
-Evaluation uses the unchanged official `mp3_sql.predict` and `mp3_sql.score` commands. A task counts as correct only when its final SQL matches all three grading instances. The official score is `100 × correct / n`; one-instance public-example success is not reported as the official metric. Validation contains 120 tasks and test contains 240 tasks, with schema-disjoint splits. Design choices were made using validation. This is the course's public benchmark, not a hidden-test generalization experiment.
+The official package, predictor, scorer, tool semantics and benchmark files were not modified. Accuracy is `100 × correct / n` across all three instances, not public-example match rate. Validation has 120 tasks; test has 240, with schemas disjoint across splits. The course explicitly provides a public benchmark, so these results are not a hidden-test generalization claim.
 
-The following results were measured after the final implementation correction. All variants were rerun on the same 120 validation tasks using Python 3.12.14 on Windows, and their complete score, prediction, and runtime files are included under `outputs/`.
+The final five validation configurations were run on the same corrected v2 code, Python 3.12.14 on Windows, with the same official tools, SQLGlot version, tasks and eight-call budget. Full prediction and official-score files are preserved in `experiments/results/validation-final*.json`.
 
-| Validation variant | Correct / 120 | Accuracy | Mean charged calls | Intervention |
+| Configuration | Correct / 120 | Accuracy | Mean charged calls | Controlled intervention relative to `final` |
 |---|---:|---:|---:|---|
-| Unchanged official starter | 47 | 39.17% | 0.000 | Submit the original draft without tools; contextual baseline only |
-| Full controller | 91 | 75.83% | 2.825 | Submitted settings |
-| No local repairs | 80 | 66.67% | 2.258 | Disable AST edits and their schema calls; retain hints, checking and stopping |
-| No hints | 60 | 50.00% | 2.375 | Disable cached suggestions; retain AST edits, schema and feedback |
-| No weak-match verification | 83 | 69.17% | 2.525 | Accept an initial empty/all-NULL public match immediately |
+| `final` | 97 | 80.83% | 3.3083 | Semantic rules, whole-pool composition, verification and match ranking enabled |
+| `final_no_semantic` | 94 | 78.33% | 3.3000 | Disable semantic generator and its safe projection implementation |
+| `final_no_verification` | 95 | 79.17% | 2.6583 | Disable verification of all initial matches; retain weak-example verification |
+| `final_no_ranking` | 97 | 80.83% | 3.3083 | Disable structural selection among checked matches |
+| **`final_no_composition` — submitted** | **98** | **81.67%** | **3.4250** | **Disable whole-pool projection precomposition** |
 
-The three ablations use the same tasks, framework, SQL parser, tool budget, and controller, changing only the indicated feature/configuration. `no_repairs.json` also disables schema because that feature serves local repair generation; thus this ablation measures the complete local-repair subsystem. Disabling hints also removes hint-based weak-match verification by construction. The measurements do not identify independent additive contributions and should not be summed.
+These include more than two controlled ablations. The semantic ablation changes two coupled switches and therefore measures that subsystem, not a single rule. Other rows isolate the stated switch relative to the all-enabled `final` configuration. Differences are not independent additive contributions. Removing match ranking did not change total correctness in that contrast; there is no demonstrated stand-alone accuracy benefit for it here.
 
-In the final validation comparison, local repairs account for a difference of 11 correct tasks, shared hints for 31, and weak-match verification for 8, each compared with the full configuration. These comparisons motivate the selected design but do not establish the same effect sizes on new benchmarks. The official starter is useful for context but is not a compliant final repair agent because it has no feedback loop.
+The selected configuration is the highest validation count among these five. Its source and configuration hashes were recorded in `experiments/selection.json` before the first v2 test, evaluated at commit `6f3c2369d1987ae4b1cf2252e1971770fc507c32`. The canonical `submission/` files are an unchanged promotion of those five frozen files. Formal-entry reproduction verifies packaging without selecting new rules from test outcomes. [outputs/reproduction-check.json](outputs/reproduction-check.json) confirms that all 240 prediction records, including SQL and tool traces, match the frozen experimental run; only run-level timing metadata differs. All five source/configuration files match the pre-test hashes.
 
-**Final test result:** `outputs/test-score.json` records 175 correct tasks out of 240, accuracy `72.91666666666667`, and mean charged tool calls `2.9625`. The score and predictions were produced by the unchanged official tools on Linux and copied without editing into the canonical submission paths. They include all tasks and all tool traces, not only successes.
+Ten earlier configurations are documented in `experiments/README.md`. They were part of iterative development and do not all represent the same final source revision. The aggressive refinement trial reached only 91/120, but multiple switches differed, so its failure cannot be attributed causally to one switch. Final audits corrected projection ordinals, window-aggregate scoring and ambiguity-induced joins before the five controlled comparisons. Multiple validation trials create overfitting risk even though test data were not used to choose their settings.
 
-| Canonical submission file | SHA256 |
+| Version comparison | Validation | Test | Test mean calls |
+|---|---:|---:|---:|
+| Previous immutable submission v1 | 91/120 (75.83%) | 175/240 (72.92%) | 2.9625 |
+| Submitted v2 | 98/120 (81.67%) | 182/240 (75.83%) | 3.4208 |
+
+The frozen first-v2 test comparison found 174 tasks correct in both versions, eight newly correct, one newly incorrect, and 57 incorrect in both. This is a net gain of seven test tasks, or 2.92 percentage points. Only official pass/fail flags were compared afterward for this report; no test SQL or failed cases were used to revise the agent. `experiments/results/verification.json` records this comparison and the exact first-v2 evidence. The new result does not guarantee the same benefit on arbitrary databases or error distributions.
+
+Canonical submission hashes from the formal-entry run:
+
+| File | SHA-256 |
 |---|---|
-| `outputs/test.json` | `4a72393678da88a7543c4c3743c01e6c776cc691ede7cf3bb67651f2b5d67b1e` |
-| `outputs/test-score.json` | `1f06603944c931fdf4731f38ff23096771ebd761b5265e6885d978ef01d72be8` |
+| `outputs/test.json` | `9f43529b67d0dd154f282b8c4ec638e3dd2ad258e71d465b898bc791bba4f210` |
+| `outputs/test-score.json` | `47e57aabd83b26a859a8e22770a9849331e4fbc6f103217f6a1a37289948b1c4` |
 
 ## Runtime, memory and model cost
 
-Prediction and scoring use four official workers. The reproduction script sets numerical-library thread counts to one, limits Linux CPU affinity to at most four CPUs, applies a 2 GiB per-process virtual-address limit, monitors aggregate process-tree virtual memory, and enforces a combined 180-second prediction-plus-scoring deadline for each evaluation pair. Dependency installation, benchmark download, data verification, and report generation precede that timed pair.
+The wrapper runs four official workers and sets numerical-library thread counts to one. On Linux it limits CPU affinity to at most four CPUs, applies a 2 GiB per-process address-space ceiling, samples aggregate process-tree virtual memory and enforces 180 seconds total for prediction plus scoring. Dependency installation, benchmark download and integrity checks occur before the timed pair. Measurement output is separate from the unchanged score JSON.
 
-On Linux, `scripts/reproduce.py` records wall time, descendant CPU time through `getrusage`, and process-tree RSS/virtual-memory samples every 20 ms. GNU `/usr/bin/time -v` records additional measurements when available. These memory measurements are sampled peaks, not exact continuous maxima. Runtime evidence is written separately from the unchanged official score JSON.
+Linux wall time and descendant CPU use are recorded with `getrusage`, with process-tree RSS/virtual-memory samples every 20 ms and GNU `/usr/bin/time -v` reports when available. Sampled memory peaks are not continuous maxima; shared pages may be counted in multiple processes, and the wrapper itself is outside the sampled command tree. Parallel CPU-seconds can exceed elapsed wall seconds.
 
-The final Windows validation run used Python 3.12.14 on Windows 11, with 40.088 seconds combined wall time. Its measured controller-only CPU time was 17.219 seconds, and the larger controller-process peak RSS was 44,130,304 bytes (42.09 MiB). Those CPU and memory numbers exclude SQLite worker subprocesses, and Windows does not enforce the Linux address-space policy. They are development measurements; the separate Linux run below supplies the resource-compliance evidence.
-
-| Final test measurement | Value / evidence |
+| Formal canonical-entry test measurement | Value |
 |---|---|
-| Linux Python/platform and evaluated implementation commit | GitHub Actions Ubuntu 24.04, Python 3.12.16, x86-64/glibc 2.39; `32a7addf948ae132369c4b7a91549bccbc363f37` |
-| Prediction wall time | 14.040 seconds |
-| Scoring wall time | 14.485 seconds |
-| Combined prediction + scoring wall time | 28.531 seconds, below the 180-second limit |
-| Combined descendant CPU time | 85.586 CPU-seconds across the bounded workers |
-| Sampled peak evaluation process-tree RSS | 117,526,528 bytes (112.08 MiB) |
-| Sampled peak evaluation process-tree virtual memory | 827,392,000 bytes (789.06 MiB), below 2 GiB |
-| Charged tool calls, mean / maximum | 2.9625 / 8; 711 charged calls in total |
-| Linux evidence | [Successful workflow run](https://github.com/gy13687638535-design/DASE7506-MP3-SQL-Repair/actions/runs/42872209555); `outputs/linux/test-runtime.json` and the two `.time.txt` records |
+| Evaluated implementation commit | `9c024db7bf5280bd7d731de4724909fb1bdc2e1a` |
+| Environment | GitHub Actions Ubuntu 24.04; actual Python/platform recorded in `outputs/test-runtime.json` |
+| Combined prediction + scoring wall time | 20.289 seconds |
+| Combined descendant CPU time | 59.146 CPU-seconds |
+| Sampled peak process-tree RSS | 115.934 MiB |
+| Sampled peak process-tree virtual memory | 791.516 MiB, below 2 GiB |
+| Charged tool calls, mean / limit | 3.4208333333333334 / 8 |
+| Evidence | [Successful formal workflow](https://github.com/gy13687638535-design/DASE7506-MP3-SQL-Repair/actions/runs/43217148261), `outputs/test-runtime.json` and its logs |
 
-The Linux test run used 518 `check`, 161 `repair_hint`, and 32 `schema` calls, plus 240 free submissions. The measured CPU cost includes the official predictor/scorer and their waited SQL workers. Sampled process-tree RSS can count shared pages more than once and excludes the monitoring wrapper itself. The canonical submitted files under `outputs/` are byte-for-byte copies of the unchanged Linux artifact also retained under `outputs/linux/`. The separate Windows test run is preserved under `outputs/windows/`. Later documentation and evidence commits do not change the evaluated agent implementation.
+The preceding frozen experimental-entry Linux run independently measured 20.353 seconds elapsed, 60.445 CPU-seconds, 108.246 MiB peak sampled RSS and 784.852 MiB peak sampled virtual memory. Its evidence is [run 43157511762](https://github.com/gy13687638535-design/DASE7506-MP3-SQL-Repair/actions/runs/43157511762) and `experiments/results/linux/`. Different CI hosts and timing noise mean these numbers do not establish a guaranteed speedup over v1. Test mean tool use rises approximately 15.47%; validation mean rises from 2.825 to 3.425, approximately 21.24%.
 
-The Windows test run also scored 175/240. Its 240 final SQL strings, tool-call counts, task pass/fail flags, and 720 instance pass/fail flags match the Linux run. The full traces are not identical: two initial checks execute on Windows but report missing columns on Linux; one failed task has different grading error messages. SQLite/platform behavior can affect intermediate feedback even when final answers agree. Because the official scorer requires exact replayed observations, the submission uses the Linux traces and score rather than claiming the Windows traces are portable. Reproduce with the documented Linux environment; timing-dependent file hashes and platform-specific error text need not match across environments.
+Windows development measurements cover only the controller process and do not enforce the Linux address-space policy. They are not resource-compliance evidence. SQLite versions/platforms can also change intermediate feedback; the submitted score and traces come from the same Linux run and are never spliced with Windows traces.
 
-Runtime live-model completions, generated tokens, model parameters loaded, GPU use, and external model API calls are all zero. The four cached suggestions per task were generated by the course, not by this submission at runtime. The cache can therefore assist this CPU route even though its provider model has more than one billion parameters. No LoRA adapter or separate weight artifact is submitted. Required inference dependencies are Python 3.11/3.12, its standard library, and `sqlglot==27.29.0`.
+Runtime model completions, generated tokens, loaded model parameters, GPU use and external model API calls are zero. The course generated the shared hint cache; its provider compute is not this agent's runtime or training cost. No LoRA adapter or separate weight artifact is submitted. Dependencies are Python 3.11/3.12, its standard library, the official package and `sqlglot==27.29.0`.
 
-## Failure analysis and limitations
+## Failure cases and limits
 
-The final validation run has 29 failures. Of these, 17 submitted a query whose recorded `check` matched the public example but failed at least one grading instance; the other 12 failed all three grading instances. This demonstrates why public-example feedback is necessary but insufficient. The public-match counts come from the actual submitted-query checks, and the grading outcomes come from the official score. No grading fingerprints or additional database contents were inspected for this analysis.
+The selected validation run has 22 failed tasks. Fourteen submitted a checked SQL that matched the public example but failed at least one grading instance. The remaining eight submitted SQL without a matching final check. These counts are derived from the recorded submitted-query checks and official pass/fail flags, not grading fingerprints or additional database contents.
 
-For `validation-6d8add77db18ef60`, the original query returned a nonempty public match and was submitted after one check. It sorted a nested broadcast query by `Time_of_day DESC LIMIT 1`. The official outcomes were `[true, false, false]`. The verified conclusion is that early acceptance of a nonempty public match can still be wrong on the other instances. Determining the intended full semantics would require more evidence; no reference SQL is inferred here.
+For `validation-de306200a6efff23`, both the original and hint checks returned an empty public match. The agent submitted the checked restaurant/type-join query after three charged calls. The scorer reported `[true, false, true]` across the three instances. This establishes that extra hint verification can still agree on a weak sample without repairing the semantics; it does not identify a gold query.
 
-For `validation-e271aa282462bdf7`, the cached hint used a grouped count with a `CASE` expression over roller-coaster speeds. That hint produced an empty public match, but the official outcomes were `[true, false, false]`. The weak-match policy explores beyond an initially matching draft; it does not exhaustively challenge every later empty match. A misleading shared hint can therefore pass the same weak evidence and terminate the episode.
+For `validation-3c4d5ecbd3a4ffc8`, four checked company/employment queries executed and returned zero rows but never matched the example. After six charged calls, the candidate pool was exhausted and the controller returned its last executable query. All three grading cases failed. The fallback makes the uncertainty explicit but cannot recover semantics absent from the rules and hints.
 
-SQL that runs can still contain an incorrect join relationship, duplicate handling, aggregate scope, tie policy, string comparison, or missing condition. AST shape checks do not prove these semantics. In development, an ambiguous-column repair was found to risk rewriting both already-qualified join operands to the same field; the final correction and regression test preserve qualified bindings while repairing the unqualified ambiguity. This does not establish that all ambiguous queries are safely repairable.
+Join cardinality, duplicate handling, aggregate scope, ties, text comparisons, absent predicates and complex nested queries remain difficult. A syntactically read-only query or high structural score can still be wrong. Canonicalization does not prove semantic equivalence. Natural-language keyword matching is limited, and the finite budget can stop before the right repair. More general planning, schema-grounded join reasoning, learned ranking or budgeted retrieval would require separate implementation and controlled evaluation; no performance claim is made for untested training/LoRA alternatives.
 
-The rule set has limited natural-language understanding and limited nested-query rewriting. Fallback to the last executable candidate can return an answer with no public-match support. Canonical deduplication does not merge all equivalent SQL. Verification of empty results reduces one specific failure mode but cannot distinguish all programs that happen to agree on a sparse sample. More general query planning, join-path reasoning, or carefully budgeted retrieval are future work, not implemented capabilities.
+## Prompt-injection risks and safeguards
 
-## Safety and prompt-injection handling
+Questions, drafts, schema names, result headings/values and cached hints are untrusted data. They may contain instructions to ignore the tool budget, read a file, contact an API, alter the database or treat an answer as authoritative. This agent has no runtime natural-language instruction interpreter or text-to-shell path: it uses fixed action names, and neither `eval`/`exec`, subprocesses, network access nor direct database connections occur in the agent modules.
 
-Questions, SQL drafts, schema identifiers, public result headings/values, cached hints, and any retrieved text must be treated as untrusted data. A question or hint could contain instructions to ignore the budget, read a local file, contact an API, or submit destructive SQL. There is no runtime language-model interpreter or text-to-shell execution in this design, so such instructions do not become system actions. The controller chooses from fixed action names and does not use `eval`, `exec`, shell execution, network access, or direct database connections.
+Generated candidates must parse as one read-only `SELECT` or set operation, exclude modifying/command AST nodes, and fit 16,000 UTF-8 bytes. Public headings are restricted to supported column/aggregate expressions; subqueries and result-value literals are not copied into SQL. Explicit question-derived limits and numeric conditions have constrained parsing. Cached hints are treated as candidate SQL subject to the same checks, not as trusted instructions. Retrieval is unused, so this route does not consume retrieval prompt injections.
 
-Candidate SQL must parse as one read-only `SELECT` or set operation, must not contain modifying/command AST nodes, and must fit 16,000 UTF-8 bytes. Public headings are accepted only as restricted column or aggregate expressions; subqueries, literals, aliases, and arbitrary functions in a heading cannot become a projection repair. Public result cell values are never copied into output SQL. Question-derived numeric limits are narrowly parsed and bounded. Retrieved-content injection is absent from the implemented route because retrieval is disabled.
+The exact initial draft is deliberately checked without rewriting and relies on the unchanged official SQLite executor for rejection. That executor opens databases read-only, restricts functions/tables, disables extension loading and enforces execution limits. The framework enforces action uniqueness/budget, and official trace replay checks the recorded feedback. Agent guards supplement this sandbox; they do not replace it.
 
-These checks supplement the unchanged official executor, which opens read-only SQLite databases, disables extension loading, authorizes only allowed tables/functions, and bounds time, expression depth, result size, and worker resources. The initial exact-draft check deliberately delegates malformed or unsafe draft rejection to this executor. The official episode enforces unique actions and the eight-call limit, and trace replay detects forged feedback. The agent does not claim to replace that executor sandbox.
+Untrusted text can still bias a permitted SQL hypothesis through misleading headings, keywords or syntactically valid hints. Read-only filtering is therefore not a semantic-security proof. Parsing also consumes finite CPU/memory. Bounded generation and the official offline executor limit exposure, but this work does not claim comprehensive adversarial robustness.
 
-Untrusted text can still influence semantic choices through allowed SQL, misleading headings, or keyword matches. Passing the read-only gate therefore prevents certain operational actions, not answer manipulation. Python parsing also has finite CPU/memory costs. Offline execution, bounded candidate generation, and unchanged framework limits reduce exposure, but no comprehensive prompt-injection or adversarial robustness guarantee is claimed.
+All 51 synthetic regression tests passed (23 protocol/basic-repair tests and 28 semantic/ranking/audit tests). They cover the exact-draft prerequisite, deduplication, budget exhaustion, observation immutability, weak examples, malicious/stacked SQL and headings, join binding preservation, aggregate scope, projection aliases/ordinals and filtered window aggregates. Their fixtures are in-memory SQLite tables and artificial observations, not benchmark answer fixtures. The two suites complement official trace replay; they do not prove every transformation correct.
 
-The final implementation passes 23 synthetic regression tests. They cover the original-draft prerequisite, candidate deduplication, budget exhaustion, observation immutability, weak matches, destructive and multi-statement SQL, malicious hint/headings, preservation of qualified join operands during ambiguous-column repair, and aggregate scope/filter semantics. These tests use synthetic observations and SQL rather than benchmark answer fixtures. They complement the official trace replay; they do not prove correctness for every SQL query.
+## Data provenance and assistance
 
-## Provenance and external assistance
+`DATA_PROVENANCE.md` records the exact course archive, benchmark identities and permitted data roles. The agent reads neither grading references/fingerprints, additional database files, raw hint-cache files nor training-memory files. Training examples were inspected for format/smoke tests, not fitted. Validation guided routine designs; only the official scorer reads the grading bundle. No task-ID lookup, task-specific SQL answer map, trained classifier, embedding index or learned ranker is embedded in the export.
 
-The exact course package, data roles, and integrity identifiers are recorded in `DATA_PROVENANCE.md`. The runtime agent does not read `*_references.json`, grading fingerprints, additional evaluation databases, the cached hint file, or training memory directly. The framework supplies only authorized observations; the scorer alone uses the grading bundle. Training examples were used for preliminary inspection/smoke testing, not for model fitting. No examples, labels, task-specific answers, or result fingerprints are embedded in the implementation.
+OpenAI Codex substantially assisted specification review, code, experiments, debugging, tests, documentation and submission preparation. This is disclosed assistance, not unaided human authorship. The running agent does not call Codex or any other external model. No task-specific training material was generated, and no training logs or adapter files are applicable. The student remains responsible for reviewing the method and limitations.
 
-OpenAI Codex provided substantial development assistance with specification review, implementation, debugging, experiments, tests, documentation, and submission tooling. This is disclosed assistance, not unaided human coding. The submitted agent does not call Codex or any other external model, including during grading. No task-specific training material was generated. The student remains responsible for reviewing and understanding the method and its limitations.
+Course provenance attributes drafts to `Qwen/Qwen3-0.6B` revision `c1899de289a04d12100db370d81485cdf75e47ca` and four cached repair suggestions to `Qwen/Qwen3-8B` revision `b968826d9c46dd6066d109eabc6255188de91218`, without assignment fine-tuning. These are provider declarations, not models loaded by this agent. Their pretraining exposure to the old public Spider benchmark cannot be excluded. The course `NOTICE` attributes Spider to Yu et al. (2018), data/course modifications to CC BY-SA 4.0, Qwen material to its applicable terms and SQLGlot to MIT.
 
-The course cache metadata identifies original drafts from `Qwen/Qwen3-0.6B` revision `c1899de289a04d12100db370d81485cdf75e47ca`, and four fixed repair suggestions from `Qwen/Qwen3-8B` revision `b968826d9c46dd6066d109eabc6255188de91218`, without assignment fine-tuning. These are provider provenance declarations, not models loaded by the submitted code. Their pretraining exposure to the older Spider benchmark cannot be ruled out. The course `NOTICE` attributes Spider to Yu et al. (2018), data/course modifications to CC BY-SA 4.0, Qwen material to its applicable Apache-2.0 terms, and SQLGlot to MIT.
+## Exact reproduction and export
 
-## Exact reproduction
-
-Start with an unpacked source export and the exact official student package. Provision Python and dependencies before disconnecting the network. The official archive SHA256 is `406d69507ccf955a53b35db1c1368bd7452565ebd928b47d0f6161fe35b99a61`. The GitHub workflow downloads it, verifies this hash, and locates its package root. The following commands run from the submitted repository root on Linux:
+Provision Python 3.11/3.12, declared dependencies and the exact official package before going offline. The official archive SHA-256 is `406d69507ccf955a53b35db1c1368bd7452565ebd928b47d0f6161fe35b99a61`. Run from this source export's root on Linux:
 
 ```bash
 python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
 export MP3_PACKAGE=/absolute/path/to/MP3_SQL_student_package
+python -m pip install -r "$MP3_PACKAGE/requirements.txt" -r requirements.txt
 (cd "$MP3_PACKAGE" && python -m mp3_sql.check_data)
 PYTHONPATH="$PWD/submission" python -m unittest discover -s tests -v
+PYTHONPATH="$PWD/experiments/v2" python -m unittest discover -s experiments -p 'test_*.py' -v
 python scripts/reproduce.py --package "$MP3_PACKAGE" --split validation --ablations --output-dir outputs/reproduced-validation
 python scripts/reproduce.py --package "$MP3_PACKAGE" --split test --output-dir outputs/reproduced-test
 ```
 
-The last command performs the following official operations, recording measurements in a separate runtime JSON:
+`--ablations` reruns the selected configuration and the final five controlled configurations under `experiments/configs/`; it is restricted to validation. Direct official test commands, equivalent to the wrapper's evaluation without its resource monitor:
 
 ```bash
 export MP3_SOURCE="$PWD"
+mkdir -p outputs/reproduced-test
 cd "$MP3_PACKAGE"
 export PYTHONPATH="$MP3_SOURCE/submission"
 python -m mp3_sql.predict --split test --workers 4 \
@@ -146,6 +159,8 @@ python -m mp3_sql.score --split test --workers 4 \
   --output "$MP3_SOURCE/outputs/reproduced-test/test-score.json"
 ```
 
-Use the wrapper for measured resource enforcement. The source ZIP includes the final `outputs/test.json` and complete `outputs/test-score.json`, implementation, configuration, dependency list, tests, report, provenance, and reproduction scripts. It excludes the benchmark databases, base/adapter weights, virtual environments, caches, credentials, and unrelated projects. Re-running can change wall-clock timings and JSON hashes that include timings; compare task SQL, valid traces, official counts, and benchmark identities rather than requiring timing-dependent files to be byte-identical.
+Use the wrapper for measured enforcement. The immutable HTTPS source ZIP includes implementation, configuration, requirements, report, provenance, reproduction scripts, tests and both complete official output files. It excludes benchmark databases, base/adapter weights, virtual environments, caches and credentials. Timing-dependent score JSON hashes or platform-specific error text can vary on reproduction; compare valid trace replay, official counts, final SQL and benchmark identities instead of requiring every timing byte to match.
 
-The requirements and submission protocol come from the [official project specification](https://xudongwu-0.github.io/courses/dase7506/mp3/PROJECT.md). Package provenance is independently inspectable in the official archive's `NOTICE`, `mp3_sql/data/provenance.json`, `model_generation.json`, and `hint_generation.json`. These course records are primary evidence for this release; the experiment files are primary evidence for the results reported here.
+The original v1 submission remains pinned to `7b6ba20f79a2731fc5b1db24888cfb8205c70476`. The course requires improved submissions to use new issues and immutable artifacts with the same account/student ID; its best eligible reproducible score determines the student's ranking. The updated issue therefore supersedes the old result without editing or deleting its historical record.
+
+Primary sources are the [official specification](https://xudongwu-0.github.io/courses/dase7506/mp3/PROJECT.md), the package's `NOTICE`/manifest/provenance/model-cache metadata, and the retained unmodified scorer outputs. Proposed explanations of experimental differences are identified as hypotheses above, separate from measured counts.

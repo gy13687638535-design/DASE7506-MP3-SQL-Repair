@@ -6,7 +6,7 @@
   "workers": 4,
   "combined_wall_limit_seconds": 180,
   "official_package": "/home/runner/work/_temp/mp3-official/MP3_SQL_student_package",
-  "config": "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/experiments/v2/config.json",
+  "config": "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/submission/config.json",
   "measurements": [
     {
       "command": [
@@ -18,11 +18,11 @@
         "--workers",
         "4",
         "--output",
-        "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/experiments/results/linux/test.json",
+        "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/outputs/reproduced/test.json",
         "--method",
-        "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/experiments/v2/submission.py",
+        "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/submission/submission.py",
         "--checkpoint",
-        "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/experiments/v2/config.json"
+        "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/submission/config.json"
       ],
       "stdout_log": "test-predict.log",
       "scope": "process_tree",
@@ -30,13 +30,13 @@
       "rlimit_as_bytes_per_process": 2147483648,
       "sampled_process_tree_vms_limit_bytes": 2147483648,
       "cpu_affinity_limit": 4,
-      "wall_seconds": 10.039687016000002,
+      "wall_seconds": 10.193909994999999,
       "exit_code": 0,
-      "cpu_user_seconds": 18.76245,
-      "cpu_system_seconds": 3.5614149999999998,
-      "cpu_seconds": 22.323865,
-      "sampled_peak_tree_rss_bytes": 98533376,
-      "sampled_peak_tree_virtual_bytes": 468508672,
+      "cpu_user_seconds": 18.670132,
+      "cpu_system_seconds": 3.641511,
+      "cpu_seconds": 22.311643,
+      "sampled_peak_tree_rss_bytes": 118837248,
+      "sampled_peak_tree_virtual_bytes": 826220544,
       "gnu_time_report": "test-predict.time.txt",
       "phase": "predict"
     },
@@ -50,9 +50,9 @@
         "--workers",
         "4",
         "--predictions",
-        "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/experiments/results/linux/test.json",
+        "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/outputs/reproduced/test.json",
         "--output",
-        "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/experiments/results/linux/test-score.json"
+        "/home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/outputs/reproduced/test-score.json"
       ],
       "stdout_log": "test-score.log",
       "scope": "process_tree",
@@ -60,18 +60,18 @@
       "rlimit_as_bytes_per_process": 2147483648,
       "sampled_process_tree_vms_limit_bytes": 2147483648,
       "cpu_affinity_limit": 4,
-      "wall_seconds": 10.307716462000002,
+      "wall_seconds": 10.060657953000003,
       "exit_code": 0,
-      "cpu_user_seconds": 30.179538,
-      "cpu_system_seconds": 7.9420470000000005,
-      "cpu_seconds": 38.121585,
-      "sampled_peak_tree_rss_bytes": 113504256,
-      "sampled_peak_tree_virtual_bytes": 822976512,
+      "cpu_user_seconds": 28.977397,
+      "cpu_system_seconds": 7.8571860000000004,
+      "cpu_seconds": 36.834583,
+      "sampled_peak_tree_rss_bytes": 121565184,
+      "sampled_peak_tree_virtual_bytes": 829964288,
       "gnu_time_report": "test-score.time.txt",
       "phase": "score"
     }
   ],
-  "combined_wall_seconds": 20.35279111,
-  "combined_cpu_seconds": 60.44545000000001,
+  "combined_wall_seconds": 20.289413245,
+  "combined_cpu_seconds": 59.146226,
   "completed": true
 }

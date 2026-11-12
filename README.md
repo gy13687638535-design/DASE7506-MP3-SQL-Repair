@@ -1,97 +1,82 @@
-# DASE7506 MP3 - SQL Repair Agent
+# DASE7506 MP3 — SQL Repair Agent
 
-**Author:** Guo Yang (3036797817)  
-**Route:** CPU-only harness optimization; no live model, no LoRA, no training.
+**Guo Yang · 3036797817 · Final v2 submission, 12 November 2026**
 
-**后续探索：** 本页记录原提交版本。独立实验版本、中文结构说明及比较结果见
-[experiments/README.md](experiments/README.md)，位于 `codex/mp3-exploration` 分支。
-课程原提交所引用的固定 commit 与结果保持不变。
+A CPU-only SQL repair controller using real official tool feedback, fixed shared repair hints, and SQLGlot syntax-tree edits. It does not train or load a language model, use a GPU, or contact a model API. `--checkpoint` loads a JSON configuration, not model weights.
 
-The agent checks the original draft, reads the shared cached repair hints when
-needed, generates read-only AST edits from feedback, and checks candidates within
-the official eight-call budget. Empty/all-NULL example matches receive an extra
-hint-based check before selection. It runs offline using Python 3.11 or 3.12 and
-SQLGlot 27.29.0.
-
-| Evaluation | Correct | Official accuracy |
+| Official evaluation | Correct | Accuracy |
 |---|---:|---:|
-| Validation | 91 / 120 | 75.83% |
-| Test (all three instances) | 175 / 240 | 72.92% |
+| Validation | 98 / 120 | 81.67% |
+| Test, requiring all three instances | 182 / 240 | 75.83% |
 
-The [Linux reproduction](https://github.com/gy13687638535-design/DASE7506-MP3-SQL-Repair/actions/runs/42872209555)
-completed prediction and scoring in 28.53 seconds. These are self-reported,
-reproducible benchmark results; instructor verification is separate.
+The canonical agent is **`submission/submission.py:create_agent`**, configured by **`submission/config.json`**. The complete unchanged official predictions and score are **`outputs/test.json`** and **`outputs/test-score.json`**. These are student-side results from the official scorer, subject to instructor verification.
 
-## Reproduce
+The formal run completed prediction and scoring in **20.289 seconds**, with **115.934 MiB** peak sampled process-tree RSS and **791.516 MiB** virtual memory. All **51 synthetic regression tests** passed. The formal [Linux reproduction](https://github.com/gy13687638535-design/DASE7506-MP3-SQL-Repair/actions/runs/43217148261) evaluates the canonical entry point. See [REPORT.md](REPORT.md) for the agent loop, controlled ablations, failure cases, runtime measurements, safety and assistance disclosure, and [DATA_PROVENANCE.md](DATA_PROVENANCE.md) for data access boundaries.
 
-Download the unchanged official [student package](https://xudongwu-0.github.io/courses/dase7506/mp3/downloads/MP3_SQL_student_package.zip?v=406d69507ccf).
-Its ZIP SHA-256 is `406d69507ccf955a53b35db1c1368bd7452565ebd928b47d0f6161fe35b99a61`.
-Extract it outside this repository; the dataset is intentionally not distributed here.
+## Reproduce on Linux
+
+Use Python 3.11 or 3.12. Download the unchanged [official student package](https://xudongwu-0.github.io/courses/dase7506/mp3/downloads/MP3_SQL_student_package.zip?v=406d69507ccf) and extract it outside this repository. Its ZIP SHA-256 is `406d69507ccf955a53b35db1c1368bd7452565ebd928b47d0f6161fe35b99a61`.
 
 ```bash
 python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
 PACKAGE=/absolute/path/to/MP3_SQL_student_package
+python -m pip install -r "$PACKAGE/requirements.txt" -r requirements.txt
 (cd "$PACKAGE" && python -m mp3_sql.check_data)
 PYTHONPATH="$PWD/submission" python -m unittest discover -s tests -v
-python scripts/reproduce.py --package "$PACKAGE" --split test --output-dir outputs/reproduced
+PYTHONPATH="$PWD/experiments/v2" python -m unittest discover -s experiments -p 'test_*.py' -v
+python scripts/reproduce.py --package "$PACKAGE" --split test --output-dir outputs/reproduced-test
 ```
 
-The runner invokes the unchanged official predictor and scorer with four workers,
-enforces a combined 180-second deadline, and records CPU/memory measurements
-separately. On Linux it restricts CPU affinity to at most four CPUs, imposes a
-2 GiB address-space ceiling per process, and checks aggregate process-tree VMS.
-Provision dependencies/data before running offline evaluation. Windows execution
-is supported for development, but its resource measurements have a narrower scope.
+Provision dependencies and data before offline evaluation. The wrapper invokes the unchanged official predictor and scorer with four workers, enforces a combined 180-second deadline, limits CPU affinity to at most four CPUs, applies a 2 GiB per-process address-space limit, and monitors aggregate process-tree virtual memory. It records resource measurements separately from the official score.
 
-To reproduce all validation comparisons:
+To reproduce the selected configuration and final controlled validation comparisons:
 
 ```bash
-python scripts/reproduce.py --package "$PACKAGE" --split validation --ablations --output-dir outputs/validation-reproduced
+python scripts/reproduce.py --package "$PACKAGE" --split validation --ablations --output-dir outputs/reproduced-validation
 ```
 
-Direct official commands, equivalent to the full-agent run:
+Equivalent direct official test commands, without the wrapper's resource monitoring:
 
 ```bash
-EXPORT=/absolute/path/to/this/repository
+EXPORT="$PWD"
+mkdir -p outputs/reproduced-test
 cd "$PACKAGE"
 PYTHONPATH="$EXPORT/submission" python -m mp3_sql.predict --split test --workers 4 \
   --method "$EXPORT/submission/submission.py" --checkpoint "$EXPORT/submission/config.json" \
-  --output "$EXPORT/outputs/test.json"
+  --output "$EXPORT/outputs/reproduced-test/test.json"
 python -m mp3_sql.score --split test --workers 4 \
-  --predictions "$EXPORT/outputs/test.json" --output "$EXPORT/outputs/test-score.json"
+  --predictions "$EXPORT/outputs/reproduced-test/test.json" \
+  --output "$EXPORT/outputs/reproduced-test/test-score.json"
 ```
 
-`outputs/test-score.json` is the complete, unmodified official score. The scorer
-replays the tool traces and checks all three instances for every one of 240 tasks.
-See `REPORT.md` for measured results, controlled ablations, failure analysis,
-security considerations and assistance disclosure.
+## Code and evidence
 
-## Contents
+```text
+submission/
+  submission.py       Decide the next official tool action and select checked SQL
+  repairs.py          Basic schema, projection, grouping and ordering repairs
+  semantic_repairs.py Semantic candidate generation and projection-reference repair
+  ranking.py          Fixed, untrained structural scoring among checked matches
+  config.json         Frozen selected configuration; no model weights
+outputs/              Canonical test predictions, score and runtime evidence
+experiments/          Validation comparisons, selection record and exploration history
+tests/                Synthetic protocol, safety and SQL regression tests
+scripts/reproduce.py  Official evaluator orchestration and resource measurements
+REPORT.md             Final method, results, limitations and reproduction details
+DATA_PROVENANCE.md    Dataset identity, permitted access and assistance disclosure
+```
 
-- `submission/`: portable agent, generic repair rules and ablation configurations.
-- `outputs/`: predictions, official scores and resource evidence.
-- `tests/`: synthetic protocol, safety and SQL transformation regression tests.
-- `scripts/reproduce.py`: evaluator orchestration and measurement; no agent imports it.
-- `.github/workflows/reproduce.yml`: Linux reproduction using the verified official ZIP.
-- `scripts/prepare_submission.mjs`: official form-compatible encrypted GitHub handoff.
-- `scripts/github_publish.py`: optional maintainer publication helper; not used in grading.
+The canonical implementation is a byte-for-byte promotion of the validation-selected `experiments/v2` candidate. [experiments/selection.json](experiments/selection.json) freezes its configuration and source hashes before the first v2 test. [The Chinese experiment report](experiments/README.md) explains the structure and all 15 configuration trials; its earlier exploration status is historical. Final submission evidence is identified by this README and `REPORT.md`.
 
-No benchmark database, grading reference, model weights, virtual environment,
-access token or task-specific SQL lookup is included in the source export.
-The final submission uses a GitHub archive URL pinned to the full source commit.
+The previous submission scored 175/240 (72.92%); v2 scores 182/240 (75.83%). The first comparison found eight formerly incorrect tasks repaired and one formerly correct task regressed. The prior immutable source commit, `7b6ba20f79a2731fc5b1db24888cfb8205c70476`, remains available for audit. This export and its GitHub issue use a new immutable source ZIP; the old issue and archive are retained as required by the course's update procedure.
 
-## 中文使用说明
+## 中文说明
 
-正式结果查看 `outputs/test-score.json`，方法与实验查看 `REPORT.md`。
-评分是 240 道题在三个数据库实例上全部正确的比例，不能用公开示例通过率替代。
-本项目不需要 GPU、API Key 或模型下载。报告公开披露了 Codex 开发辅助；
-代理运行时仅调用课程提供的工具，不能读取额外评分数据库或答案。
+本次正式版本为 v2：验证集 98/120，测试集 182/240。查看 `submission/` 理解代码，查看 `outputs/test-score.json` 核对官方成绩，按上面的命令复现。评分要求每题在三个数据库实例上都正确，公开示例通过不等于最终正确。没有训练模型，也没有模型权重检查点；配置文件只控制修复策略。
+
+课程要求更新成绩时创建新 Issue，排行榜采用截止前最高的可复现成绩，因此保留旧提交记录。提交仍属于学生自报成绩，课程方验证另行进行。
 
 ## Attribution
 
-Course specification: <https://xudongwu-0.github.io/courses/dase7506/mp3/>.
-Spider-derived benchmark and course modifications: CC BY-SA 4.0; see `NOTICE`.
-SQLGlot is MIT licensed. Shared cached hints are course-provided Qwen outputs;
-they are fallible suggestions, not trained weights or gold answers in this export.
+[Official project specification](https://xudongwu-0.github.io/courses/dase7506/mp3/PROJECT.md). Spider-derived data and course modifications retain CC BY-SA 4.0 attribution; see the official package `NOTICE`. SQLGlot is MIT licensed. OpenAI Codex assisted development, evaluation, documentation and submission preparation; the agent does not contact Codex during grading. No benchmark databases, model weights, virtual environments, caches or credentials are included in the source export.

@@ -1,7 +1,7 @@
 # Data and execution provenance
 
 Project: DASE7506 MP3 SQL Repair Agent. Student: Guo Yang, 3036797817.
-Source inspected on 10–11 November 2026. This file records benchmark provenance and access boundaries; it contains no grading answers.
+Source inspected on 10–12 November 2026; final v2 submission prepared on 12 November 2026. This file records benchmark provenance and access boundaries; it contains no grading answers.
 
 ## Exact benchmark release
 
@@ -67,6 +67,12 @@ OpenAI Codex provided development assistance with code, debugging, evaluation or
 
 The official environment, predictor, scorer, executor, task files, cache, and grading files remain unchanged. Agent configuration is separate under `submission/`; reproduced results and runtime records are written outside the official package. `scripts/reproduce.py` invokes the official command-line entry points and retains complete unmodified predictions and score output. Submission helper files under `scripts/official/` reproduce the website's public validation/encryption logic; they are never imported by the SQL agent.
 
-The canonical `outputs/test.json` and `outputs/test-score.json` are unchanged copies of the Linux run evaluated at implementation commit `32a7addf948ae132369c4b7a91549bccbc363f37`. The original Linux evidence is retained under `outputs/linux/`, and the separate Windows test run under `outputs/windows/`. Both runs agree on all final SQL strings and grading pass/fail flags, but intermediate feedback differs on two tasks. Linux traces were selected for the required Linux reproduction environment; no traces were merged or rewritten to hide platform differences. The full comparison and file hashes appear in `REPORT.md`.
+The canonical `outputs/test.json` and `outputs/test-score.json` are unchanged copies of the formal v2 Linux run evaluated at implementation commit `9c024db7bf5280bd7d731de4724909fb1bdc2e1a`. The matching runtime JSON and logs identify the exact environment and command paths. Their complete file hashes and run link are recorded in `REPORT.md`. No trace records were merged, manufactured or rewritten.
+
+V2 was selected using the five same-code validation comparisons in `experiments/results/validation-final*.json`. `experiments/selection.json` records the selected `final_no_composition` configuration and source hashes before its first test run. That frozen candidate was first evaluated at `6f3c2369d1987ae4b1cf2252e1971770fc507c32`, obtaining 182/240. The five canonical `submission/` source/configuration files are byte-for-byte copies of `experiments/v2/`; the formal-entry test is a packaging/reproduction check, not a new test-driven model choice. Earlier development configurations are historical trials, not all controlled comparisons on the final code.
+
+After freezing the candidate, the official per-task pass/fail flags were compared against v1 for reporting: eight newly correct, one newly incorrect, 174 correct in both and 57 wrong in both. No test SQL, failed-case contents or grading fingerprints were used to change the agent. Validation-failure analysis used permitted validation traces and scorer outcomes. Its case-level discussion in the report is not embedded in the runtime code.
+
+The original 175/240 v1 source and output files remain accessible at immutable commit `7b6ba20f79a2731fc5b1db24888cfb8205c70476` and in the retained v1 history where included. Its Windows/Linux comparison belongs to that historical version and is not evidence that all v2 Windows traces are portable. Canonical v2 predictions and score are taken from one Linux run.
 
 The publication receipt identifies the immutable source archive. The report records the evaluated implementation commit and the final test-score/prediction hashes. Runtime JSON includes environment-specific paths and measurements; no authentication tokens, private keys, database copies, virtual environments, or caches belong in the archive.

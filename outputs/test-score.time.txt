@@ -1,18 +1,18 @@
-	Command being timed: "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python -m mp3_sql.score --split test --workers 4 --predictions /home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/experiments/results/linux/test.json --output /home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/experiments/results/linux/test-score.json"
-	User time (seconds): 30.17
-	System time (seconds): 7.94
-	Percent of CPU this job got: 370%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.29
+	Command being timed: "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python -m mp3_sql.score --split test --workers 4 --predictions /home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/outputs/reproduced/test.json --output /home/runner/work/DASE7506-MP3-SQL-Repair/DASE7506-MP3-SQL-Repair/outputs/reproduced/test-score.json"
+	User time (seconds): 28.97
+	System time (seconds): 7.85
+	Percent of CPU this job got: 366%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.04
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 38252
+	Maximum resident set size (kbytes): 38168
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 1491
-	Minor (reclaiming a frame) page faults: 1984320
-	Voluntary context switches: 36086
-	Involuntary context switches: 8216
+	Major (requiring I/O) page faults: 2020
+	Minor (reclaiming a frame) page faults: 1986086
+	Voluntary context switches: 48615
+	Involuntary context switches: 8568
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 10344
