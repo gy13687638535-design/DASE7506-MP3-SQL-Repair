@@ -43,12 +43,12 @@ class RepairAgent:
         matches = [h for h in checked if h["observation"].get("matches_example")]
         weak = not any(cell is not None for row in observation["example"]["rows"] for cell in row)
         hints = [h for h in history if h["tool"] == "repair_hint"]
-        if matches and self.config["early_stop"] and not (
-                weak and self.config["verify_weak_matches"] and self.config["hints"] and
+        if matches and self.config["early_stop"] and not self.config.get("refine_matches") and not (
+                (self.config.get("verify_all_matches") or (weak and self.config["verify_weak_matches"])) and self.config["hints"] and
                 (not hints or len(checked) == 1)):
-            return {"tool": "submit", "sql": matches[-1]["sql"]}
+            return {"tool": "submit", "sql": self.choose(checked, original, observation)}
         if observation["remaining"] <= 0:
-            return {"tool": "submit", "sql": self.choose(checked, original)}
+            return {"tool": "submit", "sql": self.choose(checked, original, observation)}
         if self.config["hints"] and not hints:
             return {"tool": "repair_hint"}
         seen = {canonical(h["sql"]) for h in checked}
@@ -68,20 +68,61 @@ class RepairAgent:
         if self.config["repairs"]:
             from repairs import candidates
             for h in checked:
-                pool.extend(candidates(h["sql"], observation["task"]["question"],
-                                       h["observation"], observation["example"], schema))
+                edits = candidates(h["sql"], observation["task"]["question"],
+                                   h["observation"], observation["example"], schema)
+                if self.config.get("semantic"):
+                    from semantic_repairs import candidates as semantic_candidates
+                    edits.extend(semantic_candidates(h["sql"], observation["task"]["question"],
+                                                     h["observation"], observation["example"], schema))
+                for s, why, rank in edits:
+                    if self.config.get("projection_first") and why == "public_projection":
+                        rank += 30
+                    rank += self.config.get("recency_bonus", 0) * (checked.index(h) / max(1,len(checked)-1))
+                    pool.append((s,why,rank))
+        if self.config.get("compose_projection"):
+            from repairs import _projection
+            if self.config.get("safe_projection"):
+                from semantic_repairs import _alias_expanded_projection as _projection
+            composed = []
+            for s, why, rank in pool:
+                try:
+                    tree = sqlglot.parse_one(s, read='sqlite')
+                    fixed = _projection(tree, observation['example'], schema) if isinstance(tree, exp.Select) else None
+                    if fixed is not None:
+                        composed.append((fixed.sql(dialect='sqlite'), why + '/projection', rank + 20))
+                except Exception:
+                    pass
+            pool.extend(composed)
         pool = [(s, why, rank) for s, why, rank in pool if safe(s) and canonical(s) not in seen]
+        if matches and self.config.get("hint_only_pass"):
+            pool = [(s, why, rank) for s, why, rank in pool if why.startswith('hint')]
+        if self.config.get("quality_priority") or (matches and self.config.get("refine_matches")):
+            from ranking import quality
+            q = observation['task']['question']
+            example = observation['example']
+            if matches and self.config.get("refine_matches"):
+                best_quality = max(quality(h['sql'], q, example, schema) for h in matches)
+                pool = [(s, why, rank) for s, why, rank in pool
+                        if quality(s, q, example, schema) > best_quality + self.config.get('refine_margin', 0.75)]
+            pool = [(s, why, rank + self.config.get('quality_priority', 0) * quality(s,q,example,schema))
+                    for s,why,rank in pool]
         if pool:
             sql, _, _ = max(pool, key=lambda item: item[2])
             return {"tool": "check", "sql": sql}
+        if matches:
+            return {"tool":"submit", "sql":self.choose(checked,original,observation)}
         if self.config["repairs"] and self.config["schema"] and schema is None and observation["remaining"] >= 2:
             return {"tool": "schema"}
-        return {"tool": "submit", "sql": self.choose(checked, original)}
+        return {"tool": "submit", "sql": self.choose(checked, original, observation)}
 
-    @staticmethod
-    def choose(checked, original):
+    def choose(self, checked, original, observation):
         matches = [h for h in checked if h["observation"].get("matches_example")]
         if matches:
+            weak = not any(cell is not None for row in observation['example']['rows'] for cell in row)
+            if self.config.get('rank_matches') and (not weak or self.config.get('rank_weak')):
+                from ranking import quality
+                schema = next((h['observation'] for h in observation['history'] if h['tool']=='schema'),None)
+                return max(matches,key=lambda h:quality(h['sql'],observation['task']['question'],observation['example'],schema))['sql']
             return matches[-1]["sql"]
         executable = [h for h in checked if h["observation"].get("ok")]
         return executable[-1]["sql"] if executable else original

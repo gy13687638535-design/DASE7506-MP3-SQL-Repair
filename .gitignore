@@ -6,6 +6,11 @@ tmp/
 *.zip
 submission-receipt.json
 submission-handoff/
+submission-handoff-v2/
+submission-receipt-v1.json
+history/v1/outputs/validation-weak-hints*
+history/v1/outputs/validation-no-weak.json
+history/v1/outputs/validation-no-weak-score.json
 outputs/validation-weak-hints*
 outputs/validation-no-weak.json
 outputs/validation-no-weak-score.json

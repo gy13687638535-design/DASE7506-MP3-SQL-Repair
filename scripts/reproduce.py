@@ -217,7 +217,7 @@ def main():
     parser.add_argument('--split', choices=('validation', 'test'), default='test')
     parser.add_argument('--config', type=Path, default=ROOT / 'submission' / 'config.json')
     parser.add_argument('--ablations', action='store_true',
-                        help='Also run baseline and three controlled ablations (validation only)')
+                        help='Also run the five final-code configuration comparisons (validation only)')
     parser.add_argument('--timeout', type=float, default=180,
                         help='Combined prediction/scoring wall limit; at most 180 seconds')
     args = parser.parse_args()
@@ -236,10 +236,9 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     variants = [('full', config, False)]
     if args.ablations:
-        variants.extend([('baseline', config, True),
-                         ('no-repairs', ROOT / 'submission' / 'no_repairs.json', False),
-                         ('no-hints', ROOT / 'submission' / 'no_hints.json', False),
-                         ('no-weak-verification', ROOT / 'submission' / 'no_weak_verification.json', False)])
+        variants.extend((name, ROOT / 'experiments' / 'configs' / f'{name}.json', False)
+                        for name in ('final', 'final_no_semantic', 'final_no_verification',
+                                     'final_no_ranking', 'final_no_composition'))
     for name, variant_config, baseline in variants:
         print(f'Running {args.split}: {name}', flush=True)
         run_pair(package, output, args.split, name, variant_config, baseline, args.timeout)

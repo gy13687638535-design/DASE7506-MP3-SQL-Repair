@@ -1,0 +1,4590 @@
+{
+  "protocol": "dase7506-sql-repair-v1",
+  "n": 240,
+  "correct": 175,
+  "accuracy": 72.91666666666667,
+  "mean_tool_calls": 2.9625,
+  "per_question": [
+    {
+      "id": "test-a1c138edcf2741fa",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-ee6e041ce37b0054",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-538656ffa2ed1d48",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-60d6e08479b2f777",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-430318323ffb2861",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-954c6e7f23035d02",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-fa097b64a47cd1c2",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "test-b390adfd6719adf9",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-750c21e4ae9b7ad1",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": {
+            "type": "OperationalError",
+            "message": "no such column: Channel"
+          }
+        },
+        {
+          "passed": false,
+          "error": {
+            "type": "OperationalError",
+            "message": "no such column: Channel"
+          }
+        },
+        {
+          "passed": false,
+          "error": {
+            "type": "OperationalError",
+            "message": "no such column: Channel"
+          }
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "test-167f97f7d5a2eda6",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-61c75796a8275815",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-1e5854eaf74e8951",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "test-bddf12cdb47ca832",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-a2d3c742e0bdffaf",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-858439935458b795",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "test-d1afde5f87630d34",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-3ca9959d1a5c739e",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-98793321209fc4df",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-8f40a5b52b9370cf",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-17bd15e78a53335d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-533545540b097564",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-3c78700b4d9bbb59",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-b496cf1fb5c3bbcc",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-039cbbf7cfed4756",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-26074a9abc52da13",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-1aabd6d5b63a0052",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-e15658e8028920ba",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-999d5ac4f971dbcc",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-b1f839c226c6f90b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-6519a9a8c5a73d9d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-cd72991919cf7fa2",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-b2fb39ef5c9bd339",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-f63c8d6811ce4e19",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-a8c04993a7ad13cd",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-12c8f8aac106abc6",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-7210cedf22118106",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-3461e55dfc4762c2",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-291e16ffd0962474",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-60779be23ca4364e",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-4dce78cce1803039",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-45b26a2954c5243d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-c2264c7a7d0f4af9",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-d88e9951aef75895",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-b106976a1719a63f",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-38e3bc1e9f80f3f8",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-77f0891f4e1a27cf",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-3f0829971a326800",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-a5966282bc42b914",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-4f5d1b04d9de5aed",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-2267beacdbf2bc73",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-cd331f3cba426bea",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-574711dd6944dfd6",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "test-1832aa98b184bb9c",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-d251364ecf7e5c86",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-c6f070ffa1f41120",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-b3e96dc1302f0dc9",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-43689cbe73aa8738",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-c2e41338477b8b32",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-29fb575688847a8a",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-dd58a7dff9c982f6",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-dbd0a614cad98b46",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-92801683ca718176",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-6231ffa6dd91314c",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-a0a87f31df47b1b8",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-b3584cf86bfa038d",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "test-c51886fef2ae4a89",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-a821d5e40cab489b",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "test-eac84a793058952e",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-fc75c2ef50fca9b0",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-047b089faca61e12",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-ac16b8bc7e8897c3",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-a823ee5b5911dc97",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "test-bfbe17294cf72c8f",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-58731b57f02d3518",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-7d74e2e76e6f6f68",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-ac021e94a48a3601",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-a9601bc8da0bfa57",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-41e95a4382b5a381",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-5952e3b848c47c29",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-7027fc92932f1639",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 7
+    },
+    {
+      "id": "test-70b6504ede766492",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 7
+    },
+    {
+      "id": "test-07e9b67151606204",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-60772c12abe7a195",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-4806e31da8750422",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-1e1b5873af265ee5",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-c11428e57c965021",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-c24068af2f82d67b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-6ee8fc4e4a021be4",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-f3f0286945ea2ccf",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 7
+    },
+    {
+      "id": "test-60203037c57b72b4",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-45c32f6e350f35f4",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-e862c7ba561007a4",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "test-b6cfbc779f805fab",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-f4a5ec5fe50eae21",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-3cc4ebb971dc3959",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-6d9b9770e909b3bc",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-63a193b8d7b9bb43",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-9340d819880240a5",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-a2f36610c9c556c5",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-8e9c721daeee3706",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-5f486c11755e098d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-f9ee423b9cfcd416",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-3c88a936e051bbb4",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-a1bfbc487dc9c888",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-d7824905d10995a3",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-790630de56df8724",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-9d598f905573b7de",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-0d2e18c35ed71bd6",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-f145d8aa386e7211",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "test-da6c58c639dfa4b2",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-9b601c318d36be10",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-9d28865e72f216ff",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-932a66463aa1d03f",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-06b1a5464e729854",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-0fdc295cb00a221b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-dfe5b378c86e1dc4",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-738cfa133f53cc0f",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-aae297b3d8f88fc3",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-4e840d54f9535602",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-6b91020f8fe6249a",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-e21e27fd8f938f50",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-ca31272fcc1eae9f",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-17452a7f98a02c84",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "test-7b72d162c5630bd4",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-ecec80576b4cea07",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-954f150a8e76683d",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-dbbe15050125cf36",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-446b0d338b4877c5",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "test-738d561be8e537b4",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-38eace3241ebadf8",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-437441d03fd77a78",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-897d265c3b4a4650",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-09b06e6d2b8f0697",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-38784ed5e313c4fe",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-27f72c8c1d60b54c",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-516f6b296a76f1d9",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-395869eae4a7c34d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-1cf7b117ba0cdf0a",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-4d3abeb536913a96",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 7
+    },
+    {
+      "id": "test-0242fd57d15d97b8",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-e39ffe4c0093d469",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-0f2e72ca13523af3",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-3c2dc4f12fe6b6d1",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-e162a700a9af78bf",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-55b4f5ad27ee8fb2",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-04a7c33d7b7e492d",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-fa4dc0e1192a9f98",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-1e07a43ae53c765a",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-7574831b0d7f970e",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-941726a706caeec2",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-ea9b20d5be3c8968",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-66f119a08a386e37",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-3d626fd98bf1ad2b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-df759c7203207278",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-fec75cf14779c696",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-0fd3e79c9503cfda",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 7
+    },
+    {
+      "id": "test-e74356f7af3bfc0e",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-cedfe51cf7a3eeae",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-29422bbec9877658",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-2b945f68199483a3",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-297a77221f7cc12a",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-6d7f4197720b48a0",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-b5169b5791544911",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-317bf27d88f63088",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-5439594cccda7666",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "test-c85be037e6988183",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-29bd70564f4bcece",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-9d0333af61df8e61",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-278f2b91814004f4",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-0a7740c267cb6ed0",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-16725d4ec6edbbe0",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-35000d488b12dd27",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-cee3cded85440d0c",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-1f97cc01728786b5",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-9b5ba1c038d43c61",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-8767a866984b3660",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-26638bea5ca0e214",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 5
+    },
+    {
+      "id": "test-cbb4a16977299a25",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-e16527a909ee2636",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-8279805a0c470bed",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-cb4d204196b6daa9",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-f062e74c848cfdcf",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-c67f8ebf9f3b952b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-b347bdf78d8ca898",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-6325c7bc0f81c247",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-1da2a4b48be2e0d8",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-14bb58f69721ce02",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-2c89227ca6512cba",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-4dc3045ff002a9bb",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-9b813a630d93c370",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-185d13249868dc86",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-839d44c311c852d1",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-469f22a3a541ed03",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-ea750ea042a6230a",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-640483e38a8ea5d0",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-2055d867cad8eb30",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-a954ee743293f6e3",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-96b7a74db114f0bc",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-76f87a856639777d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-c3e9a50aa3f90855",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "test-4b536289723933f4",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-a34a835e6492c545",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-dd0d869b1db4e0c7",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-432848dee5f4c188",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-e1ba2ede53410444",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-e2705818840e9bc7",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-477f1ec7ebf850ad",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-88097c0399669366",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-a3fcde8bc5521960",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-09d2e526f093e00b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-131a8b88670d3718",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-19a86ac705aca208",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-8c612ad50b1b686e",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-483d18bc3b130c85",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-29e116074d055ece",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-6f9f93313ff665be",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-757dbd45d7456ade",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-6bc57359c1279f46",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-860426977626b57b",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-64f1f55f753279fa",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-e5601f0764aff44d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-cddf8495f77a1417",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-5b46366a07dbf0e1",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-b61fd5f32241bb53",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 4
+    },
+    {
+      "id": "test-3090afd7fef3111b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-754dd7ef450561d8",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-28e2dcd23684ad29",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-7bb0223864d56251",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-11a1b59b56b06e6f",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-b4586151616cfd77",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-3901f0bcf5ae219d",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-bf842c4555f302de",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 6
+    },
+    {
+      "id": "test-be30dba2f3e2f3da",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-5569c76b86e09542",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-8fa8d0a4a7fe0e9e",
+      "passed": false,
+      "cases": [
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": {
+            "type": "OperationalError",
+            "message": "disk I/O error"
+          }
+        },
+        {
+          "passed": false,
+          "error": null
+        }
+      ],
+      "tool_calls": 8
+    },
+    {
+      "id": "test-f3e5138df84f58af",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    },
+    {
+      "id": "test-92ae234774c950e0",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-b7412f2dfd256bc0",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-4e6198c6940dca9e",
+      "passed": false,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": false,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "test-45a5c1d51cd1a932",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 1
+    }
+  ],
+  "split": "test",
+  "benchmark": "spider-sql-repair-public-evaluation-v3",
+  "manifest_sha256": "bf7a517249ebe31b9cad8cbf5d6598fde98316d89f9aa1172cae3ad83289a6bc",
+  "bank_sha256": "598b1a072a47cdcf7308dc5646ae2bffd356390ab8df533510b69f2c884d712c",
+  "references_sha256": "8be5f2746ee324d6b4b880dd84a2f8de56fa540af08e93842c0476adec581506",
+  "scorer_sha256": "87870af26173fbe6d8994e4de179fb272ef1fadf7dcaafc2e7b4c814c61ec95b",
+  "executor_sha256": "4ecc3839728d68bd83f0d2a52cdd8392fd76dbaec3e54a19422118dee587b471",
+  "predictions_sha256": "4a72393678da88a7543c4c3743c01e6c776cc691ede7cf3bb67651f2b5d67b1e",
+  "scoring_seconds": 14.351303415000004
+}

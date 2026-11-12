@@ -329,7 +329,7 @@
     },
     {
       "id": "validation-bb46eb4c224f4193",
-      "sql": "SELECT Organizations.organization_name\nFROM Organizations\nORDER BY date_formed ASC;",
+      "sql": "SELECT organization_name\nFROM Organizations\nORDER BY date_formed ASC;",
       "trace": [
         {
           "tool": "check",
@@ -354,11 +354,42 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT organization_name\nFROM Organizations\nORDER BY date_formed ASC;",
+            "SELECT organization_name\nFROM Organizations\nORDER BY date_formed ASC;",
+            "SELECT organization_name\nFROM Organizations\nORDER BY date_formed ASC;",
+            "SELECT organization_name\nFROM Organizations\nORDER BY date_formed ASC;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT organization_name\nFROM Organizations\nORDER BY date_formed ASC;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "organization_name"
+            ],
+            "rows": [
+              [
+                "Green Party"
+              ],
+              [
+                "Liberal Democrats"
+              ]
+            ],
+            "row_count": 2,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT Organizations.organization_name\nFROM Organizations\nORDER BY date_formed ASC;"
+          "sql": "SELECT organization_name\nFROM Organizations\nORDER BY date_formed ASC;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-fff3bd324494b9bb",
@@ -384,11 +415,39 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT AVG(CAST(Speed AS REAL)) AS Average_Speed\nFROM roller_coaster;",
+            "SELECT AVG(CAST(Speed AS REAL)) AS Average_Speed\nFROM roller_coaster;",
+            "SELECT AVG(CAST(Speed AS REAL)) AS Average_Speed\nFROM roller_coaster;",
+            "SELECT AVG(CAST(Speed AS REAL)) AS Average_Speed\nFROM roller_coaster;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT AVG(CAST(Speed AS REAL)) AS Average_Speed\nFROM roller_coaster;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Average_Speed"
+            ],
+            "rows": [
+              [
+                51.0
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT AVG(Roller_Coaster.Speed) AS Average_Speed\nFROM roller_coaster;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-cf4f7eb157c5f56f",
@@ -429,15 +488,24 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Name FROM artwork ORDER BY Name ASC;",
+            "SELECT Name FROM artwork ORDER BY Name ASC;",
+            "SELECT Name FROM artwork ORDER BY Name ASC;",
+            "SELECT Name FROM artwork ORDER BY Name ASC;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Name FROM artwork ORDER BY Name ASC;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-6d8add77db18ef60",
-      "sql": "SELECT program.Name\nFROM program\nWHERE program.Program_ID IN (\n    SELECT broadcast.Program_ID\n    FROM broadcast\n    JOIN broadcast_share ON broadcast.Program_ID = broadcast_share.Program_ID\n    ORDER BY broadcast.Time_of_day DESC\n    LIMIT 1\n);",
+      "sql": "SELECT program.Name\nFROM program\nORDER BY program.Launch DESC\nLIMIT 1;",
       "trace": [
         {
           "tool": "check",
@@ -459,11 +527,39 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT program.Name\nFROM program\nORDER BY program.Launch DESC\nLIMIT 1;",
+            "SELECT Name\nFROM program\nORDER BY Launch DESC\nLIMIT 1;",
+            "SELECT program.Name\nFROM program\nORDER BY program.Launch DESC\nLIMIT 1;",
+            "SELECT program.Name\nFROM program\nORDER BY program.Launch DESC\nLIMIT 1;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT program.Name\nFROM program\nORDER BY program.Launch DESC\nLIMIT 1;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              [
+                "Aniworld"
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT program.Name\nFROM program\nWHERE program.Program_ID IN (\n    SELECT broadcast.Program_ID\n    FROM broadcast\n    JOIN broadcast_share ON broadcast.Program_ID = broadcast_share.Program_ID\n    ORDER BY broadcast.Time_of_day DESC\n    LIMIT 1\n);"
+          "sql": "SELECT program.Name\nFROM program\nORDER BY program.Launch DESC\nLIMIT 1;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-83b76ccf03ae3d7a",
@@ -489,15 +585,24 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT COUNT(*) AS total_customers\nFROM Customers;",
+            "SELECT COUNT(*) AS total_customers\nFROM Customers;",
+            "SELECT COUNT(*) AS total_customers\nFROM Customers;",
+            "SELECT COUNT(*) AS total_customers\nFROM Customers;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT COUNT(*) AS total_customers\nFROM Customers;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-1e5f20eb954308a2",
-      "sql": "SELECT church.Name, church.Open_Date, church.Organized_by\nFROM church;",
+      "sql": "SELECT Name, Open_Date, Organized_by FROM church;",
       "trace": [
         {
           "tool": "check",
@@ -538,11 +643,58 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Name, Open_Date, Organized_by FROM church;",
+            "SELECT Name, Open_Date, Organized_by\nFROM church;",
+            "SELECT Name, Open_Date, Organized_by FROM church;",
+            "SELECT Name, Open_Date, Organized_by FROM church;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT Name, Open_Date, Organized_by FROM church;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Name",
+              "Open_Date",
+              "Organized_by"
+            ],
+            "rows": [
+              [
+                "Pure Church of Christ",
+                1831,
+                "Wycam Clark"
+              ],
+              [
+                "Church of Jesus Christ, the Bride, the Lamb's Wife",
+                1840,
+                "George M. Hinkle"
+              ],
+              [
+                "Church of Christ",
+                1842,
+                "Hiram Page"
+              ],
+              [
+                "True Church of Jesus Christ of Latter Day Saints",
+                1844,
+                "William Law"
+              ]
+            ],
+            "row_count": 4,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT church.Name, church.Open_Date, church.Organized_by\nFROM church;"
+          "sql": "SELECT Name, Open_Date, Organized_by FROM church;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-60551b2217de7d97",
@@ -578,11 +730,20 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Category, COUNT(*) AS Count\nFROM book_club\nGROUP BY Category;",
+            "SELECT Category, COUNT(*) AS Count\nFROM book_club\nGROUP BY Category;",
+            "SELECT Category, COUNT(*) AS Count\nFROM book_club\nGROUP BY Category;",
+            "SELECT Category, COUNT(*) AS Count\nFROM book_club\nGROUP BY Category;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Category, COUNT(*) AS Count\nFROM book_club\nGROUP BY Category;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-52bfe326b751abaf",
@@ -614,472 +775,15 @@
           ]
         },
         {
-          "tool": "schema",
-          "observation": [
-            {
-              "name": "Accounts",
-              "columns": [
-                {
-                  "name": "account_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "customer_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "date_account_opened",
-                  "type": "DATETIME",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "account_name",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "other_account_details",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Customers",
-                  "from": "customer_id",
-                  "to": "customer_id"
-                }
-              ]
-            },
-            {
-              "name": "Customers",
-              "columns": [
-                {
-                  "name": "customer_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "customer_first_name",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "customer_middle_initial",
-                  "type": "VARCHAR(1)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "customer_last_name",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "gender",
-                  "type": "VARCHAR(1)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "email_address",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "login_name",
-                  "type": "VARCHAR(80)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "login_password",
-                  "type": "VARCHAR(20)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "phone_number",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "town_city",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "state_county_province",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "country",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": []
-            },
-            {
-              "name": "Financial_Transactions",
-              "columns": [
-                {
-                  "name": "transaction_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "account_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "invoice_number",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "transaction_type",
-                  "type": "VARCHAR(15)",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "transaction_date",
-                  "type": "DATETIME",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "transaction_amount",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "transaction_comment",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "other_transaction_details",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Accounts",
-                  "from": "account_id",
-                  "to": "account_id"
-                },
-                {
-                  "table": "Invoices",
-                  "from": "invoice_number",
-                  "to": "invoice_number"
-                }
-              ]
-            },
-            {
-              "name": "Invoice_Line_Items",
-              "columns": [
-                {
-                  "name": "order_item_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "invoice_number",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "product_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "product_title",
-                  "type": "VARCHAR(80)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "product_quantity",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "product_price",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "derived_product_cost",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "derived_vat_payable",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "derived_total_cost",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Products",
-                  "from": "product_id",
-                  "to": "product_id"
-                },
-                {
-                  "table": "Invoices",
-                  "from": "invoice_number",
-                  "to": "invoice_number"
-                },
-                {
-                  "table": "Order_Items",
-                  "from": "order_item_id",
-                  "to": "order_item_id"
-                }
-              ]
-            },
-            {
-              "name": "Invoices",
-              "columns": [
-                {
-                  "name": "invoice_number",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "order_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "invoice_date",
-                  "type": "DATETIME",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Orders",
-                  "from": "order_id",
-                  "to": "order_id"
-                }
-              ]
-            },
-            {
-              "name": "Order_Items",
-              "columns": [
-                {
-                  "name": "order_item_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "order_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "product_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "product_quantity",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "other_order_item_details",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Orders",
-                  "from": "order_id",
-                  "to": "order_id"
-                },
-                {
-                  "table": "Products",
-                  "from": "product_id",
-                  "to": "product_id"
-                }
-              ]
-            },
-            {
-              "name": "Orders",
-              "columns": [
-                {
-                  "name": "order_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "customer_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "date_order_placed",
-                  "type": "DATETIME",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "order_details",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Customers",
-                  "from": "customer_id",
-                  "to": "customer_id"
-                }
-              ]
-            },
-            {
-              "name": "Product_Categories",
-              "columns": [
-                {
-                  "name": "production_type_code",
-                  "type": "VARCHAR(15)",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "product_type_description",
-                  "type": "VARCHAR(80)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "vat_rating",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": []
-            },
-            {
-              "name": "Products",
-              "columns": [
-                {
-                  "name": "product_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "parent_product_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "production_type_code",
-                  "type": "VARCHAR(15)",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "unit_price",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "product_name",
-                  "type": "VARCHAR(80)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "product_color",
-                  "type": "VARCHAR(20)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "product_size",
-                  "type": "VARCHAR(20)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Product_Categories",
-                  "from": "production_type_code",
-                  "to": "production_type_code"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "tool": "submit",
           "sql": "SELECT transaction_type, SUM(transaction_amount) AS total_amount\nFROM Financial_Transactions\nGROUP BY transaction_type;"
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 2
     },
     {
       "id": "validation-9a3d5d1c1dfe328b",
-      "sql": "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id, Benefits_Overpayments.council_tax_id FROM Benefits_Overpayments JOIN Business_Rates ON Benefits_Overpayments.cmi_cross_ref_id = Business_Rates.cmi_cross_ref_id JOIN CMI_Cross_References ON Business_Rates.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id JOIN Parking_Fines ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id JOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id WHERE Parking_Fines.council_tax_id = 1",
+      "sql": "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id, Parking_Fines.council_tax_id FROM Parking_Fines JOIN CMI_Cross_References ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id JOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id",
       "trace": [
         {
           "tool": "check",
@@ -1105,22 +809,6 @@
             "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id\nFROM Parking_Fines\nJOIN CMI_Cross_References ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\nJOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id;",
             "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id\nFROM Parking_Fines\nJOIN CMI_Cross_References ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\nJOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id;"
           ]
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id\nFROM Parking_Fines\nJOIN CMI_Cross_References ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\nJOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id;",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "source_system_code",
-              "master_customer_id"
-            ],
-            "rows": [],
-            "row_count": 0,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
         },
         {
           "tool": "check",
@@ -1337,7 +1025,23 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id, Benefits_Overpayments.council_tax_id FROM Benefits_Overpayments JOIN Business_Rates ON Benefits_Overpayments.cmi_cross_ref_id = Business_Rates.cmi_cross_ref_id JOIN CMI_Cross_References ON Business_Rates.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id JOIN Parking_Fines ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id JOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id WHERE Parking_Fines.council_tax_id = 1",
+          "sql": "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id\nFROM Parking_Fines\nJOIN CMI_Cross_References ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\nJOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "source_system_code",
+              "master_customer_id"
+            ],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id, Parking_Fines.council_tax_id FROM Parking_Fines JOIN CMI_Cross_References ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id JOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id",
           "observation": {
             "ok": true,
             "columns": [
@@ -1354,7 +1058,7 @@
         },
         {
           "tool": "submit",
-          "sql": "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id, Benefits_Overpayments.council_tax_id FROM Benefits_Overpayments JOIN Business_Rates ON Benefits_Overpayments.cmi_cross_ref_id = Business_Rates.cmi_cross_ref_id JOIN CMI_Cross_References ON Business_Rates.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id JOIN Parking_Fines ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id JOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id WHERE Parking_Fines.council_tax_id = 1"
+          "sql": "SELECT CMI_Cross_References.source_system_code, Customer_Master_Index.master_customer_id, Parking_Fines.council_tax_id FROM Parking_Fines JOIN CMI_Cross_References ON Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id JOIN Customer_Master_Index ON CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id"
         }
       ],
       "tool_calls": 6
@@ -1393,22 +1097,6 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT good_or_bad_customer, COUNT(*) AS count\nFROM Customers\nWHERE coupon_id IN (\n    SELECT coupon_id\n    FROM Discount_Coupons\n    WHERE coupon_amount = 500\n)\nGROUP BY good_or_bad_customer;",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "good_or_bad_customer",
-              "count"
-            ],
-            "rows": [],
-            "row_count": 0,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
           "sql": "SELECT good_or_bad_customer FROM Customers WHERE good_or_bad_customer = 'bad'",
           "observation": {
             "ok": true,
@@ -1424,6 +1112,22 @@
               ]
             ],
             "row_count": 2,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT good_or_bad_customer, COUNT(*) AS count\nFROM Customers\nWHERE coupon_id IN (\n    SELECT coupon_id\n    FROM Discount_Coupons\n    WHERE coupon_amount = 500\n)\nGROUP BY good_or_bad_customer;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "good_or_bad_customer",
+              "count"
+            ],
+            "rows": [],
+            "row_count": 0,
             "truncated": false,
             "error": null,
             "matches_example": false
@@ -2419,11 +2123,20 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT wrestler.Name, elimination.Elimination_Move\nFROM wrestler\nJOIN elimination ON wrestler.Wrestler_ID = elimination.Wrestler_ID;",
+            "SELECT wrestler.Name, elimination.Elimination_Move\nFROM wrestler\nJOIN elimination ON wrestler.Wrestler_ID = elimination.Wrestler_ID;",
+            "SELECT wrestler.Name, elimination.Elimination_Move\nFROM wrestler\nJOIN elimination ON wrestler.Wrestler_ID = elimination.Wrestler_ID;",
+            "SELECT wrestler.Name, elimination.Elimination_Move\nFROM wrestler\nJOIN elimination ON wrestler.Wrestler_ID = elimination.Wrestler_ID;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT wrestler.Name, elimination.Elimination_Move\nFROM wrestler\nJOIN elimination ON wrestler.Wrestler_ID = elimination.Wrestler_ID;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-ab68d815813fb4b7",
@@ -2449,11 +2162,39 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT DISTINCT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE journal.Sales > 3000;",
+            "SELECT DISTINCT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE journal.Sales > 3000;",
+            "SELECT DISTINCT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE journal.Sales > 3000;",
+            "SELECT DISTINCT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE journal.Sales > 3000;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT DISTINCT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE journal.Sales > 3000;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              [
+                "Kamila Porczyk"
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT editor.Name\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE journal.Sales > 3000;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-2feff7a83ef167ff",
@@ -2479,11 +2220,20 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT COUNT(DISTINCT student_id) AS distinct_students\nFROM Student_Course_Enrolment",
+            "SELECT COUNT(DISTINCT student_id) AS distinct_students\nFROM Student_Course_Enrolment",
+            "SELECT COUNT(DISTINCT student_id) AS distinct_students\nFROM Student_Course_Enrolment",
+            "SELECT COUNT(DISTINCT student_id) AS distinct_students\nFROM Student_Course_Enrolment"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT COUNT(DISTINCT student_id) AS distinct_students\nFROM Student_Course_Enrolment"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-a75b7764fcacce68",
@@ -2896,11 +2646,20 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT name\nFROM club\nORDER BY name DESC;",
+            "SELECT name\nFROM club\nORDER BY name DESC;",
+            "SELECT name\nFROM club\nORDER BY name DESC;",
+            "SELECT name\nFROM club\nORDER BY name DESC;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT name\nFROM club\nORDER BY name DESC;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-f76a31ffe49ff88d",
@@ -2926,11 +2685,39 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT i.individual_last_name\nFROM Individuals i\nJOIN Organization_Contact_Individuals oci ON i.individual_id = oci.individual_id\nJOIN Organizations o ON oci.organization_id = o.organization_id\nWHERE o.uk_vat_number = (SELECT MAX(uk_vat_number) FROM Organizations)\nORDER BY oci.date_contact_from\nLIMIT 1;",
+            "SELECT i.individual_last_name\nFROM Individuals i\nJOIN Organization_Contact_Individuals oci ON i.individual_id = oci.individual_id\nJOIN Organizations o ON oci.organization_id = o.organization_id\nWHERE o.uk_vat_number = (SELECT MAX(uk_vat_number) FROM Organizations)\nORDER BY oci.date_contact_from\nLIMIT 1;",
+            "SELECT i.individual_last_name\nFROM Individuals i\nJOIN Organization_Contact_Individuals oci ON i.individual_id = oci.individual_id\nJOIN Organizations o ON oci.organization_id = o.organization_id\nWHERE o.uk_vat_number = (SELECT MAX(uk_vat_number) FROM Organizations)\nORDER BY oci.date_contact_from\nLIMIT 1;",
+            "SELECT i.individual_last_name\nFROM Individuals i\nJOIN Organization_Contact_Individuals oci ON i.individual_id = oci.individual_id\nJOIN Organizations o ON oci.organization_id = o.organization_id\nWHERE o.uk_vat_number = (\n    SELECT MAX(uk_vat_number)\n    FROM Organizations\n)\nORDER BY i.individual_id\nLIMIT 1;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT i.individual_last_name\nFROM Individuals i\nJOIN Organization_Contact_Individuals oci ON i.individual_id = oci.individual_id\nJOIN Organizations o ON oci.organization_id = o.organization_id\nWHERE o.uk_vat_number = (SELECT MAX(uk_vat_number) FROM Organizations)\nORDER BY oci.date_contact_from\nLIMIT 1;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "individual_last_name"
+            ],
+            "rows": [
+              [
+                "Schuster"
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT individual_last_name\nFROM Individuals\nJOIN Organization_Contact_Individuals ON Individuals.individual_id = Organization_Contact_Individuals.individual_id\nJOIN Organizations ON Organization_Contact_Individuals.organization_id = Organizations.organization_id\nWHERE Organizations.uk_vat_number = (SELECT MAX(uk_vat_number) FROM Organizations);"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-61511bf35997c117",
@@ -3024,11 +2811,20 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Type, COUNT(*) AS Number_of_Artworks\nFROM artwork\nGROUP BY Type;",
+            "SELECT Type, COUNT(*) AS Number_of_Artworks\nFROM artwork\nGROUP BY Type;",
+            "SELECT Type, COUNT(*) AS Number_of_Artworks\nFROM artwork\nGROUP BY Type;",
+            "SELECT Type, COUNT(*) AS Number_of_Artworks\nFROM artwork\nGROUP BY Type;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Type, COUNT(*) AS Number_of_Artworks\nFROM artwork\nGROUP BY Type;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-f1a67e3024ea10f2",
@@ -3087,7 +2883,7 @@
     },
     {
       "id": "validation-ed6f64d1f362df5a",
-      "sql": "SELECT COUNT(DISTINCT Customers.payment_method)\nFROM Customers;",
+      "sql": "SELECT COUNT(DISTINCT payment_method)\nFROM Customers;",
       "trace": [
         {
           "tool": "check",
@@ -3109,15 +2905,43 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT COUNT(DISTINCT payment_method)\nFROM Customers;",
+            "SELECT COUNT(DISTINCT payment_method)\nFROM Customers;",
+            "SELECT COUNT(DISTINCT payment_method)\nFROM Customers;",
+            "SELECT COUNT(DISTINCT payment_method)\nFROM Customers;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT COUNT(DISTINCT payment_method)\nFROM Customers;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "COUNT(DISTINCT payment_method)"
+            ],
+            "rows": [
+              [
+                4
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT COUNT(DISTINCT Customers.payment_method)\nFROM Customers;"
+          "sql": "SELECT COUNT(DISTINCT payment_method)\nFROM Customers;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-fad437395e6b6486",
-      "sql": "SELECT church.Name\nFROM church\nORDER BY church.Open_Date DESC;",
+      "sql": "SELECT Name\nFROM church\nORDER BY Open_Date DESC;",
       "trace": [
         {
           "tool": "check",
@@ -3148,11 +2972,48 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Name\nFROM church\nORDER BY Open_Date DESC;",
+            "SELECT Name\nFROM church\nORDER BY Open_Date DESC;",
+            "SELECT Name\nFROM church\nORDER BY Open_Date DESC;",
+            "SELECT Name\nFROM church\nORDER BY Open_Date DESC;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT Name\nFROM church\nORDER BY Open_Date DESC;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              [
+                "True Church of Jesus Christ of Latter Day Saints"
+              ],
+              [
+                "Church of Christ"
+              ],
+              [
+                "Church of Jesus Christ, the Bride, the Lamb's Wife"
+              ],
+              [
+                "Pure Church of Christ"
+              ]
+            ],
+            "row_count": 4,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT church.Name\nFROM church\nORDER BY church.Open_Date DESC;"
+          "sql": "SELECT Name\nFROM church\nORDER BY Open_Date DESC;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-30b61a74da23f747",
@@ -3208,7 +3069,7 @@
     },
     {
       "id": "validation-889009eee36761d6",
-      "sql": "SELECT DISTINCT transaction_id FROM Financial_Transactions WHERE transaction_amount > (SELECT AVG(transaction_amount) FROM Financial_Transactions)",
+      "sql": "SELECT transaction_id\nFROM Financial_Transactions\nWHERE transaction_amount > (SELECT AVG(transaction_amount) FROM Financial_Transactions);",
       "trace": [
         {
           "tool": "check",
@@ -3235,26 +3096,11 @@
           ]
         },
         {
-          "tool": "check",
-          "sql": "SELECT DISTINCT transaction_id FROM Financial_Transactions WHERE transaction_amount > (SELECT AVG(transaction_amount) FROM Financial_Transactions)",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "transaction_id"
-            ],
-            "rows": [],
-            "row_count": 0,
-            "truncated": false,
-            "error": null,
-            "matches_example": true
-          }
-        },
-        {
           "tool": "submit",
-          "sql": "SELECT DISTINCT transaction_id FROM Financial_Transactions WHERE transaction_amount > (SELECT AVG(transaction_amount) FROM Financial_Transactions)"
+          "sql": "SELECT transaction_id\nFROM Financial_Transactions\nWHERE transaction_amount > (SELECT AVG(transaction_amount) FROM Financial_Transactions);"
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 2
     },
     {
       "id": "validation-3625496ea0b7be64",
@@ -3309,7 +3155,7 @@
     },
     {
       "id": "validation-15c0ae475aa5b12c",
-      "sql": "SELECT Customers.customer_id, Payments.amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nORDER BY Payments.amount_paid DESC\nLIMIT 1;",
+      "sql": "SELECT Customers.customer_id, SUM(Payments.amount_paid) AS total_amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nGROUP BY Customers.customer_id\nORDER BY total_amount_paid DESC\nLIMIT 1;",
       "trace": [
         {
           "tool": "check",
@@ -3333,11 +3179,41 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Customers.customer_id, SUM(Payments.amount_paid) AS total_amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nGROUP BY Customers.customer_id\nORDER BY total_amount_paid DESC\nLIMIT 1;",
+            "SELECT Customers.customer_id, SUM(Payments.amount_paid) AS total_amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nGROUP BY Customers.customer_id\nORDER BY total_amount_paid DESC\nLIMIT 1;",
+            "SELECT Customers.customer_id, SUM(Payments.amount_paid) AS total_amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nGROUP BY Customers.customer_id\nORDER BY total_amount_paid DESC\nLIMIT 1;",
+            "SELECT Customers.customer_id, SUM(Payments.amount_paid) AS total_amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nGROUP BY Customers.customer_id\nORDER BY total_amount_paid DESC\nLIMIT 1;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT Customers.customer_id, SUM(Payments.amount_paid) AS total_amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nGROUP BY Customers.customer_id\nORDER BY total_amount_paid DESC\nLIMIT 1;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "customer_id",
+              "total_amount_paid"
+            ],
+            "rows": [
+              [
+                15,
+                464.06
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT Customers.customer_id, Payments.amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nORDER BY Payments.amount_paid DESC\nLIMIT 1;"
+          "sql": "SELECT Customers.customer_id, SUM(Payments.amount_paid) AS total_amount_paid\nFROM Customers\nJOIN Payments ON Customers.customer_id = Payments.customer_id\nGROUP BY Customers.customer_id\nORDER BY total_amount_paid DESC\nLIMIT 1;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-085ce3159bf51a4d",
@@ -3419,7 +3295,7 @@
     },
     {
       "id": "validation-5cca36d225fdead7",
-      "sql": "SELECT DISTINCT customer_id\nFROM Customer_Orders\nWHERE order_date > (SELECT MAX(order_date) FROM Customer_Orders WHERE order_status_code = 'Cancelled')",
+      "sql": "SELECT DISTINCT co.customer_id\nFROM Customer_Orders co\nWHERE EXISTS (\n    SELECT 1\n    FROM Customer_Orders co2\n    WHERE co2.order_status_code = 'Cancelled'\n    AND co.order_date > co2.order_date\n)",
       "trace": [
         {
           "tool": "check",
@@ -3447,15 +3323,49 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT DISTINCT co.customer_id\nFROM Customer_Orders co\nWHERE EXISTS (\n    SELECT 1\n    FROM Customer_Orders co2\n    WHERE co2.order_status_code = 'Cancelled'\n    AND co.order_date > co2.order_date\n)",
+            "SELECT DISTINCT co.customer_id\nFROM Customer_Orders co\nWHERE EXISTS (\n    SELECT 1\n    FROM Customer_Orders co2\n    WHERE co2.order_status_code = 'Cancelled'\n    AND co.order_date > co2.order_date\n)",
+            "SELECT DISTINCT co.customer_id\nFROM Customer_Orders co\nWHERE EXISTS (\n    SELECT 1\n    FROM Customer_Orders co2\n    WHERE co2.order_status_code = 'Cancelled'\n      AND co.order_date > co2.order_date\n)",
+            "SELECT DISTINCT co.customer_id\nFROM Customer_Orders co\nWHERE EXISTS (\n    SELECT 1\n    FROM Customer_Orders co2\n    WHERE co2.order_status_code = 'Cancelled'\n    AND co.order_date > co2.order_date\n)"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT DISTINCT co.customer_id\nFROM Customer_Orders co\nWHERE EXISTS (\n    SELECT 1\n    FROM Customer_Orders co2\n    WHERE co2.order_status_code = 'Cancelled'\n    AND co.order_date > co2.order_date\n)",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "customer_id"
+            ],
+            "rows": [
+              [
+                1
+              ],
+              [
+                4
+              ],
+              [
+                6
+              ]
+            ],
+            "row_count": 3,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT DISTINCT customer_id\nFROM Customer_Orders\nWHERE order_date > (SELECT MAX(order_date) FROM Customer_Orders WHERE order_status_code = 'Cancelled')"
+          "sql": "SELECT DISTINCT co.customer_id\nFROM Customer_Orders co\nWHERE EXISTS (\n    SELECT 1\n    FROM Customer_Orders co2\n    WHERE co2.order_status_code = 'Cancelled'\n    AND co.order_date > co2.order_date\n)"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-2c892f2ef042cedd",
-      "sql": "SELECT COUNT(*) AS song_count FROM song JOIN files ON song.artist_name = files.artist_name WHERE files.duration = '4'",
+      "sql": "SELECT COUNT(*) AS song_count FROM song JOIN files ON song.f_id = files.f_id WHERE CAST(files.duration AS REAL) = 4",
       "trace": [
         {
           "tool": "check",
@@ -3498,6 +3408,22 @@
             "row_count": 1,
             "truncated": false,
             "error": null,
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT COUNT(*) AS song_count FROM song WHERE CAST(duration AS REAL) = 4",
+          "observation": {
+            "ok": false,
+            "columns": [],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": {
+              "type": "OperationalError",
+              "message": "no such column: duration"
+            },
             "matches_example": false
           }
         },
@@ -3686,7 +3612,7 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT COUNT(*) AS song_count FROM song WHERE song.rating = '4'",
+          "sql": "SELECT COUNT(*) AS song_count FROM song JOIN files ON song.f_id = files.f_id WHERE CAST(files.duration AS REAL) = 4",
           "observation": {
             "ok": true,
             "columns": [
@@ -3694,37 +3620,18 @@
             ],
             "rows": [
               [
-                0
+                3
               ]
             ],
             "row_count": 1,
             "truncated": false,
             "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT COUNT(*) AS song_count FROM song JOIN files ON song.artist_name = files.artist_name WHERE files.duration = '4'",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "song_count"
-            ],
-            "rows": [
-              [
-                0
-              ]
-            ],
-            "row_count": 1,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
+            "matches_example": true
           }
         },
         {
           "tool": "submit",
-          "sql": "SELECT COUNT(*) AS song_count FROM song JOIN files ON song.artist_name = files.artist_name WHERE files.duration = '4'"
+          "sql": "SELECT COUNT(*) AS song_count FROM song JOIN files ON song.f_id = files.f_id WHERE CAST(files.duration AS REAL) = 4"
         }
       ],
       "tool_calls": 6
@@ -3774,15 +3681,64 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT w.Name\nFROM wrestler w\nORDER BY CAST(w.Days_held AS INTEGER) DESC;",
+            "SELECT w.Name\nFROM wrestler w\nORDER BY CAST(w.Days_held AS INTEGER) DESC;",
+            "SELECT w.Name\nFROM wrestler w\nORDER BY CAST(w.Days_held AS INTEGER) DESC;",
+            "SELECT w.Name\nFROM wrestler w\nORDER BY CAST(w.Days_held AS INTEGER) DESC;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT w.Name\nFROM wrestler w\nORDER BY CAST(w.Days_held AS INTEGER) DESC;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              [
+                "Villaño IV"
+              ],
+              [
+                "Gran Hamada"
+              ],
+              [
+                "Rey Misterio Sr."
+              ],
+              [
+                "Fishman"
+              ],
+              [
+                "The Great Sasuke §"
+              ],
+              [
+                "Shinjiro Otani §"
+              ],
+              [
+                "El Samurai §"
+              ],
+              [
+                "El Samurai"
+              ]
+            ],
+            "row_count": 8,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Name\nFROM wrestler\nORDER BY Days_held DESC;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-4b4f8024a5980978",
-      "sql": "SELECT editor.Name\nFROM editor\nWHERE editor.Age > 25;",
+      "sql": "SELECT Name\nFROM editor\nWHERE Age > 25;",
       "trace": [
         {
           "tool": "check",
@@ -3807,11 +3763,42 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT editor.Name\nFROM editor\nWHERE editor.Age > 25;",
+            "SELECT editor.Name\nFROM editor\nWHERE editor.Age > 25;",
+            "SELECT Name\nFROM editor\nWHERE Age > 25;",
+            "SELECT Name\nFROM editor\nWHERE Age > 25;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT Name\nFROM editor\nWHERE Age > 25;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              [
+                "Kamila Porczyk"
+              ],
+              [
+                "Anna Powierza"
+              ]
+            ],
+            "row_count": 2,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT editor.Name\nFROM editor\nWHERE editor.Age > 25;"
+          "sql": "SELECT Name\nFROM editor\nWHERE Age > 25;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-f1ea6b8f0e7f285d",
@@ -3867,7 +3854,7 @@
     },
     {
       "id": "validation-e3956a7be9311093",
-      "sql": "SELECT AVG(S.Age) AS avg_age, MAX(S.Age) AS max_age, S.Sex\nFROM Student S\nGROUP BY S.Sex;",
+      "sql": "SELECT AVG(Age) AS avg_age, MAX(Age) AS max_age, Sex FROM Student GROUP BY Sex",
       "trace": [
         {
           "tool": "check",
@@ -3901,6 +3888,29 @@
         },
         {
           "tool": "check",
+          "sql": "SELECT AVG(S.Age), MAX(S.Age) AS MaxAge, Sex FROM Student AS S WHERE S.Sex IN ('M', 'F')",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "AVG(S.Age)",
+              "MaxAge",
+              "Sex"
+            ],
+            "rows": [
+              [
+                20.1875,
+                27,
+                "M"
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
           "sql": "SELECT Sex, AVG(Age) AS avg_age, MAX(Age) AS max_age\nFROM Student\nGROUP BY Sex;",
           "observation": {
             "ok": true,
@@ -3929,7 +3939,7 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT AVG(S.Age) AS avg_age, MAX(S.Age) AS max_age, S.Sex\nFROM Student S\nGROUP BY S.Sex;",
+          "sql": "SELECT AVG(Age) AS avg_age, MAX(Age) AS max_age, Sex FROM Student GROUP BY Sex",
           "observation": {
             "ok": true,
             "columns": [
@@ -3957,10 +3967,10 @@
         },
         {
           "tool": "submit",
-          "sql": "SELECT AVG(S.Age) AS avg_age, MAX(S.Age) AS max_age, S.Sex\nFROM Student S\nGROUP BY S.Sex;"
+          "sql": "SELECT AVG(Age) AS avg_age, MAX(Age) AS max_age, Sex FROM Student GROUP BY Sex"
         }
       ],
-      "tool_calls": 4
+      "tool_calls": 5
     },
     {
       "id": "validation-e1927c97d2899fdd",
@@ -4004,11 +4014,20 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Headquarters, COUNT(Company_ID) AS Number_of_Companies\nFROM company\nGROUP BY Headquarters;",
+            "SELECT Headquarters, COUNT(Company_ID) AS Number_of_Companies\nFROM company\nGROUP BY Headquarters;",
+            "SELECT Headquarters, COUNT(Company_ID) AS Number_of_Companies\nFROM company\nGROUP BY Headquarters;",
+            "SELECT Headquarters, COUNT(Company_ID) AS Number_of_Companies\nFROM company\nGROUP BY Headquarters;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Headquarters, COUNT(Company_ID) AS Number_of_Companies\nFROM company\nGROUP BY Headquarters;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-5dad6a54f441726e",
@@ -4561,7 +4580,7 @@
     },
     {
       "id": "validation-f763b72754a444d8",
-      "sql": "SELECT Forms.form_name, COUNT(*) AS form_count FROM Party_Forms JOIN Forms ON Party_Forms.form_id = Forms.form_id GROUP BY Forms.form_name ORDER BY form_count DESC LIMIT 1",
+      "sql": "SELECT Forms.form_name FROM Party_Forms JOIN Forms ON Party_Forms.form_id = Forms.form_id GROUP BY Forms.form_name ORDER BY COUNT(*) DESC LIMIT 1",
       "trace": [
         {
           "tool": "check",
@@ -4590,23 +4609,7 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT f.form_name, COUNT(*) AS form_count\nFROM Party_Forms pf\nJOIN Forms f ON pf.form_id = f.form_id\nGROUP BY f.form_name\nORDER BY form_count DESC\nLIMIT 1;",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "form_name",
-              "form_count"
-            ],
-            "rows": [],
-            "row_count": 0,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT form_name FROM Party_Forms GROUP BY form_name ORDER BY form_count DESC LIMIT 1",
+          "sql": "SELECT form_name FROM Party_Forms GROUP BY form_name ORDER BY COUNT(*) DESC LIMIT 1",
           "observation": {
             "ok": false,
             "columns": [],
@@ -5053,42 +5056,25 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT Forms.form_name FROM Party_Forms JOIN Forms ON Party_Forms.form_id = Forms.form_id GROUP BY Forms.form_name ORDER BY form_count DESC LIMIT 1",
+          "sql": "SELECT Forms.form_name FROM Party_Forms JOIN Forms ON Party_Forms.form_id = Forms.form_id GROUP BY Forms.form_name ORDER BY COUNT(*) DESC LIMIT 1",
           "observation": {
-            "ok": false,
-            "columns": [],
+            "ok": true,
+            "columns": [
+              "form_name"
+            ],
             "rows": [],
             "row_count": 0,
             "truncated": false,
-            "error": {
-              "type": "OperationalError",
-              "message": "no such column: form_count"
-            },
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT f.form_name FROM Party_Forms AS pf JOIN Forms AS f ON pf.form_id = f.form_id GROUP BY f.form_name ORDER BY form_count DESC LIMIT 1",
-          "observation": {
-            "ok": false,
-            "columns": [],
-            "rows": [],
-            "row_count": 0,
-            "truncated": false,
-            "error": {
-              "type": "OperationalError",
-              "message": "no such column: form_count"
-            },
-            "matches_example": false
+            "error": null,
+            "matches_example": true
           }
         },
         {
           "tool": "submit",
-          "sql": "SELECT Forms.form_name, COUNT(*) AS form_count FROM Party_Forms JOIN Forms ON Party_Forms.form_id = Forms.form_id GROUP BY Forms.form_name ORDER BY form_count DESC LIMIT 1"
+          "sql": "SELECT Forms.form_name FROM Party_Forms JOIN Forms ON Party_Forms.form_id = Forms.form_id GROUP BY Forms.form_name ORDER BY COUNT(*) DESC LIMIT 1"
         }
       ],
-      "tool_calls": 8
+      "tool_calls": 6
     },
     {
       "id": "validation-ef4c177afd66ae16",
@@ -5114,15 +5100,43 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT COUNT(DISTINCT country.Country_ID) \nFROM country \nWHERE country.Country_ID NOT IN (\n    SELECT DISTINCT roller_coaster.Country_ID \n    FROM roller_coaster \n    WHERE roller_coaster.Length > 3000\n);",
+            "SELECT COUNT(DISTINCT country.Country_ID) \nFROM country\nLEFT JOIN roller_coaster ON country.Country_ID = roller_coaster.Country_ID\nWHERE roller_coaster.Length <= 3000 OR roller_coaster.Length IS NULL",
+            "SELECT COUNT(DISTINCT country.Country_ID) \nFROM country \nWHERE country.Country_ID NOT IN (\n    SELECT DISTINCT roller_coaster.Country_ID \n    FROM roller_coaster \n    WHERE roller_coaster.Length > 3000\n);",
+            "SELECT COUNT(DISTINCT country.Country_ID) \nFROM country \nWHERE country.Country_ID NOT IN (\n    SELECT DISTINCT roller_coaster.Country_ID \n    FROM roller_coaster \n    WHERE roller_coaster.Length > 3000\n);"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT COUNT(DISTINCT country.Country_ID) \nFROM country \nWHERE country.Country_ID NOT IN (\n    SELECT DISTINCT roller_coaster.Country_ID \n    FROM roller_coaster \n    WHERE roller_coaster.Length > 3000\n);",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "COUNT(DISTINCT country.Country_ID)"
+            ],
+            "rows": [
+              [
+                0
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT COUNT(*) \nFROM roller_coaster\nWHERE Length < 3000"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-2643a95fe295b32a",
-      "sql": "SELECT SUM(festival_detail.Num_of_Audience) AS Total_Audience FROM artwork JOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID JOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID GROUP BY festival_detail.Festival_ID",
+      "sql": "SELECT SUM(festival_detail.Num_of_Audience) AS Total_Audience FROM artwork JOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID JOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID",
       "trace": [
         {
           "tool": "check",
@@ -5165,6 +5179,22 @@
             "row_count": 1,
             "truncated": false,
             "error": null,
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT SUM(nomination.Num_of_Audience) AS Total_Audience FROM artwork JOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID JOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID",
+          "observation": {
+            "ok": false,
+            "columns": [],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": {
+              "type": "OperationalError",
+              "message": "no such column: nomination.Num_of_Audience"
+            },
             "matches_example": false
           }
         },
@@ -5297,11 +5327,46 @@
           }
         },
         {
+          "tool": "check",
+          "sql": "SELECT SUM(festival_detail.Num_of_Audience) AS Total_Audience FROM artwork JOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID JOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Total_Audience"
+            ],
+            "rows": [
+              [
+                477
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT SUM(nomination.Num_of_Audience) AS Total_Audience FROM nomination",
+          "observation": {
+            "ok": false,
+            "columns": [],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": {
+              "type": "OperationalError",
+              "message": "no such column: nomination.Num_of_Audience"
+            },
+            "matches_example": false
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT SUM(festival_detail.Num_of_Audience) AS Total_Audience FROM artwork JOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID JOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID GROUP BY festival_detail.Festival_ID"
+          "sql": "SELECT SUM(festival_detail.Num_of_Audience) AS Total_Audience FROM artwork JOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID JOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID"
         }
       ],
-      "tool_calls": 5
+      "tool_calls": 8
     },
     {
       "id": "validation-0a26d7c1c332029e",
@@ -5327,11 +5392,20 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT program.Name\nFROM program\nWHERE program.Origin != 'Beijing';",
+            "SELECT program.Name\nFROM program\nWHERE program.Origin != 'Beijing';",
+            "SELECT program.Name\nFROM program\nWHERE program.Origin != 'Beijing';",
+            "SELECT program.Name\nFROM program\nWHERE program.Origin != 'Beijing';"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT program.Name\nFROM program\nWHERE program.Origin != 'Beijing';"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-e313605ab240e9e5",
@@ -6173,15 +6247,43 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT COUNT(DISTINCT r.council_tax_id) \nFROM Rent_Arrears r\nJOIN Council_Tax ct ON r.council_tax_id = ct.council_tax_id;",
+            "SELECT COUNT(DISTINCT r.council_tax_id) \nFROM Rent_Arrears r\nJOIN Council_Tax ct ON r.council_tax_id = ct.council_tax_id;",
+            "SELECT COUNT(DISTINCT r.council_tax_id) \nFROM Rent_Arrears r\nJOIN Council_Tax ct ON r.council_tax_id = ct.council_tax_id;",
+            "SELECT COUNT(DISTINCT r.council_tax_id) \nFROM Rent_Arrears r\nJOIN Council_Tax ct ON r.council_tax_id = ct.council_tax_id;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT COUNT(DISTINCT r.council_tax_id) \nFROM Rent_Arrears r\nJOIN Council_Tax ct ON r.council_tax_id = ct.council_tax_id;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "COUNT(DISTINCT r.council_tax_id)"
+            ],
+            "rows": [
+              [
+                0
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT COUNT(DISTINCT council_tax_id) FROM Rent_Arrears;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-3288dc4cebb243fe",
-      "sql": "SELECT Products_for_Hire.daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';",
+      "sql": "SELECT daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';",
       "trace": [
         {
           "tool": "check",
@@ -6203,11 +6305,39 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';",
+            "SELECT daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';",
+            "SELECT Products_for_Hire.daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';",
+            "SELECT daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "daily_hire_cost"
+            ],
+            "rows": [
+              [
+                39.73
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT Products_for_Hire.daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';"
+          "sql": "SELECT daily_hire_cost\nFROM Products_for_Hire\nWHERE product_name LIKE '%Book%';"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-c22e5499b1593f40",
@@ -6427,7 +6557,7 @@
     },
     {
       "id": "validation-0eb1fb5e47ed829f",
-      "sql": "SELECT wrestler.Name, wrestler.Location\nFROM wrestler;",
+      "sql": "SELECT Name, Location FROM wrestler;",
       "trace": [
         {
           "tool": "check",
@@ -6479,11 +6609,69 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Name, Location FROM wrestler;",
+            "SELECT Name, Location FROM wrestler;",
+            "SELECT Name, Location FROM wrestler;",
+            "SELECT Name, Location FROM wrestler;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT Name, Location FROM wrestler;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Name",
+              "Location"
+            ],
+            "rows": [
+              [
+                "Rey Misterio Sr.",
+                "Tijuana , Mexico"
+              ],
+              [
+                "Fishman",
+                "Tijuana , Mexico"
+              ],
+              [
+                "Villaño IV",
+                "Tijuana , Mexico"
+              ],
+              [
+                "Gran Hamada",
+                "Tokyo , Japan"
+              ],
+              [
+                "El Samurai",
+                "Tokyo , Japan"
+              ],
+              [
+                "The Great Sasuke §",
+                "Tokyo , Japan"
+              ],
+              [
+                "El Samurai §",
+                "Sapporo , Japan"
+              ],
+              [
+                "Shinjiro Otani §",
+                "Nagoya , Japan"
+              ]
+            ],
+            "row_count": 8,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT wrestler.Name, wrestler.Location\nFROM wrestler;"
+          "sql": "SELECT Name, Location FROM wrestler;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-7896499011c15fde",
@@ -6651,88 +6839,6 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT LName, Fname\nFROM Student\nWHERE Major != (SELECT MAX(Major) FROM Student)\nORDER BY LName, Fname;",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "LName",
-              "Fname"
-            ],
-            "rows": [
-              [
-                "Andreou",
-                "George"
-              ],
-              [
-                "Brown",
-                "Eric"
-              ],
-              [
-                "Prater",
-                "Stacy"
-              ],
-              [
-                "Rugh",
-                "Eric"
-              ],
-              [
-                "Schmidt",
-                "Sarah"
-              ],
-              [
-                "Woods",
-                "Michael"
-              ]
-            ],
-            "row_count": 6,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT LName, Fname\nFROM Student\nWHERE Major NOT IN (SELECT DISTINCT Major FROM Student ORDER BY Major DESC LIMIT 1)",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "LName",
-              "Fname"
-            ],
-            "rows": [
-              [
-                "Andreou",
-                "George"
-              ],
-              [
-                "Woods",
-                "Michael"
-              ],
-              [
-                "Prater",
-                "Stacy"
-              ],
-              [
-                "Rugh",
-                "Eric"
-              ],
-              [
-                "Brown",
-                "Eric"
-              ],
-              [
-                "Schmidt",
-                "Sarah"
-              ]
-            ],
-            "row_count": 6,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
           "sql": "SELECT Fname, LName FROM Student WHERE Major <> (SELECT MAX(Major) FROM Student)",
           "observation": {
             "ok": true,
@@ -6777,11 +6883,11 @@
           "sql": "SELECT Fname, LName FROM Student WHERE Major <> (SELECT MAX(Major) FROM Student)"
         }
       ],
-      "tool_calls": 5
+      "tool_calls": 3
     },
     {
       "id": "validation-137394c19b2b5678",
-      "sql": "SELECT Headquarters\nFROM company\nWHERE Sales_in_Billion = (\n    SELECT MAX(Sales_in_Billion)\n    FROM company\n);",
+      "sql": "SELECT Headquarters\nFROM company\nORDER BY Sales_in_Billion DESC\nLIMIT 1;",
       "trace": [
         {
           "tool": "check",
@@ -6803,11 +6909,39 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Headquarters\nFROM company\nORDER BY Sales_in_Billion DESC\nLIMIT 1;",
+            "SELECT Headquarters\nFROM company\nORDER BY Sales_in_Billion DESC\nLIMIT 1;",
+            "SELECT Headquarters\nFROM company\nORDER BY Sales_in_Billion DESC\nLIMIT 1;",
+            "SELECT Headquarters\nFROM company\nORDER BY Sales_in_Billion DESC\nLIMIT 1;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT Headquarters\nFROM company\nORDER BY Sales_in_Billion DESC\nLIMIT 1;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Headquarters"
+            ],
+            "rows": [
+              [
+                "USA"
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT Headquarters\nFROM company\nWHERE Sales_in_Billion = (\n    SELECT MAX(Sales_in_Billion)\n    FROM company\n);"
+          "sql": "SELECT Headquarters\nFROM company\nORDER BY Sales_in_Billion DESC\nLIMIT 1;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-5d1ecaadd27fb6a2",
@@ -6835,15 +6969,45 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT ResName, Rating\nFROM Restaurant\nWHERE Rating = (SELECT MAX(Rating) FROM Restaurant)\nORDER BY ResName;",
+            "SELECT ResName, Rating\nFROM Restaurant\nWHERE Rating = (SELECT MAX(Rating) FROM Restaurant);",
+            "SELECT ResName, Rating\nFROM Restaurant\nWHERE Rating = (SELECT MAX(Rating) FROM Restaurant)\nORDER BY ResName;",
+            "SELECT ResName, Rating\nFROM Restaurant\nWHERE Rating = (SELECT MAX(Rating) FROM Restaurant);"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT ResName, Rating\nFROM Restaurant\nWHERE Rating = (SELECT MAX(Rating) FROM Restaurant)\nORDER BY ResName;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "ResName",
+              "Rating"
+            ],
+            "rows": [
+              [
+                "Honeygrow",
+                4
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Restaurant.ResName, Restaurant.Rating\nFROM Restaurant\nWHERE Restaurant.Rating = (SELECT MAX(Rating) FROM Restaurant);"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-89448784d1f33b1c",
-      "sql": "SELECT competition.Competition_type, competition.Country\nFROM competition;",
+      "sql": "SELECT Competition_type, Country\nFROM competition;",
       "trace": [
         {
           "tool": "check",
@@ -6895,11 +7059,69 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Competition_type, Country\nFROM competition;",
+            "SELECT Competition_type, Country\nFROM competition;",
+            "SELECT Competition_type, Country\nFROM competition;",
+            "SELECT Competition_type, Country\nFROM competition;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT Competition_type, Country\nFROM competition;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Competition_type",
+              "Country"
+            ],
+            "rows": [
+              [
+                "Friendly",
+                "Italy"
+              ],
+              [
+                "Friendly",
+                "Spain"
+              ],
+              [
+                "Friendly",
+                "Russia"
+              ],
+              [
+                "Friendly",
+                "Russia"
+              ],
+              [
+                "Friendly",
+                "Australia"
+              ],
+              [
+                "Tournament",
+                "Slovenia"
+              ],
+              [
+                "Tournament",
+                "Slovenia"
+              ],
+              [
+                "Friendly",
+                "Italy"
+              ]
+            ],
+            "row_count": 9,
+            "truncated": true,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT competition.Competition_type, competition.Country\nFROM competition;"
+          "sql": "SELECT Competition_type, Country\nFROM competition;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-fac51d810a95c200",
@@ -6964,11 +7186,20 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT individual_first_name, individual_middle_name, individual_last_name\nFROM Individuals\nORDER BY individual_last_name ASC;",
+            "SELECT individual_first_name, individual_middle_name, individual_last_name\nFROM Individuals\nORDER BY individual_last_name ASC;",
+            "SELECT individual_first_name, individual_middle_name, individual_last_name\nFROM Individuals\nORDER BY individual_last_name ASC;",
+            "SELECT individual_first_name, individual_middle_name, individual_last_name\nFROM Individuals\nORDER BY individual_last_name ASC;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT individual_first_name, individual_middle_name, individual_last_name\nFROM Individuals\nORDER BY individual_last_name ASC;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-6f87c063a9e335f0",
@@ -7001,6 +7232,21 @@
         },
         {
           "tool": "check",
+          "sql": "SELECT Speed FROM roller_coaster WHERE Length > (SELECT MAX(Length) FROM roller_coaster) ORDER BY Speed DESC",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Speed"
+            ],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
           "sql": "SELECT Speed\nFROM roller_coaster\nORDER BY Length DESC\nLIMIT 1;",
           "observation": {
             "ok": true,
@@ -7023,7 +7269,7 @@
           "sql": "SELECT Speed\nFROM roller_coaster\nORDER BY Length DESC\nLIMIT 1;"
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 4
     },
     {
       "id": "validation-b0b931cefe38be42",
@@ -7049,15 +7295,24 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT DISTINCT artwork.Type\nFROM artwork\nJOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID\nJOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID\nWHERE festival_detail.Year = 2007;",
+            "SELECT DISTINCT artwork.Type\nFROM artwork\nJOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID\nJOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID\nWHERE festival_detail.Year = 2007;",
+            "SELECT DISTINCT artwork.Type\nFROM artwork\nJOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID\nJOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID\nWHERE festival_detail.Year = 2007;",
+            "SELECT DISTINCT artwork.Type\nFROM artwork\nJOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID\nJOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID\nWHERE festival_detail.Year = 2007;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT DISTINCT artwork.Type\nFROM artwork\nJOIN nomination ON artwork.Artwork_ID = nomination.Artwork_ID\nJOIN festival_detail ON nomination.Festival_ID = festival_detail.Festival_ID\nWHERE festival_detail.Year = 2007;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-0edb7ecbb4dd054b",
-      "sql": "SELECT DISTINCT program.Name FROM program JOIN broadcast ON program.Program_ID = broadcast.Program_ID WHERE NOT broadcast.Time_of_day IN ('Morning')",
+      "sql": "SELECT DISTINCT p.Name FROM program AS p WHERE NOT EXISTS(SELECT 1 FROM broadcast AS b WHERE p.Program_ID = b.Program_ID AND b.Time_of_day IN ('Morning'))",
       "trace": [
         {
           "tool": "check",
@@ -7105,7 +7360,7 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT p.Name FROM program AS p LEFT JOIN broadcast AS b ON p.Program_ID = b.Program_ID WHERE NOT b.Time_of_day IN ('Morning')",
+          "sql": "SELECT DISTINCT p.Name FROM program AS p WHERE NOT EXISTS(SELECT 1 FROM broadcast AS b WHERE p.Program_ID = b.Program_ID AND b.Time_of_day IN ('Morning'))",
           "observation": {
             "ok": true,
             "columns": [
@@ -7113,232 +7368,25 @@
             ],
             "rows": [
               [
-                "Aniworld"
+                "Kaku"
               ]
             ],
             "row_count": 1,
             "truncated": false,
             "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT DISTINCT program.Name FROM program WHERE NOT program.Time_of_day IN ('Morning')",
-          "observation": {
-            "ok": false,
-            "columns": [],
-            "rows": [],
-            "row_count": 0,
-            "truncated": false,
-            "error": {
-              "type": "OperationalError",
-              "message": "no such column: program.Time_of_day"
-            },
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "schema",
-          "observation": [
-            {
-              "name": "broadcast",
-              "columns": [
-                {
-                  "name": "Channel_ID",
-                  "type": "INT",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "Program_ID",
-                  "type": "INT",
-                  "not_null": false,
-                  "pk": 2
-                },
-                {
-                  "name": "Time_of_day",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "program",
-                  "from": "Program_ID",
-                  "to": "Program_ID"
-                },
-                {
-                  "table": "channel",
-                  "from": "Channel_ID",
-                  "to": "Channel_ID"
-                }
-              ]
-            },
-            {
-              "name": "broadcast_share",
-              "columns": [
-                {
-                  "name": "Channel_ID",
-                  "type": "INT",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "Program_ID",
-                  "type": "INT",
-                  "not_null": false,
-                  "pk": 2
-                },
-                {
-                  "name": "Date",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Share_in_percent",
-                  "type": "REAL",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "program",
-                  "from": "Program_ID",
-                  "to": "Program_ID"
-                },
-                {
-                  "table": "channel",
-                  "from": "Channel_ID",
-                  "to": "Channel_ID"
-                }
-              ]
-            },
-            {
-              "name": "channel",
-              "columns": [
-                {
-                  "name": "Channel_ID",
-                  "type": "INT",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "Name",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Owner",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Share_in_percent",
-                  "type": "REAL",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Rating_in_percent",
-                  "type": "REAL",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": []
-            },
-            {
-              "name": "program",
-              "columns": [
-                {
-                  "name": "Program_ID",
-                  "type": "INT",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "Name",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Origin",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Launch",
-                  "type": "REAL",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Owner",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": []
-            }
-          ]
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT program.Name FROM program JOIN broadcast ON program.Program_ID = broadcast.Program_ID WHERE NOT broadcast.Time_of_day IN ('Morning')",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "Name"
-            ],
-            "rows": [
-              [
-                "Aniworld"
-              ]
-            ],
-            "row_count": 1,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT DISTINCT program.Name FROM program JOIN broadcast ON program.Program_ID = broadcast.Program_ID WHERE NOT broadcast.Time_of_day IN ('Morning')",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "Name"
-            ],
-            "rows": [
-              [
-                "Aniworld"
-              ]
-            ],
-            "row_count": 1,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
+            "matches_example": true
           }
         },
         {
           "tool": "submit",
-          "sql": "SELECT DISTINCT program.Name FROM program JOIN broadcast ON program.Program_ID = broadcast.Program_ID WHERE NOT broadcast.Time_of_day IN ('Morning')"
+          "sql": "SELECT DISTINCT p.Name FROM program AS p WHERE NOT EXISTS(SELECT 1 FROM broadcast AS b WHERE p.Program_ID = b.Program_ID AND b.Time_of_day IN ('Morning'))"
         }
       ],
-      "tool_calls": 8
+      "tool_calls": 4
     },
     {
       "id": "validation-7df47fb7fd5104dc",
-      "sql": "SELECT Delivery_Routes.route_name\nFROM Delivery_Routes\nORDER BY route_name;",
+      "sql": "SELECT route_name\nFROM Delivery_Routes\nORDER BY route_name;",
       "trace": [
         {
           "tool": "check",
@@ -7381,11 +7429,60 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT route_name\nFROM Delivery_Routes\nORDER BY route_name;",
+            "SELECT route_name\nFROM Delivery_Routes\nORDER BY route_name;",
+            "SELECT route_name\nFROM Delivery_Routes\nORDER BY route_name;",
+            "SELECT route_name\nFROM Delivery_Routes\nORDER BY route_name;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT route_name\nFROM Delivery_Routes\nORDER BY route_name;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "route_name"
+            ],
+            "rows": [
+              [
+                "Abshire Ltd"
+              ],
+              [
+                "Adams, Macejkovic and Carroll"
+              ],
+              [
+                "Brekke, Powlowski and Fritsch"
+              ],
+              [
+                "Gerhold Inc"
+              ],
+              [
+                "Gorczany Group"
+              ],
+              [
+                "Grady, King and Price"
+              ],
+              [
+                "Hegmann-Waters"
+              ],
+              [
+                "Heidenreich Group"
+              ]
+            ],
+            "row_count": 13,
+            "truncated": true,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT Delivery_Routes.route_name\nFROM Delivery_Routes\nORDER BY route_name;"
+          "sql": "SELECT route_name\nFROM Delivery_Routes\nORDER BY route_name;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-e030d845801dc09b",
@@ -7485,11 +7582,20 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Year, Book_Title, Publisher\nFROM book_club\nORDER BY Year DESC;",
+            "SELECT Year, Book_Title, Publisher\nFROM book_club\nORDER BY Year DESC;",
+            "SELECT Year, Book_Title, Publisher\nFROM book_club\nORDER BY Year DESC;",
+            "SELECT Year, Book_Title, Publisher\nFROM book_club\nORDER BY Year DESC;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Year, Book_Title, Publisher\nFROM book_club\nORDER BY Year DESC;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-d44f9c5697538a6a",
@@ -7521,468 +7627,11 @@
           ]
         },
         {
-          "tool": "schema",
-          "observation": [
-            {
-              "name": "Accounts",
-              "columns": [
-                {
-                  "name": "account_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "customer_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "date_account_opened",
-                  "type": "DATETIME",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "account_name",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "other_account_details",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Customers",
-                  "from": "customer_id",
-                  "to": "customer_id"
-                }
-              ]
-            },
-            {
-              "name": "Customers",
-              "columns": [
-                {
-                  "name": "customer_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "customer_first_name",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "customer_middle_initial",
-                  "type": "VARCHAR(1)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "customer_last_name",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "gender",
-                  "type": "VARCHAR(1)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "email_address",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "login_name",
-                  "type": "VARCHAR(80)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "login_password",
-                  "type": "VARCHAR(20)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "phone_number",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "town_city",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "state_county_province",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "country",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": []
-            },
-            {
-              "name": "Financial_Transactions",
-              "columns": [
-                {
-                  "name": "transaction_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "account_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "invoice_number",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "transaction_type",
-                  "type": "VARCHAR(15)",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "transaction_date",
-                  "type": "DATETIME",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "transaction_amount",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "transaction_comment",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "other_transaction_details",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Accounts",
-                  "from": "account_id",
-                  "to": "account_id"
-                },
-                {
-                  "table": "Invoices",
-                  "from": "invoice_number",
-                  "to": "invoice_number"
-                }
-              ]
-            },
-            {
-              "name": "Invoice_Line_Items",
-              "columns": [
-                {
-                  "name": "order_item_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "invoice_number",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "product_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "product_title",
-                  "type": "VARCHAR(80)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "product_quantity",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "product_price",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "derived_product_cost",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "derived_vat_payable",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "derived_total_cost",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Products",
-                  "from": "product_id",
-                  "to": "product_id"
-                },
-                {
-                  "table": "Invoices",
-                  "from": "invoice_number",
-                  "to": "invoice_number"
-                },
-                {
-                  "table": "Order_Items",
-                  "from": "order_item_id",
-                  "to": "order_item_id"
-                }
-              ]
-            },
-            {
-              "name": "Invoices",
-              "columns": [
-                {
-                  "name": "invoice_number",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "order_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "invoice_date",
-                  "type": "DATETIME",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Orders",
-                  "from": "order_id",
-                  "to": "order_id"
-                }
-              ]
-            },
-            {
-              "name": "Order_Items",
-              "columns": [
-                {
-                  "name": "order_item_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "order_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "product_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "product_quantity",
-                  "type": "VARCHAR(50)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "other_order_item_details",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Orders",
-                  "from": "order_id",
-                  "to": "order_id"
-                },
-                {
-                  "table": "Products",
-                  "from": "product_id",
-                  "to": "product_id"
-                }
-              ]
-            },
-            {
-              "name": "Orders",
-              "columns": [
-                {
-                  "name": "order_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "customer_id",
-                  "type": "INTEGER",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "date_order_placed",
-                  "type": "DATETIME",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "order_details",
-                  "type": "VARCHAR(255)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Customers",
-                  "from": "customer_id",
-                  "to": "customer_id"
-                }
-              ]
-            },
-            {
-              "name": "Product_Categories",
-              "columns": [
-                {
-                  "name": "production_type_code",
-                  "type": "VARCHAR(15)",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "product_type_description",
-                  "type": "VARCHAR(80)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "vat_rating",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": []
-            },
-            {
-              "name": "Products",
-              "columns": [
-                {
-                  "name": "product_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "parent_product_id",
-                  "type": "INTEGER",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "production_type_code",
-                  "type": "VARCHAR(15)",
-                  "not_null": true,
-                  "pk": 0
-                },
-                {
-                  "name": "unit_price",
-                  "type": "DECIMAL(19,4)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "product_name",
-                  "type": "VARCHAR(80)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "product_color",
-                  "type": "VARCHAR(20)",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "product_size",
-                  "type": "VARCHAR(20)",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "Product_Categories",
-                  "from": "production_type_code",
-                  "to": "production_type_code"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "tool": "submit",
           "sql": "SELECT transaction_type, SUM(transaction_amount) AS total_transaction_amount\nFROM Financial_Transactions\nGROUP BY transaction_type;"
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 2
     },
     {
       "id": "validation-d5436c6173d57687",
@@ -8017,11 +7666,48 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT DISTINCT CMI_Cross_References.cmi_cross_ref_id\nFROM CMI_Cross_References\nLEFT JOIN Parking_Fines ON CMI_Cross_References.cmi_cross_ref_id = Parking_Fines.cmi_cross_ref_id\nWHERE Parking_Fines.council_tax_id IS NULL;",
+            "SELECT DISTINCT CMI_Cross_References.cmi_cross_ref_id\nFROM CMI_Cross_References\nLEFT JOIN Parking_Fines ON CMI_Cross_References.cmi_cross_ref_id = Parking_Fines.cmi_cross_ref_id\nWHERE Parking_Fines.council_tax_id IS NULL;",
+            "SELECT DISTINCT CMI_Cross_References.cmi_cross_ref_id\nFROM CMI_Cross_References\nLEFT JOIN Parking_Fines ON CMI_Cross_References.cmi_cross_ref_id = Parking_Fines.cmi_cross_ref_id\nWHERE Parking_Fines.council_tax_id IS NULL;",
+            "SELECT DISTINCT CMI_Cross_References.cmi_cross_ref_id\nFROM CMI_Cross_References\nLEFT JOIN Parking_Fines ON CMI_Cross_References.cmi_cross_ref_id = Parking_Fines.cmi_cross_ref_id\nWHERE Parking_Fines.council_tax_id IS NULL;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT DISTINCT CMI_Cross_References.cmi_cross_ref_id\nFROM CMI_Cross_References\nLEFT JOIN Parking_Fines ON CMI_Cross_References.cmi_cross_ref_id = Parking_Fines.cmi_cross_ref_id\nWHERE Parking_Fines.council_tax_id IS NULL;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "cmi_cross_ref_id"
+            ],
+            "rows": [
+              [
+                101
+              ],
+              [
+                103
+              ],
+              [
+                104
+              ],
+              [
+                105
+              ]
+            ],
+            "row_count": 4,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT CMI_Cross_References.cmi_cross_ref_id\nFROM CMI_Cross_References\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM Parking_Fines\n    WHERE Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id\n);"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-34c0d80638e5872e",
@@ -8290,7 +7976,7 @@
     },
     {
       "id": "validation-34aaf5028e00a1e4",
-      "sql": "SELECT wrestler.Reign FROM wrestler WHERE NOT wrestler.Reign IS NULL GROUP BY wrestler.Reign ORDER BY COUNT(*) DESC LIMIT 1",
+      "sql": "SELECT Reign FROM wrestler WHERE NOT Reign IS NULL GROUP BY Reign ORDER BY COUNT(*) DESC LIMIT 1",
       "trace": [
         {
           "tool": "check",
@@ -8343,118 +8029,7 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT Reign FROM wrestler WHERE NOT Reign IS NULL GROUP BY Reign ORDER BY count DESC LIMIT 1",
-          "observation": {
-            "ok": false,
-            "columns": [],
-            "rows": [],
-            "row_count": 0,
-            "truncated": false,
-            "error": {
-              "type": "OperationalError",
-              "message": "no such column: count"
-            },
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "schema",
-          "observation": [
-            {
-              "name": "Elimination",
-              "columns": [
-                {
-                  "name": "Elimination_ID",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "Wrestler_ID",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Team",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Eliminated_By",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Elimination_Move",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Time",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": [
-                {
-                  "table": "wrestler",
-                  "from": "Wrestler_ID",
-                  "to": "Wrestler_ID"
-                }
-              ]
-            },
-            {
-              "name": "wrestler",
-              "columns": [
-                {
-                  "name": "Wrestler_ID",
-                  "type": "INT",
-                  "not_null": false,
-                  "pk": 1
-                },
-                {
-                  "name": "Name",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Reign",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Days_held",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Location",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                },
-                {
-                  "name": "Event",
-                  "type": "TEXT",
-                  "not_null": false,
-                  "pk": 0
-                }
-              ],
-              "foreign_keys": []
-            }
-          ]
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT wrestler.Reign FROM wrestler WHERE NOT wrestler.Reign IS NULL GROUP BY wrestler.Reign ORDER BY COUNT(*) DESC LIMIT 1",
+          "sql": "SELECT Reign FROM wrestler WHERE NOT Reign IS NULL GROUP BY Reign ORDER BY COUNT(*) DESC LIMIT 1",
           "observation": {
             "ok": true,
             "columns": [
@@ -8473,14 +8048,14 @@
         },
         {
           "tool": "submit",
-          "sql": "SELECT wrestler.Reign FROM wrestler WHERE NOT wrestler.Reign IS NULL GROUP BY wrestler.Reign ORDER BY COUNT(*) DESC LIMIT 1"
+          "sql": "SELECT Reign FROM wrestler WHERE NOT Reign IS NULL GROUP BY Reign ORDER BY COUNT(*) DESC LIMIT 1"
         }
       ],
-      "tool_calls": 6
+      "tool_calls": 4
     },
     {
       "id": "validation-e978a5f0f55e548c",
-      "sql": "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE editor.Editor_ID IN (SELECT Editor_ID FROM editor WHERE editor.Editor_ID IN (SELECT Editor_ID FROM editor));",
+      "sql": "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID;",
       "trace": [
         {
           "tool": "check",
@@ -8504,11 +8079,41 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID;",
+            "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID;",
+            "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID;",
+            "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Name",
+              "Theme"
+            ],
+            "rows": [
+              [
+                "Kamila Porczyk",
+                "at Minnesota Vikings"
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID\nWHERE editor.Editor_ID IN (SELECT Editor_ID FROM editor WHERE editor.Editor_ID IN (SELECT Editor_ID FROM editor));"
+          "sql": "SELECT editor.Name, journal.Theme\nFROM editor\nJOIN journal_committee ON editor.Editor_ID = journal_committee.Editor_ID\nJOIN journal ON journal_committee.Journal_ID = journal.Journal_ID;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-cdd57474e4812622",
@@ -8875,11 +8480,39 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT COUNT(DISTINCT Dorm_amenity.amenity_name) FROM Dorm_amenity;",
+            "SELECT COUNT(DISTINCT Dorm_amenity.amenity_name) FROM Dorm_amenity;",
+            "SELECT COUNT(DISTINCT amenity_name) FROM Dorm_amenity;",
+            "SELECT COUNT(DISTINCT Dorm_amenity.amenity_name) FROM Dorm_amenity;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT COUNT(DISTINCT Dorm_amenity.amenity_name) FROM Dorm_amenity;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "COUNT(DISTINCT Dorm_amenity.amenity_name)"
+            ],
+            "rows": [
+              [
+                9
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT COUNT(DISTINCT amenity_name) FROM Dorm_amenity;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-34dc16c5398be753",
@@ -8973,31 +8606,6 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT ResID, ResName, Address, Rating FROM Restaurant;",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "ResID",
-              "ResName",
-              "Address",
-              "Rating"
-            ],
-            "rows": [
-              [
-                2,
-                "Honeygrow",
-                "3212 St Paul St, Baltimore, MD 21218",
-                4
-              ]
-            ],
-            "row_count": 1,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
           "sql": "SELECT Restaurant.ResName FROM Restaurant",
           "observation": {
             "ok": true,
@@ -9020,7 +8628,7 @@
           "sql": "SELECT Restaurant.ResName FROM Restaurant"
         }
       ],
-      "tool_calls": 4
+      "tool_calls": 3
     },
     {
       "id": "validation-aae2724405be5c02",
@@ -9053,6 +8661,279 @@
         },
         {
           "tool": "check",
+          "sql": "SELECT COUNT(*) FROM club WHERE club.Region = 'Region' AND club.Rank = 0 AND club.Rank = 0",
+          "observation": {
+            "ok": false,
+            "columns": [],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": {
+              "type": "OperationalError",
+              "message": "no such column: club.Rank"
+            },
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "schema",
+          "observation": [
+            {
+              "name": "club",
+              "columns": [
+                {
+                  "name": "Club_ID",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 1
+                },
+                {
+                  "name": "name",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Region",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Start_year",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": []
+            },
+            {
+              "name": "club_rank",
+              "columns": [
+                {
+                  "name": "Rank",
+                  "type": "REAL",
+                  "not_null": false,
+                  "pk": 1
+                },
+                {
+                  "name": "Club_ID",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 2
+                },
+                {
+                  "name": "Gold",
+                  "type": "REAL",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Silver",
+                  "type": "REAL",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Bronze",
+                  "type": "REAL",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Total",
+                  "type": "REAL",
+                  "not_null": false,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "club",
+                  "from": "Club_ID",
+                  "to": "Club_ID"
+                }
+              ]
+            },
+            {
+              "name": "competition",
+              "columns": [
+                {
+                  "name": "Competition_ID",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 1
+                },
+                {
+                  "name": "Year",
+                  "type": "REAL",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Competition_type",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Country",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": []
+            },
+            {
+              "name": "competition_result",
+              "columns": [
+                {
+                  "name": "Competition_ID",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 1
+                },
+                {
+                  "name": "Club_ID_1",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 2
+                },
+                {
+                  "name": "Club_ID_2",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 3
+                },
+                {
+                  "name": "Score",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "competition",
+                  "from": "Competition_ID",
+                  "to": "Competition_ID"
+                },
+                {
+                  "table": "club",
+                  "from": "Club_ID_2",
+                  "to": "Club_ID"
+                },
+                {
+                  "table": "club",
+                  "from": "Club_ID_1",
+                  "to": "Club_ID"
+                }
+              ]
+            },
+            {
+              "name": "player",
+              "columns": [
+                {
+                  "name": "Player_ID",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 1
+                },
+                {
+                  "name": "name",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Position",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Club_ID",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Apps",
+                  "type": "REAL",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Tries",
+                  "type": "REAL",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Goals",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Points",
+                  "type": "REAL",
+                  "not_null": false,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "club",
+                  "from": "Club_ID",
+                  "to": "Club_ID"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT COUNT(DISTINCT club.Club_ID) AS total_clubs FROM club JOIN club_rank ON club.Club_ID = club_rank.Club_ID WHERE club.Region = 'Region' AND club_rank.Rank = 0 AND club_rank.Rank = 0",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "total_clubs"
+            ],
+            "rows": [
+              [
+                0
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT COUNT(*) FROM club JOIN club_rank ON club.Club_ID = club_rank.Club_ID WHERE club.Region = 'Region' AND club_rank.Rank = 0 AND club_rank.Rank = 0",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                0
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
           "sql": "SELECT COUNT(*) AS total_clubs\nFROM club\nJOIN club_rank ON club.Club_ID = club_rank.Club_ID\nWHERE club_rank.Total < 10;",
           "observation": {
             "ok": true,
@@ -9075,7 +8956,7 @@
           "sql": "SELECT COUNT(*) AS total_clubs\nFROM club\nJOIN club_rank ON club.Club_ID = club_rank.Club_ID\nWHERE club_rank.Total < 10;"
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 7
     },
     {
       "id": "validation-741ca93b599363fd",
@@ -9101,11 +8982,39 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Organizations.organization_name\nFROM Organizations\nWHERE organization_name LIKE '%Party%';",
+            "SELECT Organizations.organization_name\nFROM Organizations\nWHERE organization_name LIKE '%Party%';",
+            "SELECT DISTINCT Organizations.organization_name\nFROM Organizations\nWHERE organization_name LIKE '%Party%';",
+            "SELECT Organizations.organization_name\nFROM Organizations\nWHERE organization_name LIKE '%Party%';"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT DISTINCT Organizations.organization_name\nFROM Organizations\nWHERE organization_name LIKE '%Party%';",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "organization_name"
+            ],
+            "rows": [
+              [
+                "Green Party"
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Organizations.organization_name\nFROM Organizations\nWHERE organization_name LIKE '%Party%';"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-02f77affeeb4f92d",
@@ -9192,6 +9101,128 @@
         },
         {
           "tool": "check",
+          "sql": "SELECT Num_of_Audience FROM festival_detail JOIN nomination ON festival_detail.Festival_ID = nomination.Festival_ID WHERE Nomination.Year IN (2008, 2010)",
+          "observation": {
+            "ok": false,
+            "columns": [],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": {
+              "type": "OperationalError",
+              "message": "no such column: Nomination.Year"
+            },
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "schema",
+          "observation": [
+            {
+              "name": "artwork",
+              "columns": [
+                {
+                  "name": "Artwork_ID",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 1
+                },
+                {
+                  "name": "Type",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Name",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": []
+            },
+            {
+              "name": "festival_detail",
+              "columns": [
+                {
+                  "name": "Festival_ID",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 1
+                },
+                {
+                  "name": "Festival_Name",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Chair_Name",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Location",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Year",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 0
+                },
+                {
+                  "name": "Num_of_Audience",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": []
+            },
+            {
+              "name": "nomination",
+              "columns": [
+                {
+                  "name": "Artwork_ID",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 1
+                },
+                {
+                  "name": "Festival_ID",
+                  "type": "INT",
+                  "not_null": false,
+                  "pk": 2
+                },
+                {
+                  "name": "Result",
+                  "type": "TEXT",
+                  "not_null": false,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "festival_detail",
+                  "from": "Festival_ID",
+                  "to": "Festival_ID"
+                },
+                {
+                  "table": "artwork",
+                  "from": "Artwork_ID",
+                  "to": "Artwork_ID"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "check",
           "sql": "SELECT festival_detail.Num_of_Audience\nFROM festival_detail\nWHERE festival_detail.Year IN (2008, 2010);",
           "observation": {
             "ok": true,
@@ -9214,7 +9245,7 @@
           "sql": "SELECT festival_detail.Num_of_Audience\nFROM festival_detail\nWHERE festival_detail.Year IN (2008, 2010);"
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 5
     },
     {
       "id": "validation-4a37f9727ac82a31",
@@ -9316,11 +9347,65 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Addresses.state_province_county, COUNT(DISTINCT Customer_Addresses.customer_id) AS customer_count\nFROM Addresses\nJOIN Customer_Addresses ON Addresses.address_id = Customer_Addresses.address_id\nGROUP BY Addresses.state_province_county;",
+            "SELECT Addresses.state_province_county, COUNT(DISTINCT Customer_Addresses.customer_id) AS customer_count\nFROM Addresses\nJOIN Customer_Addresses ON Addresses.address_id = Customer_Addresses.address_id\nGROUP BY Addresses.state_province_county;",
+            "SELECT Addresses.state_province_county, COUNT(DISTINCT Customer_Addresses.customer_id) AS customer_count\nFROM Addresses\nJOIN Customer_Addresses ON Addresses.address_id = Customer_Addresses.address_id\nGROUP BY Addresses.state_province_county;",
+            "SELECT Addresses.state_province_county, COUNT(DISTINCT Customer_Addresses.customer_id) AS customer_count\nFROM Addresses\nJOIN Customer_Addresses ON Addresses.address_id = Customer_Addresses.address_id\nGROUP BY Addresses.state_province_county;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT Addresses.state_province_county, COUNT(DISTINCT Customer_Addresses.customer_id) AS customer_count\nFROM Addresses\nJOIN Customer_Addresses ON Addresses.address_id = Customer_Addresses.address_id\nGROUP BY Addresses.state_province_county;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "state_province_county",
+              "customer_count"
+            ],
+            "rows": [
+              [
+                "California",
+                2
+              ],
+              [
+                "Colorado",
+                2
+              ],
+              [
+                "Idaho",
+                1
+              ],
+              [
+                "Illinois",
+                1
+              ],
+              [
+                "Maine",
+                1
+              ],
+              [
+                "Nebraska",
+                1
+              ],
+              [
+                "Tennessee",
+                3
+              ]
+            ],
+            "row_count": 7,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Addresses.state_province_county, COUNT(*) AS customer_count\nFROM Addresses\nJOIN Customer_Addresses ON Addresses.address_id = Customer_Addresses.address_id\nGROUP BY Addresses.state_province_county;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-f839d77d08df4dfa",
@@ -9526,6 +9611,219 @@
         },
         {
           "tool": "check",
+          "sql": "SELECT council_tax_id FROM Electoral_Register AS e WHERE e.cmi_cross_ref_id IN (SELECT cmi_cross_ref_id FROM CMI_Cross_References WHERE NOT cmi_details LIKE '%Schmidt, Kertzmann and Lubowitz%') AND e.council_tax_id IN (SELECT council_tax_id FROM Council_Tax JOIN CMI_Cross_References ON Council_Tax.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id WHERE CMI_Cross_References.master_customer_id IN (SELECT master_customer_id FROM Customer_Master_Index WHERE NOT cmi_details LIKE '%Schmidt, Kertzmann and Lubowitz%'))",
+          "observation": {
+            "ok": false,
+            "columns": [],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": {
+              "type": "OperationalError",
+              "message": "no such column: council_tax_id"
+            },
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "schema",
+          "observation": [
+            {
+              "name": "Benefits_Overpayments",
+              "columns": [
+                {
+                  "name": "council_tax_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 1
+                },
+                {
+                  "name": "cmi_cross_ref_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "CMI_Cross_References",
+                  "from": "cmi_cross_ref_id",
+                  "to": "cmi_cross_ref_id"
+                }
+              ]
+            },
+            {
+              "name": "Business_Rates",
+              "columns": [
+                {
+                  "name": "business_rates_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 1
+                },
+                {
+                  "name": "cmi_cross_ref_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "CMI_Cross_References",
+                  "from": "cmi_cross_ref_id",
+                  "to": "cmi_cross_ref_id"
+                }
+              ]
+            },
+            {
+              "name": "CMI_Cross_References",
+              "columns": [
+                {
+                  "name": "cmi_cross_ref_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 1
+                },
+                {
+                  "name": "master_customer_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 0
+                },
+                {
+                  "name": "source_system_code",
+                  "type": "CHAR(15)",
+                  "not_null": true,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "Customer_Master_Index",
+                  "from": "master_customer_id",
+                  "to": "master_customer_id"
+                }
+              ]
+            },
+            {
+              "name": "Council_Tax",
+              "columns": [
+                {
+                  "name": "council_tax_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 1
+                },
+                {
+                  "name": "cmi_cross_ref_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "CMI_Cross_References",
+                  "from": "cmi_cross_ref_id",
+                  "to": "cmi_cross_ref_id"
+                }
+              ]
+            },
+            {
+              "name": "Customer_Master_Index",
+              "columns": [
+                {
+                  "name": "master_customer_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 1
+                },
+                {
+                  "name": "cmi_details",
+                  "type": "VARCHAR(255)",
+                  "not_null": false,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": []
+            },
+            {
+              "name": "Electoral_Register",
+              "columns": [
+                {
+                  "name": "electoral_register_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 1
+                },
+                {
+                  "name": "cmi_cross_ref_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "CMI_Cross_References",
+                  "from": "cmi_cross_ref_id",
+                  "to": "cmi_cross_ref_id"
+                }
+              ]
+            },
+            {
+              "name": "Parking_Fines",
+              "columns": [
+                {
+                  "name": "council_tax_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 1
+                },
+                {
+                  "name": "cmi_cross_ref_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "CMI_Cross_References",
+                  "from": "cmi_cross_ref_id",
+                  "to": "cmi_cross_ref_id"
+                }
+              ]
+            },
+            {
+              "name": "Rent_Arrears",
+              "columns": [
+                {
+                  "name": "council_tax_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 1
+                },
+                {
+                  "name": "cmi_cross_ref_id",
+                  "type": "INTEGER",
+                  "not_null": true,
+                  "pk": 0
+                }
+              ],
+              "foreign_keys": [
+                {
+                  "table": "CMI_Cross_References",
+                  "from": "cmi_cross_ref_id",
+                  "to": "cmi_cross_ref_id"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tool": "check",
           "sql": "SELECT DISTINCT r.council_tax_id\nFROM Rent_Arrears r\nJOIN CMI_Cross_References c ON r.cmi_cross_ref_id = c.cmi_cross_ref_id\nJOIN Customer_Master_Index cm ON c.master_customer_id = cm.master_customer_id\nWHERE cm.cmi_details NOT LIKE '%Schmidt, Kertzmann and Lubowitz%';",
           "observation": {
             "ok": true,
@@ -9544,11 +9842,11 @@
           "sql": "SELECT DISTINCT r.council_tax_id\nFROM Rent_Arrears r\nJOIN CMI_Cross_References c ON r.cmi_cross_ref_id = c.cmi_cross_ref_id\nJOIN Customer_Master_Index cm ON c.master_customer_id = cm.master_customer_id\nWHERE cm.cmi_details NOT LIKE '%Schmidt, Kertzmann and Lubowitz%';"
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 5
     },
     {
       "id": "validation-3938199b48c562f6",
-      "sql": "SELECT Customers.customer_id, Customers.first_name, COUNT(*) AS count\nFROM Customers\nJOIN Bookings ON Customers.customer_id = Bookings.customer_id\nGROUP BY Customers.customer_id, Customers.first_name;",
+      "sql": "SELECT Customers.customer_id, Customers.first_name, COUNT(*) FROM Customers JOIN Bookings ON Customers.customer_id = Bookings.customer_id GROUP BY Customers.customer_id, Customers.first_name",
       "trace": [
         {
           "tool": "check",
@@ -9589,13 +9887,13 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT Customers.customer_id, Customers.first_name, COUNT(*) AS count\nFROM Customers\nJOIN Bookings ON Customers.customer_id = Bookings.customer_id\nGROUP BY Customers.customer_id, Customers.first_name;",
+          "sql": "SELECT Customers.customer_id, Customers.first_name, COUNT(*) FROM Customers JOIN Bookings ON Customers.customer_id = Bookings.customer_id GROUP BY Customers.customer_id, Customers.first_name",
           "observation": {
             "ok": true,
             "columns": [
               "customer_id",
               "first_name",
-              "count"
+              "COUNT(*)"
             ],
             "rows": [
               [
@@ -9617,14 +9915,14 @@
         },
         {
           "tool": "submit",
-          "sql": "SELECT Customers.customer_id, Customers.first_name, COUNT(*) AS count\nFROM Customers\nJOIN Bookings ON Customers.customer_id = Bookings.customer_id\nGROUP BY Customers.customer_id, Customers.first_name;"
+          "sql": "SELECT Customers.customer_id, Customers.first_name, COUNT(*) FROM Customers JOIN Bookings ON Customers.customer_id = Bookings.customer_id GROUP BY Customers.customer_id, Customers.first_name"
         }
       ],
       "tool_calls": 3
     },
     {
       "id": "validation-14253c0fc3a4dc0d",
-      "sql": "SELECT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80\nGROUP BY mill.name;",
+      "sql": "SELECT DISTINCT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80;",
       "trace": [
         {
           "tool": "check",
@@ -9646,11 +9944,39 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT DISTINCT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80;",
+            "SELECT DISTINCT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80;",
+            "SELECT DISTINCT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80;",
+            "SELECT DISTINCT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT DISTINCT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "name"
+            ],
+            "rows": [
+              [
+                "Moulin de Momalle"
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80\nGROUP BY mill.name;"
+          "sql": "SELECT DISTINCT mill.name\nFROM mill\nJOIN bridge ON mill.architect_id = bridge.architect_id\nWHERE bridge.length_meters > 80;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-c59e9d51a3799267",
@@ -9679,11 +10005,35 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Staff.staff_name\nFROM Staff\nJOIN Staff_Department_Assignments ON Staff.staff_id = Staff_Department_Assignments.staff_id\nGROUP BY Staff.staff_id\nHAVING COUNT(DISTINCT Staff_Department_Assignments.job_title_code) > 1;",
+            "SELECT Staff.staff_name\nFROM Staff\nJOIN Staff_Department_Assignments ON Staff.staff_id = Staff_Department_Assignments.staff_id\nGROUP BY Staff.staff_id\nHAVING COUNT(DISTINCT Staff_Department_Assignments.job_title_code) > 1;",
+            "SELECT Staff.staff_name\nFROM Staff\nJOIN Staff_Department_Assignments ON Staff.staff_id = Staff_Department_Assignments.staff_id\nGROUP BY Staff.staff_id\nHAVING COUNT(DISTINCT Staff_Department_Assignments.job_title_code) > 1;",
+            "SELECT Staff.staff_name\nFROM Staff\nJOIN Staff_Department_Assignments ON Staff.staff_id = Staff_Department_Assignments.staff_id\nGROUP BY Staff.staff_id\nHAVING COUNT(DISTINCT Staff_Department_Assignments.job_title_code) > 1;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT Staff.staff_name\nFROM Staff\nJOIN Staff_Department_Assignments ON Staff.staff_id = Staff_Department_Assignments.staff_id\nGROUP BY Staff.staff_id\nHAVING COUNT(DISTINCT Staff_Department_Assignments.job_title_code) > 1;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "staff_name"
+            ],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Staff.staff_name\nFROM Staff\nJOIN Staff_Department_Assignments ON Staff.staff_id = Staff_Department_Assignments.staff_id\nGROUP BY Staff.staff_id\nHAVING COUNT(DISTINCT Staff_Department_Assignments.department_id) > 1;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-520d75479d567121",
@@ -9785,11 +10135,57 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT Wrestler.Name, Elimination.Team\nFROM Elimination\nJOIN Wrestler ON Elimination.Wrestler_ID = Wrestler.Wrestler_ID\nORDER BY CAST(Wrestler.Days_held AS INTEGER) DESC;",
+            "SELECT Wrestler.Name, Elimination.Team\nFROM Elimination\nJOIN Wrestler ON Elimination.Wrestler_ID = Wrestler.Wrestler_ID\nORDER BY CAST(Wrestler.Days_held AS INTEGER) DESC;",
+            "SELECT Wrestler.Name, Elimination.Team\nFROM Elimination\nJOIN Wrestler ON Elimination.Wrestler_ID = Wrestler.Wrestler_ID\nORDER BY CAST(Wrestler.Days_held AS INTEGER) DESC;",
+            "SELECT Wrestler.Name, Elimination.Team\nFROM Elimination\nJOIN Wrestler ON Elimination.Wrestler_ID = Wrestler.Wrestler_ID\nORDER BY CAST(Wrestler.Days_held AS INTEGER) DESC;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT Wrestler.Name, Elimination.Team\nFROM Elimination\nJOIN Wrestler ON Elimination.Wrestler_ID = Wrestler.Wrestler_ID\nORDER BY CAST(Wrestler.Days_held AS INTEGER) DESC;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Name",
+              "Team"
+            ],
+            "rows": [
+              [
+                "Gran Hamada",
+                "Team Batista"
+              ],
+              [
+                "Rey Misterio Sr.",
+                "Team Orton"
+              ],
+              [
+                "Fishman",
+                "Team Batista"
+              ],
+              [
+                "El Samurai §",
+                "Team Orton"
+              ],
+              [
+                "El Samurai",
+                "Team Batista"
+              ]
+            ],
+            "row_count": 5,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT Wrestler.Name, Team\nFROM Elimination\nJOIN Wrestler ON Elimination.Wrestler_ID = Wrestler.Wrestler_ID\nORDER BY Wrestler.Days_held DESC;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-82b67fd858c9d8d4",
@@ -9815,11 +10211,39 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT editor.Name\nFROM editor\nWHERE editor.Age = 24 OR editor.Age = 25;",
+            "SELECT editor.Name\nFROM editor\nWHERE editor.Age = 24 OR editor.Age = 25;",
+            "SELECT editor.Name\nFROM editor\nWHERE editor.Age = 24 OR editor.Age = 25;",
+            "SELECT editor.Name\nFROM editor\nWHERE editor.Age = 24 OR editor.Age = 25;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT editor.Name\nFROM editor\nWHERE editor.Age = 24 OR editor.Age = 25;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              [
+                "Mariusz Zalejski"
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT editor.Name\nFROM editor\nWHERE editor.Age BETWEEN 24 AND 25;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-fc40627f0b0bab17",
@@ -9902,6 +10326,22 @@
         },
         {
           "tool": "check",
+          "sql": "SELECT Fname, LName FROM Student WHERE Student.StuID IN (SELECT Stuid FROM Lives_in JOIN Has_amenity ON Lives_in.dormid = Has_amenity.dormid JOIN Dorm_amenity ON Has_amenity.amenid = Dorm_amenity.amenid WHERE Has_amenity.amenid = 100)",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "Fname",
+              "LName"
+            ],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": null,
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
           "sql": "SELECT Student.LName, Student.Fname\nFROM Student\nJOIN Lives_in ON Student.StuID = Lives_in.stuid\nJOIN Has_amenity ON Lives_in.dormid = Has_amenity.dormid\nJOIN Dorm_amenity ON Has_amenity.amenid = Dorm_amenity.amenid\nWHERE Dorm_amenity.amenity_name = 'TV Lounge';",
           "observation": {
             "ok": true,
@@ -9932,22 +10372,6 @@
               ]
             ],
             "row_count": 5,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT Fname, LName FROM Student WHERE Student.StuID IN (SELECT Stuid FROM Lives_in JOIN Has_amenity ON Lives_in.dormid = Has_amenity.dormid JOIN Dorm_amenity ON Has_amenity.amenid = Dorm_amenity.amenid WHERE Has_amenity.amenid = 100)",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "Fname",
-              "LName"
-            ],
-            "rows": [],
-            "row_count": 0,
             "truncated": false,
             "error": null,
             "matches_example": false
@@ -10108,7 +10532,7 @@
     },
     {
       "id": "validation-d22c3a920b525b66",
-      "sql": "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(p.Points) FROM player p)",
+      "sql": "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(Points) FROM player)",
       "trace": [
         {
           "tool": "check",
@@ -10133,11 +10557,42 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(Points) FROM player)",
+            "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(Points) FROM player)",
+            "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(Points) FROM player)",
+            "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(Points) FROM player)"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(Points) FROM player)",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "name"
+            ],
+            "rows": [
+              [
+                "Iestyn Harris"
+              ],
+              [
+                "Paul Deacon (c)"
+              ]
+            ],
+            "row_count": 2,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
-          "sql": "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(p.Points) FROM player p)"
+          "sql": "SELECT p.name\nFROM player p\nWHERE p.Points > (SELECT AVG(Points) FROM player)"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-329b35a3d5144055",
@@ -10360,11 +10815,20 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT COUNT(*) FROM program;",
+            "SELECT COUNT(*) FROM program;",
+            "SELECT COUNT(*) FROM program;",
+            "SELECT COUNT(*) FROM program;"
+          ]
+        },
+        {
           "tool": "submit",
           "sql": "SELECT COUNT(*) FROM program;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-d379eea4a2b59524",
@@ -10422,47 +10886,6 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT customer_name, customer_email\nFROM Customers\nWHERE payment_method = 'Visa';",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "customer_name",
-              "customer_email"
-            ],
-            "rows": [
-              [
-                "Ron Emard",
-                "shaniya45@example.net"
-              ],
-              [
-                "Geovanni Grady",
-                "elmira.langworth@example.org"
-              ],
-              [
-                "Dr. Karine Farrell",
-                "reichel.winnifred@example.org"
-              ],
-              [
-                "Lila Howe",
-                "leann.hamill@example.org"
-              ],
-              [
-                "Annabell Walsh",
-                "adriana83@example.org"
-              ],
-              [
-                "Aracely Borer V",
-                "rollin95@example.net"
-              ]
-            ],
-            "row_count": 6,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
           "sql": "SELECT Customers.customer_email, Customers.customer_name FROM Customers WHERE Customers.payment_method = 'Visa'",
           "observation": {
             "ok": true,
@@ -10507,7 +10930,7 @@
           "sql": "SELECT Customers.customer_email, Customers.customer_name FROM Customers WHERE Customers.payment_method = 'Visa'"
         }
       ],
-      "tool_calls": 4
+      "tool_calls": 3
     },
     {
       "id": "validation-f279ebe82ac5bb54",
@@ -10537,11 +10960,43 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT MIN(Age) AS min_age, MAX(Age) AS max_age, AVG(Age) AS avg_age\nFROM people;",
+            "SELECT MIN(Age) AS min_age, MAX(Age) AS max_age, AVG(Age) AS avg_age\nFROM people;",
+            "SELECT MIN(Age) AS min_age, MAX(Age) AS max_age, AVG(Age) AS avg_age\nFROM people;",
+            "SELECT MIN(Age) AS min_age, MAX(Age) AS max_age, AVG(Age) AS avg_age\nFROM people;"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT MIN(Age) AS min_age, MAX(Age) AS max_age, AVG(Age) AS avg_age\nFROM people;",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "min_age",
+              "max_age",
+              "avg_age"
+            ],
+            "rows": [
+              [
+                31,
+                36,
+                33.2
+              ]
+            ],
+            "row_count": 1,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT MIN(Age), MAX(Age), AVG(Age) AS Average_Age\nFROM people;"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-1321fd5435f4cf5f",
@@ -10738,7 +11193,7 @@
     },
     {
       "id": "validation-c9574968cd2efd5c",
-      "sql": "SELECT DISTINCT Products_for_Hire.product_name, Products_for_Hire.product_description FROM Products_for_Hire WHERE product_type_code = 'Cutlery' AND daily_hire_cost < 20",
+      "sql": "SELECT Products_for_Hire.product_name, Products_for_Hire.product_description\nFROM Products_for_Hire\nWHERE product_type_code = 'Cutlery' AND daily_hire_cost < 20;",
       "trace": [
         {
           "tool": "check",
@@ -10766,27 +11221,11 @@
           ]
         },
         {
-          "tool": "check",
-          "sql": "SELECT DISTINCT Products_for_Hire.product_name, Products_for_Hire.product_description FROM Products_for_Hire WHERE product_type_code = 'Cutlery' AND daily_hire_cost < 20",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "product_name",
-              "product_description"
-            ],
-            "rows": [],
-            "row_count": 0,
-            "truncated": false,
-            "error": null,
-            "matches_example": true
-          }
-        },
-        {
           "tool": "submit",
-          "sql": "SELECT DISTINCT Products_for_Hire.product_name, Products_for_Hire.product_description FROM Products_for_Hire WHERE product_type_code = 'Cutlery' AND daily_hire_cost < 20"
+          "sql": "SELECT Products_for_Hire.product_name, Products_for_Hire.product_description\nFROM Products_for_Hire\nWHERE product_type_code = 'Cutlery' AND daily_hire_cost < 20;"
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 2
     },
     {
       "id": "validation-024d54bb9d654160",
@@ -10818,11 +11257,45 @@
           }
         },
         {
+          "tool": "repair_hint",
+          "observation": [
+            "SELECT DISTINCT mill.name\nFROM mill\nWHERE mill.name LIKE '%Moulin%';",
+            "SELECT DISTINCT mill.name\nFROM mill\nWHERE mill.name LIKE '%Moulin%';",
+            "SELECT DISTINCT mill.name\nFROM mill\nWHERE mill.name LIKE '%Moulin%';",
+            "SELECT DISTINCT mill.name\nFROM mill\nWHERE mill.name LIKE '%Moulin%';"
+          ]
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT DISTINCT mill.name\nFROM mill\nWHERE mill.name LIKE '%Moulin%';",
+          "observation": {
+            "ok": true,
+            "columns": [
+              "name"
+            ],
+            "rows": [
+              [
+                "Moulin de Momalle"
+              ],
+              [
+                "Moulin du Château"
+              ],
+              [
+                "Moulin de Pousset"
+              ]
+            ],
+            "row_count": 3,
+            "truncated": false,
+            "error": null,
+            "matches_example": true
+          }
+        },
+        {
           "tool": "submit",
           "sql": "SELECT mill.name\nFROM mill\nWHERE mill.name LIKE '%Moulin%';"
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-8f54c3bff6ab1797",
@@ -10880,7 +11353,7 @@
     },
     {
       "id": "validation-162091e91ee345b7",
-      "sql": "SELECT artist.artist_name, COUNT(song.song_name) AS num_songs FROM song JOIN artist ON song.artist_name = artist.artist_name WHERE song.languages = 'Bangla' GROUP BY artist.artist_name ORDER BY COUNT(song.song_name) DESC LIMIT 3",
+      "sql": "SELECT song.artist_name FROM song JOIN artist ON song.artist_name = artist.artist_name WHERE song.languages = 'Bangla' GROUP BY song.artist_name ORDER BY COUNT(song.song_name) DESC LIMIT 3",
       "trace": [
         {
           "tool": "check",
@@ -10909,7 +11382,7 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT artist_name, COUNT(song.song_name) AS num_songs\nFROM song\nJOIN artist ON song.artist_name = artist.artist_name\nWHERE song.languages = 'Bangla'\nGROUP BY artist_name\nORDER BY COUNT(song.song_name) DESC\nLIMIT 3;",
+          "sql": "SELECT artist_name FROM song JOIN artist ON song.artist_name = artist.artist_name JOIN genre ON song.genre_is = genre.g_name JOIN files ON song.f_id = files.f_id JOIN languages ON files.format = languages.format WHERE languages.language = 'Bangla' GROUP BY artist_name ORDER BY COUNT(song.song_name) DESC LIMIT 3",
           "observation": {
             "ok": false,
             "columns": [],
@@ -10918,7 +11391,7 @@
             "truncated": false,
             "error": {
               "type": "OperationalError",
-              "message": "ambiguous column name: artist_name"
+              "message": "no such table: languages"
             },
             "matches_example": false
           }
@@ -11108,17 +11581,33 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT files.artist_name, COUNT(song.song_name) AS num_songs FROM song JOIN artist ON song.artist_name = artist.artist_name JOIN files ON song.f_id = files.f_id WHERE song.languages = 'Bangla' GROUP BY files.artist_name ORDER BY COUNT(song.song_name) DESC LIMIT 3",
+          "sql": "SELECT artist_name, COUNT(song.song_name) AS num_songs\nFROM song\nJOIN artist ON song.artist_name = artist.artist_name\nWHERE song.languages = 'Bangla'\nGROUP BY artist_name\nORDER BY COUNT(song.song_name) DESC\nLIMIT 3;",
           "observation": {
-            "ok": true,
-            "columns": [
-              "artist_name",
-              "num_songs"
-            ],
+            "ok": false,
+            "columns": [],
             "rows": [],
             "row_count": 0,
             "truncated": false,
-            "error": null,
+            "error": {
+              "type": "OperationalError",
+              "message": "ambiguous column name: artist_name"
+            },
+            "matches_example": false
+          }
+        },
+        {
+          "tool": "check",
+          "sql": "SELECT artist_name FROM song JOIN artist ON song.artist_name = artist.artist_name WHERE song.languages = 'Bangla' GROUP BY artist_name ORDER BY COUNT(song.song_name) DESC LIMIT 3",
+          "observation": {
+            "ok": false,
+            "columns": [],
+            "rows": [],
+            "row_count": 0,
+            "truncated": false,
+            "error": {
+              "type": "OperationalError",
+              "message": "ambiguous column name: artist_name"
+            },
             "matches_example": false
           }
         },
@@ -11140,12 +11629,11 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT artist.artist_name, COUNT(song.song_name) AS num_songs FROM song JOIN artist ON song.artist_name = artist.artist_name WHERE song.languages = 'Bangla' GROUP BY artist.artist_name ORDER BY COUNT(song.song_name) DESC LIMIT 3",
+          "sql": "SELECT song.artist_name FROM song JOIN artist ON song.artist_name = artist.artist_name WHERE song.languages = 'Bangla' GROUP BY song.artist_name ORDER BY COUNT(song.song_name) DESC LIMIT 3",
           "observation": {
             "ok": true,
             "columns": [
-              "artist_name",
-              "num_songs"
+              "artist_name"
             ],
             "rows": [],
             "row_count": 0,
@@ -11155,31 +11643,15 @@
           }
         },
         {
-          "tool": "check",
-          "sql": "SELECT artist_name, COUNT(*) AS num_songs\nFROM song\nJOIN artist ON song.artist_name = artist.artist_name\nWHERE song.languages = 'Bangla'\nGROUP BY artist_name\nORDER BY COUNT(*) DESC\nLIMIT 3;",
-          "observation": {
-            "ok": false,
-            "columns": [],
-            "rows": [],
-            "row_count": 0,
-            "truncated": false,
-            "error": {
-              "type": "OperationalError",
-              "message": "ambiguous column name: artist_name"
-            },
-            "matches_example": false
-          }
-        },
-        {
           "tool": "submit",
-          "sql": "SELECT artist.artist_name, COUNT(song.song_name) AS num_songs FROM song JOIN artist ON song.artist_name = artist.artist_name WHERE song.languages = 'Bangla' GROUP BY artist.artist_name ORDER BY COUNT(song.song_name) DESC LIMIT 3"
+          "sql": "SELECT song.artist_name FROM song JOIN artist ON song.artist_name = artist.artist_name WHERE song.languages = 'Bangla' GROUP BY song.artist_name ORDER BY COUNT(song.song_name) DESC LIMIT 3"
         }
       ],
       "tool_calls": 8
     },
     {
       "id": "validation-cb8c55ba2b7f46b9",
-      "sql": "SELECT DISTINCT Elimination.Elimination_Move FROM Elimination JOIN wrestler ON Elimination.Wrestler_ID = wrestler.Wrestler_ID WHERE Team = 'Orton'",
+      "sql": "SELECT Elimination.Elimination_Move FROM Elimination JOIN wrestler ON Elimination.Wrestler_ID = wrestler.Wrestler_ID WHERE Team = 'Team Orton'",
       "trace": [
         {
           "tool": "check",
@@ -11223,7 +11695,7 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT DISTINCT Elimination.Move AS Elimination_Movie FROM Elimination JOIN wrestler ON Elimination.Wrestler_ID = wrestler.Wrestler_ID WHERE Team = 'Orton'",
+          "sql": "SELECT Elimination.Move AS Elimination_Movie FROM Elimination JOIN wrestler ON Elimination.Wrestler_ID = wrestler.Wrestler_ID WHERE Team = 'Team Orton'",
           "observation": {
             "ok": false,
             "columns": [],
@@ -11334,22 +11806,29 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT DISTINCT Elimination.Elimination_Move FROM Elimination JOIN wrestler ON Elimination.Wrestler_ID = wrestler.Wrestler_ID WHERE Team = 'Orton'",
+          "sql": "SELECT Elimination.Elimination_Move FROM Elimination JOIN wrestler ON Elimination.Wrestler_ID = wrestler.Wrestler_ID WHERE Team = 'Team Orton'",
           "observation": {
             "ok": true,
             "columns": [
               "Elimination_Move"
             ],
-            "rows": [],
-            "row_count": 0,
+            "rows": [
+              [
+                "Go To Sleep"
+              ],
+              [
+                "Spear"
+              ]
+            ],
+            "row_count": 2,
             "truncated": false,
             "error": null,
-            "matches_example": false
+            "matches_example": true
           }
         },
         {
           "tool": "submit",
-          "sql": "SELECT DISTINCT Elimination.Elimination_Move FROM Elimination JOIN wrestler ON Elimination.Wrestler_ID = wrestler.Wrestler_ID WHERE Team = 'Orton'"
+          "sql": "SELECT Elimination.Elimination_Move FROM Elimination JOIN wrestler ON Elimination.Wrestler_ID = wrestler.Wrestler_ID WHERE Team = 'Team Orton'"
         }
       ],
       "tool_calls": 6
@@ -11483,39 +11962,6 @@
             "SELECT Dorm.dorm_name, AVG(Student.Age) AS average_age\nFROM Dorm\nJOIN Lives_in ON Dorm.dormid = Lives_in.dormid\nJOIN Student ON Lives_in.stuid = Student.StuID\nGROUP BY Dorm.dorm_name;",
             "SELECT Dorm.dorm_name, AVG(Student.Age) AS average_age\nFROM Dorm\nJOIN Lives_in ON Dorm.dormid = Lives_in.dormid\nJOIN Student ON Lives_in.stuid = Student.StuID\nGROUP BY Dorm.dorm_name;"
           ]
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT Dorm.dorm_name, AVG(Student.Age) AS average_age\nFROM Dorm\nJOIN Lives_in ON Dorm.dormid = Lives_in.dormid\nJOIN Student ON Lives_in.stuid = Student.StuID\nGROUP BY Dorm.dorm_name;",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "dorm_name",
-              "average_age"
-            ],
-            "rows": [
-              [
-                "Anonymous Donor Hall",
-                19.0
-              ],
-              [
-                "Dorm-plex 2000",
-                21.0
-              ],
-              [
-                "Fawlty Towers",
-                20.8
-              ],
-              [
-                "Smith Hall",
-                17.5
-              ]
-            ],
-            "row_count": 4,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
         },
         {
           "tool": "check",
@@ -11706,31 +12152,32 @@
         },
         {
           "tool": "check",
-          "sql": "SELECT dorm_name, AVG(Student.Age) AS average_age FROM Dorm JOIN Has_amenity ON Dorm.dormid = Has_amenity.dormid JOIN Student ON Has_amenity.amenid = Student.StuID GROUP BY dorm_name",
+          "sql": "SELECT Dorm.dorm_name, AVG(Student.Age) AS average_age\nFROM Dorm\nJOIN Lives_in ON Dorm.dormid = Lives_in.dormid\nJOIN Student ON Lives_in.stuid = Student.StuID\nGROUP BY Dorm.dorm_name;",
           "observation": {
             "ok": true,
             "columns": [
               "dorm_name",
               "average_age"
             ],
-            "rows": [],
-            "row_count": 0,
-            "truncated": false,
-            "error": null,
-            "matches_example": false
-          }
-        },
-        {
-          "tool": "check",
-          "sql": "SELECT AVG(Student.Age), dorm_name FROM Dorm JOIN Has_amenity ON Dorm.dormid = Has_amenity.dormid JOIN Student ON Has_amenity.amenid = Student.StuID GROUP BY dorm_name",
-          "observation": {
-            "ok": true,
-            "columns": [
-              "AVG(Student.Age)",
-              "dorm_name"
+            "rows": [
+              [
+                "Anonymous Donor Hall",
+                19.0
+              ],
+              [
+                "Dorm-plex 2000",
+                21.0
+              ],
+              [
+                "Fawlty Towers",
+                20.8
+              ],
+              [
+                "Smith Hall",
+                17.5
+              ]
             ],
-            "rows": [],
-            "row_count": 0,
+            "row_count": 4,
             "truncated": false,
             "error": null,
             "matches_example": false
@@ -11774,8 +12221,8 @@
           "sql": "SELECT AVG(Student.Age), Dorm.dorm_name FROM Dorm JOIN Lives_in ON Dorm.dormid = Lives_in.dormid JOIN Student ON Lives_in.stuid = Student.StuID GROUP BY Dorm.dorm_name"
         }
       ],
-      "tool_calls": 8
+      "tool_calls": 6
     }
   ],
-  "prediction_seconds": 12.155765000003157
+  "prediction_seconds": 10.606296199999974
 }

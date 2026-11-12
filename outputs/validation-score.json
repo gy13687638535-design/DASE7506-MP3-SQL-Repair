@@ -1,9 +1,9 @@
 {
   "protocol": "dase7506-sql-repair-v1",
   "n": 120,
-  "correct": 91,
-  "accuracy": 75.83333333333333,
-  "mean_tool_calls": 2.825,
+  "correct": 98,
+  "accuracy": 81.66666666666667,
+  "mean_tool_calls": 3.425,
   "per_question": [
     {
       "id": "validation-3c4d5ecbd3a4ffc8",
@@ -79,7 +79,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-fff3bd324494b9bb",
@@ -98,7 +98,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-cf4f7eb157c5f56f",
@@ -117,86 +117,10 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-6d8add77db18ef60",
-      "passed": false,
-      "cases": [
-        {
-          "passed": true,
-          "error": null
-        },
-        {
-          "passed": false,
-          "error": null
-        },
-        {
-          "passed": false,
-          "error": null
-        }
-      ],
-      "tool_calls": 1
-    },
-    {
-      "id": "validation-83b76ccf03ae3d7a",
-      "passed": true,
-      "cases": [
-        {
-          "passed": true,
-          "error": null
-        },
-        {
-          "passed": true,
-          "error": null
-        },
-        {
-          "passed": true,
-          "error": null
-        }
-      ],
-      "tool_calls": 1
-    },
-    {
-      "id": "validation-1e5f20eb954308a2",
-      "passed": true,
-      "cases": [
-        {
-          "passed": true,
-          "error": null
-        },
-        {
-          "passed": true,
-          "error": null
-        },
-        {
-          "passed": true,
-          "error": null
-        }
-      ],
-      "tool_calls": 1
-    },
-    {
-      "id": "validation-60551b2217de7d97",
-      "passed": true,
-      "cases": [
-        {
-          "passed": true,
-          "error": null
-        },
-        {
-          "passed": true,
-          "error": null
-        },
-        {
-          "passed": true,
-          "error": null
-        }
-      ],
-      "tool_calls": 1
-    },
-    {
-      "id": "validation-52bfe326b751abaf",
       "passed": true,
       "cases": [
         {
@@ -215,19 +139,95 @@
       "tool_calls": 3
     },
     {
-      "id": "validation-9a3d5d1c1dfe328b",
-      "passed": false,
+      "id": "validation-83b76ccf03ae3d7a",
+      "passed": true,
       "cases": [
         {
           "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 2
+    },
+    {
+      "id": "validation-1e5f20eb954308a2",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 3
+    },
+    {
+      "id": "validation-60551b2217de7d97",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 2
+    },
+    {
+      "id": "validation-52bfe326b751abaf",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        }
+      ],
+      "tool_calls": 2
+    },
+    {
+      "id": "validation-9a3d5d1c1dfe328b",
+      "passed": true,
+      "cases": [
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
+          "error": null
+        },
+        {
+          "passed": true,
           "error": null
         }
       ],
@@ -326,7 +326,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-ab68d815813fb4b7",
@@ -345,7 +345,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-2feff7a83ef167ff",
@@ -364,7 +364,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-a75b7764fcacce68",
@@ -440,7 +440,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-f76a31ffe49ff88d",
@@ -459,7 +459,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-61511bf35997c117",
@@ -497,7 +497,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-f1a67e3024ea10f2",
@@ -535,7 +535,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-fad437395e6b6486",
@@ -554,7 +554,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-30b61a74da23f747",
@@ -592,7 +592,7 @@
           "error": null
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 2
     },
     {
       "id": "validation-3625496ea0b7be64",
@@ -615,22 +615,22 @@
     },
     {
       "id": "validation-15c0ae475aa5b12c",
-      "passed": false,
+      "passed": true,
       "cases": [
         {
           "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-085ce3159bf51a4d",
@@ -653,37 +653,37 @@
     },
     {
       "id": "validation-5cca36d225fdead7",
-      "passed": false,
+      "passed": true,
       "cases": [
         {
           "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-2c892f2ef042cedd",
-      "passed": false,
+      "passed": true,
       "cases": [
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         }
       ],
@@ -706,7 +706,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-4b4f8024a5980978",
@@ -725,7 +725,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-f1ea6b8f0e7f285d",
@@ -763,7 +763,7 @@
           "error": null
         }
       ],
-      "tool_calls": 4
+      "tool_calls": 5
     },
     {
       "id": "validation-e1927c97d2899fdd",
@@ -782,7 +782,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-5dad6a54f441726e",
@@ -827,11 +827,11 @@
       "passed": false,
       "cases": [
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
@@ -839,7 +839,7 @@
           "error": null
         }
       ],
-      "tool_calls": 8
+      "tool_calls": 6
     },
     {
       "id": "validation-ef4c177afd66ae16",
@@ -858,7 +858,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-2643a95fe295b32a",
@@ -877,7 +877,7 @@
           "error": null
         }
       ],
-      "tool_calls": 5
+      "tool_calls": 8
     },
     {
       "id": "validation-0a26d7c1c332029e",
@@ -896,7 +896,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-e313605ab240e9e5",
@@ -991,7 +991,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-3288dc4cebb243fe",
@@ -1010,7 +1010,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-c22e5499b1593f40",
@@ -1086,7 +1086,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-7896499011c15fde",
@@ -1143,7 +1143,7 @@
           "error": null
         }
       ],
-      "tool_calls": 5
+      "tool_calls": 3
     },
     {
       "id": "validation-137394c19b2b5678",
@@ -1162,7 +1162,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-5d1ecaadd27fb6a2",
@@ -1181,7 +1181,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-89448784d1f33b1c",
@@ -1200,7 +1200,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-fac51d810a95c200",
@@ -1219,7 +1219,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-6f87c063a9e335f0",
@@ -1238,7 +1238,7 @@
           "error": null
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 4
     },
     {
       "id": "validation-b0b931cefe38be42",
@@ -1257,26 +1257,26 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-0edb7ecbb4dd054b",
-      "passed": false,
+      "passed": true,
       "cases": [
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         }
       ],
-      "tool_calls": 8
+      "tool_calls": 4
     },
     {
       "id": "validation-7df47fb7fd5104dc",
@@ -1295,7 +1295,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-e030d845801dc09b",
@@ -1333,7 +1333,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-d44f9c5697538a6a",
@@ -1352,7 +1352,7 @@
           "error": null
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 2
     },
     {
       "id": "validation-d5436c6173d57687",
@@ -1371,7 +1371,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-34c0d80638e5872e",
@@ -1466,7 +1466,7 @@
           "error": null
         }
       ],
-      "tool_calls": 6
+      "tool_calls": 4
     },
     {
       "id": "validation-e978a5f0f55e548c",
@@ -1485,7 +1485,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-cdd57474e4812622",
@@ -1523,7 +1523,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-34dc16c5398be753",
@@ -1561,7 +1561,7 @@
           "error": null
         }
       ],
-      "tool_calls": 4
+      "tool_calls": 3
     },
     {
       "id": "validation-aae2724405be5c02",
@@ -1580,7 +1580,7 @@
           "error": null
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 7
     },
     {
       "id": "validation-741ca93b599363fd",
@@ -1599,7 +1599,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-02f77affeeb4f92d",
@@ -1637,7 +1637,7 @@
           "error": null
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 5
     },
     {
       "id": "validation-4a37f9727ac82a31",
@@ -1675,7 +1675,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-f839d77d08df4dfa",
@@ -1751,7 +1751,7 @@
           "error": null
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 5
     },
     {
       "id": "validation-3938199b48c562f6",
@@ -1789,7 +1789,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-c59e9d51a3799267",
@@ -1808,7 +1808,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-520d75479d567121",
@@ -1846,7 +1846,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-82b67fd858c9d8d4",
@@ -1865,7 +1865,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-fc40627f0b0bab17",
@@ -1960,7 +1960,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-329b35a3d5144055",
@@ -2036,7 +2036,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 2
     },
     {
       "id": "validation-d379eea4a2b59524",
@@ -2055,7 +2055,7 @@
           "error": null
         }
       ],
-      "tool_calls": 4
+      "tool_calls": 3
     },
     {
       "id": "validation-f279ebe82ac5bb54",
@@ -2074,7 +2074,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-1321fd5435f4cf5f",
@@ -2150,7 +2150,7 @@
           "error": null
         }
       ],
-      "tool_calls": 3
+      "tool_calls": 2
     },
     {
       "id": "validation-024d54bb9d654160",
@@ -2169,7 +2169,7 @@
           "error": null
         }
       ],
-      "tool_calls": 1
+      "tool_calls": 3
     },
     {
       "id": "validation-8f54c3bff6ab1797",
@@ -2211,18 +2211,18 @@
     },
     {
       "id": "validation-cb8c55ba2b7f46b9",
-      "passed": false,
+      "passed": true,
       "cases": [
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         },
         {
-          "passed": false,
+          "passed": true,
           "error": null
         }
       ],
@@ -2283,7 +2283,7 @@
           "error": null
         }
       ],
-      "tool_calls": 8
+      "tool_calls": 6
     }
   ],
   "split": "validation",
@@ -2293,6 +2293,6 @@
   "references_sha256": "5bfdd63ca75dd6b58c4ae3a7c72227ecfe0315655721ecaaef8e412ec3d6521d",
   "scorer_sha256": "87870af26173fbe6d8994e4de179fb272ef1fadf7dcaafc2e7b4c814c61ec95b",
   "executor_sha256": "4ecc3839728d68bd83f0d2a52cdd8392fd76dbaec3e54a19422118dee587b471",
-  "predictions_sha256": "6d45916c43e3998c5dcf2dcd779df04ab2067aa2906faa3cb0b61e1adae4dfd4",
-  "scoring_seconds": 26.2423712000018
+  "predictions_sha256": "4ad243b88284a4b9e2bea25a59c69c14b478fa694596bbf7e51b23730d8e0038",
+  "scoring_seconds": 19.371324200000004
 }

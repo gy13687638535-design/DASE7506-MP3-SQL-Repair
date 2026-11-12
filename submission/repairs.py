@@ -180,6 +180,10 @@ def _schema_repairs(tree, feedback, schema):
                 node.set("this", exp.to_identifier(columns[source.name.lower()][name]))
                 node.set("table", exp.to_identifier(source.alias_or_name))
         output.append((changed, "schema_column_binding", 100.0 + similarity))
+    # Ambiguity proves the field already exists in the current scope. Adding a
+    # new table cannot resolve it and changes cardinality unnecessarily.
+    if 'ambiguous column name:' in message:
+        return output
     # A missing field can belong to a table omitted from FROM/JOIN. Consider
     # explicit foreign keys first, then distinctive shared column names.
     present_names = {x.name.lower() for x in present}

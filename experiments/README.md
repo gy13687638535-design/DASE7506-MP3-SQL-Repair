@@ -10,11 +10,11 @@
 | Linux 测试集正确题数及准确率 | 175/240，72.92% | 182/240，75.83% |
 | 测试集平均工具调用次数 | 2.9625 | 3.4208 |
 
-新版测试证据见 [官方原始评分](results/linux/test-score.json)、[对照与文件校验记录](results/verification.json) 和 [GitHub Actions 运行](https://github.com/gy13687638535-design/DASE7506-MP3-SQL-Repair/actions/runs/43157511762)。原版评分保存在 [outputs/test-score.json](../outputs/test-score.json)。这些是学生侧使用官方工具得到的结果，尚不代表课程方最终确认。
+新版测试证据见 [官方原始评分](results/linux/test-score.json)、[对照与文件校验记录](results/verification.json) 和 [GitHub Actions 运行](https://github.com/gy13687638535-design/DASE7506-MP3-SQL-Repair/actions/runs/43157511762)。原版评分保存在 [outputs/test-score.json](../history/v1/outputs/test-score.json)。这些是学生侧使用官方工具得到的结果，尚不代表课程方最终确认。
 
 本轮仍是 CPU 上的程序策略优化，没有训练模型、没有使用在线语言模型，也没有 LoRA 权重。官方接口中的 `--checkpoint` 在这里接收一个 JSON 配置文件；这个参数名不代表进行了模型训练。
 
-原版 [submission](../submission/)、[outputs](../outputs/) 和 [课程提交 Issue #387](https://github.com/xudongwu-0/xudongwu-0.github.io/issues/387) 保持冻结；本目录保存独立的探索候选。
+本目录保留探索阶段的记录。选定实现现已逐字提升至 [submission](../submission/) 作为正式入口；原版评分和报告见 [history/v1](../history/v1/)，旧 Issue #387 保留为历史记录。
 
 ## 代码怎样组织
 
@@ -84,7 +84,7 @@ flowchart TD
 
 下列数字来自未修改的官方评分器；摘要程序只提取 `correct`、`n`、`accuracy` 和 `mean_tool_calls`。本节的验证实验在 Windows 开发环境运行，资源限制是否满足应以选定版本的 Linux 测量为准。
 
-原版验证成绩及平均工具调用次数的证据是 [validation-score.json](../outputs/validation-score.json)：91/120，75.83%，2.825 次/题。
+原版验证成绩及平均工具调用次数的证据是 [validation-score.json](../history/v1/outputs/validation-score.json)：91/120，75.83%，2.825 次/题。
 
 前 10 组属于开发过程中的历史探索，期间逐步加入功能。它们用于记录尝试过的方向，**不能全部视为同一份最终代码上的严格消融**。当前代码重新运行这些早期配置，结果可能与历史记录不同。
 
@@ -127,7 +127,7 @@ flowchart TD
 
 测试集平均工具调用从 2.9625 增至 3.4208，约增加 15.47%。[Linux 资源记录](results/linux/test-runtime.json) 显示，预测和评分合计墙钟时间为 20.353 秒，累计 CPU 时间为 60.445 秒；采样进程树峰值 RSS 为 108.246 MiB，虚拟内存为 784.852 MiB。运行设置最多 4 个 CPU、180 秒合计时限及 2 GiB 虚拟内存限制，本次运行成功完成。CPU 时间累加了并行进程的消耗，因此可以大于墙钟时间。不同 GitHub Actions 运行可能分配不同主机，这些测量不能证明新版必然比原版更快。
 
-本轮比较了多个验证配置，仍存在对这份验证集过度适配的风险。冻结后的 182/240 提供了测试集改善的证据，但不能保证对任意新数据库、问题表达或 SQL 错误类型都有同等收益。原课程提交 Issue 未更新，本目录继续作为独立候选保留。
+本轮比较了多个验证配置，仍存在对这份验证集过度适配的风险。冻结后的 182/240 提供了测试集改善的证据，但不能保证对任意新数据库、问题表达或 SQL 错误类型都有同等收益。本目录记录最初的探索评测；正式入口还会进行一次复现核验。课程规定改进版本须创建新 Issue，旧 Issue 保留，排行榜选取个人最佳成绩。
 
 Agent 的信息来源限于题目、待修 SQL、公开示例，以及官方工具返回的提示、检查反馈和结构。Agent 不直接读取数据库文件，不读取评分参考答案，不以题目 ID 建立答案表，也不把公开示例的结果单元格抄写为 SQL 常量。实验程序会在 Agent 运行结束后读取官方评分，用于验证比较。
 

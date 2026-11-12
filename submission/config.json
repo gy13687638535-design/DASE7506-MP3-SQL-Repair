@@ -1,1 +1,8 @@
-{"hints": true, "repairs": true, "schema": true, "early_stop": true}
+{
+  "semantic": true,
+  "compose_projection": false,
+  "safe_projection": true,
+  "verify_all_matches": true,
+  "hint_only_pass": true,
+  "rank_matches": true
+}
