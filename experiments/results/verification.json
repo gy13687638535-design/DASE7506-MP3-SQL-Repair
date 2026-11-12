@@ -1,0 +1,34 @@
+{
+  "evaluated_commit": "6f3c2369d1987ae4b1cf2252e1971770fc507c32",
+  "workflow_run_url": "https://github.com/gy13687638535-design/DASE7506-MP3-SQL-Repair/actions/runs/43157511762",
+  "workflow_run_id": 43157511762,
+  "artifact_id": 13916123562,
+  "artifact_zip_sha256": "5702d0bcc37957c8d6da408eccf4a77a29dcebf1a64d02467a8dc466f8d968bd",
+  "test_evaluations_for_candidate_selection": 0,
+  "selected_candidate_test_runs": 1,
+  "source_matches_pre_test_selection_hashes": true,
+  "baseline": {
+    "n": 240,
+    "correct": 175,
+    "accuracy": 72.91666666666667,
+    "mean_tool_calls": 2.9625
+  },
+  "selected": {
+    "n": 240,
+    "correct": 182,
+    "accuracy": 75.83333333333333,
+    "mean_tool_calls": 3.4208333333333334
+  },
+  "paired_outcomes": {
+    "both_correct": 174,
+    "gained": 8,
+    "regressed": 1,
+    "both_wrong": 57
+  },
+  "files_sha256": {
+    "experiments/results/linux/test.json": "c812a584b679faa0a4968d706e76cbde1626e1eeb110c732472e7a3a17133909",
+    "experiments/results/linux/test-score.json": "00c65b6e5c48ac641cf4f8ea568895615e89bd62d6a47247f5ccc4005a3270e0",
+    "experiments/results/linux/test-runtime.json": "f2ecdb005fccc2a7a096da343a844ac73cb4da26c08fce108e9e905e7ca02b10"
+  },
+  "notes": "Original official score and prediction bytes are preserved. Paired success flags were compared after freezing the agent, for reporting only; no test SQL or failed cases were used to adjust it."
+}

@@ -3,6 +3,10 @@
 **Author:** Guo Yang (3036797817)  
 **Route:** CPU-only harness optimization; no live model, no LoRA, no training.
 
+**后续探索：** 本页记录原提交版本。独立实验版本、中文结构说明及比较结果见
+[experiments/README.md](experiments/README.md)，位于 `codex/mp3-exploration` 分支。
+课程原提交所引用的固定 commit 与结果保持不变。
+
 The agent checks the original draft, reads the shared cached repair hints when
 needed, generates read-only AST edits from feedback, and checks candidates within
 the official eight-call budget. Empty/all-NULL example matches receive an extra

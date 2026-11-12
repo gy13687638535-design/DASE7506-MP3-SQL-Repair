@@ -1,3 +1,3 @@
 * text=auto eol=lf
 outputs/** -text
-experiments/results/** -text
+experiments/results/** -text whitespace=cr-at-eol

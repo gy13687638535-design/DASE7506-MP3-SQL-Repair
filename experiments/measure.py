@@ -216,7 +216,7 @@ def main():
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'results' / 'measured')
     parser.add_argument('--split', choices=('validation', 'test'), default='test')
     parser.add_argument('--config', type=Path, default=ROOT / 'v2' / 'config.json')
-    
+
     parser.add_argument('--timeout', type=float, default=180,
                         help='Combined prediction/scoring wall limit; at most 180 seconds')
     args = parser.parse_args()
